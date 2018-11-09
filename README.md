@@ -1,3 +1,12 @@
+
+REDAXO-AddOn: Project Manager
+================================================================================
+
+Bietet Unterstützung bei der Verwaltung und Überprüfung der eigenen REDAXO-Installationen. 
+
+![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/project_manager/assets/project_manager_server.png)
+![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/project_manager/assets/project_manager_server_detail.png)
+
 ## Inhaltsübersicht
 
 * [Einleitung](#einleitung)
@@ -54,11 +63,15 @@ Das **Server-Plugin** dient zur Verwaltung der REDAXO Projekte
 * Cronjob zum automatisierten Abruf aller Parameter
 * Cronjob zum automatisierten Abruf der Favicons
 
+![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/project_manager/assets/project_manager_server.png)
+
 Das **PageSpeed-Plugin** dient zur Anzeige der Google PageSpeedwerte
 * Abrufen der Desktop und Mobile PageSpeed Werte
 * Darstellung der Werte in der Listenansicht
 * Darstellung aller Parameter in der Detailansicht im **Server-Plugin**
 * Cronjob zum automatisierten Abruf der Werte
+
+![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/project_manager/assets/project_manager_pagespeed.png)
 
 Das **Hosting-Plugin** dient zur Anzeige von Hosting Informationen
 * Abrufen von ISP, Organisation sowie die aktuelle IP Adresse über den IP-API.com Dienst
@@ -66,6 +79,7 @@ Das **Hosting-Plugin** dient zur Anzeige von Hosting Informationen
 * Darstellung aller Parameter in der Detailansicht im **Server-Plugin**
 * Cronjob zum automatisierten Abruf der Werte
 
+![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/project_manager/assets/project_manager_hosting.png)
 
 &uarr; [zurück zur Übersicht](#top)
 
