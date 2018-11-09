@@ -273,7 +273,7 @@ siehe [LICENSE](https://github.com/FriendsOfREDAXO/project_manager/blob/master/L
 * https://github.com/FriendsOfREDAXO
 
 **Projekt-Lead**
-* Ronny Kemmereit](https://github.com/rkemmere)
+* [Ronny Kemmereit](https://github.com/rkemmere)
 
 **Development-Team / Autoren**
 * [Ronny Kemmereit](https://github.com/rkemmere) 
