@@ -4,7 +4,10 @@ REDAXO-AddOn: Project Manager
 
 Bietet Unterstützung bei der Verwaltung und Überprüfung der eigenen REDAXO-Installationen. 
 
+## Projektübersicht 
 ![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/project_manager/assets/project_manager_server.png)
+
+## Projektdetailansicht
 ![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/project_manager/assets/project_manager_server_detail.png)
 
 ## Inhaltsübersicht
