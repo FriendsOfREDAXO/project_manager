@@ -27,7 +27,7 @@ Bietet Unterstützung bei der Verwaltung und Überprüfung der eigenen REDAXO-In
   - [Client](#client)
 * [Hosting-Plugin](#hosting-plugin)  
   - [Hosting](#hosting)
-* [Allgemein]
+* [Allgemein](#allgemein)
   - [Changelog](#section4)
   - [Credits](#section5)
   - [Bug-Meldungen, Hilfe und Links](#section6)    
@@ -244,7 +244,7 @@ Um die Hostingdaten von den REDAXO Projekten in den Projekt Manager zu laden, gi
 
 &uarr; [zurück zur Übersicht](#top)
 
-
+<a name="allgemein"></a>
 ## Allgemein
 
 <a name="section4"></a>
