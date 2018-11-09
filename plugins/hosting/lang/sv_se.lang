@@ -1,0 +1,17 @@
+project_manager_hosting_menu_entry = Hosting
+
+project_manager_hosting_projects = Projects
+project_manager_hosting_title = Overview
+project_manager_hosting_domain_norows_message = no projects found 
+project_manager_cronjob_hosting_name = Project Manager: get hosting date
+
+project_manager_hosting_name = Projectname
+project_manager_hosting_domain = Domain
+project_manager_hosting_createdate = Last changes
+project_manager_hosting_ip = IP Address
+project_manager_hosting_is_ssl = SSL
+project_manager_hosting_organisation = Organisation
+project_manager_hosting_isp = ISP
+project_manager_hosting_domain_norows_message = no entries found
+
+perm_general_project_manager_hosting[] = project_manager_hosting[] - Project Manager Hosting

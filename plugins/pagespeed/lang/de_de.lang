@@ -1,0 +1,19 @@
+project_manager_pagespeed_menu_entry = PageSpeed
+
+project_manager_pagespeed_projects = Projekte
+project_manager_pagespeed_title = Übersicht
+project_manager_pagespeed_config = Einstellungen
+project_manager_pagespeed_api_key_title = Einstellungen
+project_manager_pagespeed_api_key_label = PageSpeed API-Schlüssel
+project_manager_pagespeed_api_key_notice = PageSpeed API-Schlüssel, z.B. <code>AIzaSyCp0Em_UPY78238es-9CZViEbq7CB_zcFBs</code>
+project_manager_pagespeed_domain_norows_message = Kein Projekt vorhanden 
+project_manager_cronjob_pagespeed_name = Projekt Manager: Hole Pagespeed Daten
+
+
+project_manager_pagespeed_name = Projektname
+project_manager_pagespeed_domain = Domain
+project_manager_pagespeed_updatedate = Letzte Änderung
+project_manager_pagespeed_logdate = Letzter Datenfetch
+project_manager_pagespeed_domain_norows_message = Keine Einträge vorhanden
+
+perm_general_project_manager_pagespeed[] = project_manager_pagespeed[] - Rechte für Projekt Manager PageSpeed

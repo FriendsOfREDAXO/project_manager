@@ -1,0 +1,21 @@
+package: project_manager/pagespeed
+version: '1.0.4'
+author: 'Manétage - Ronny Kemmereit'
+supportpage: https://github.com/rkemmere/project_manager
+
+page:
+    title: 'translate:pagespeed_menu_entry'
+    icon: rex-icon fa-wrench # Icon von Font Awesome
+    perm: project_manager_pagespeed[] 
+    
+pages:
+    project_manager/pagespeed/overview:
+        title: translate:project_manager_pagespeed_title
+    project_manager/pagespeed/config:
+        title: translate:project_manager_pagespeed_config
+        
+requires:
+    packages:
+        project_manager: '^1.0.0'
+        cronjob: '^ 2.3.0'
+        project_manager/server: '^1.0.0'        

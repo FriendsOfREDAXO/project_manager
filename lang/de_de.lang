@@ -1,0 +1,13 @@
+project_manager_title = Projekt Manager
+
+project_manager_main = Info
+
+project_manager_navigation = Navigation
+project_manager_docs = Hilfe
+project_manager_config = Einstellungen
+
+project_manager_config_save = Speichern
+project_manager_config_saved = Gespeichert!
+save = Speichern
+
+perm_general_project_manager[] = project_manager[] - Rechte für Projekt Manager

@@ -1,0 +1,35 @@
+package: project_manager
+version: '1.1.3'
+author: Manétage - Ronny Kemmereit
+supportpage: https://github.com/rkemmere/project_manager
+
+# Seiten
+page:
+    title: Projekt Manager
+    perm: project_manager[] 
+    icon: rex-icon fa-handshake-o
+    
+    # Unterseiten
+    subpages:
+        main:
+            title: 'translate:project_manager_main'
+            perm: project_manager[]
+            icon: rex-icon fa-info    
+            itemclass: pull-right 
+       
+plugins:
+    - server
+    - client
+    - pagespeed   
+    - hosting
+
+# Abhängigkeiten
+# Anforderungen ans System oder anderere AddOns, um dieses AddOn installieren oder update zu können
+requires:
+    redaxo: '^5.2' # benötigt mindestens REDAXO 5.4
+    php:
+        version: '>=5.6' # benötigt mindestens PHP 5.6
+
+# Plugins die automatisch installiert werden sollen
+#system_plugins:
+    #- client

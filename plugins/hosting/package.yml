@@ -1,0 +1,19 @@
+package: project_manager/hosting
+version: '1.0.1'
+author: 'Manétage - Ronny Kemmereit'
+supportpage: https://github.com/rkemmere/project_manager
+
+page:
+    title: 'translate:hosting_menu_entry'
+    icon: rex-icon fa-wrench # Icon von Font Awesome
+    perm: project_manager_hosting[] 
+    
+pages:
+    project_manager/hosting/overview:
+        title: translate:project_manager_hosting_title
+        
+requires:
+    packages:
+        project_manager: '^1.0.0'
+        cronjob: '^ 2.3.0'
+        project_manager/server: '^1.0.0'        

@@ -1,0 +1,17 @@
+project_manager_hosting_menu_entry = Hosting
+
+project_manager_hosting_projects = Projekte
+project_manager_hosting_title = Übersicht
+project_manager_hosting_domain_norows_message = Kein Projekt vorhanden 
+project_manager_cronjob_hosting_name = Projekt Manager: Hole Hosting Daten
+
+project_manager_hosting_name = Projektname
+project_manager_hosting_domain = Domain
+project_manager_hosting_createdate = Letzte Änderung
+project_manager_hosting_ip = IP Adresse
+project_manager_hosting_is_ssl = SSL
+project_manager_hosting_organisation = Organisation
+project_manager_hosting_isp = ISP
+project_manager_hosting_domain_norows_message = Keine Einträge vorhanden
+
+perm_general_project_manager_hosting[] = project_manager_hosting[] - Rechte für Projekt Manager Hosting

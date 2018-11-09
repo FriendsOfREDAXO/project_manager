@@ -1,0 +1,13 @@
+project_manager_title = Gestor de projeto
+
+project_manager_main = Info
+
+project_manager_navigation = Navegação
+project_manager_docs = Ajuda
+project_manager_config = Configurações
+
+project_manager_config_save = Guardar
+project_manager_config_saved = Guardado!
+
+perm_general_project_manager[] = project_manager[] - Direitos
+perm_general_project_manager[config] = project_manager[config] - Direitos de configurações

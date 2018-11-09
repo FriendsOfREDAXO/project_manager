@@ -1,0 +1,21 @@
+
+
+client_navigation_title = Navigation [ main_navi.md ]
+client_content_title = Inhalt [ <span id="doc-file-name">{0}</span> ]
+
+client_noparser = Kein Markdown-Parser vorhanden! Bitte zuerst einen Parser installieren (Addon markitup oder textile)
+
+client_navinotfound = Navigations-Datei <strong>{0}</strong> wurde nicht gefunden!<br>Diese Datei ist zwingend erforderlich!
+client_filenotfound = Datei <strong>{0}</strong> wurde nicht gefunden. Inhalt existiert (noch) nicht. <br><br>Wir freuen uns über Mithilfe: <a href="{1}" target="_blank">{1}</a>
+
+project_manager_client_menu_entry = Client
+project_manager_client_page_entry = Einstellungen
+project_manager_client_title = Einstellungen
+project_manager_client_readme = Hilfe
+project_manager_api_key_title = Client
+project_manager_api_key_label = API-Schlüssel
+project_manager_api_key_notice = API-Schlüssel, z.B.
+project_manager_save = Speichern
+
+
+perm_general_project_manager_client[] = project_manager_client[] - Rechte für Projekt Manager Client
