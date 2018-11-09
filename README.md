@@ -17,9 +17,7 @@ Bietet Unterstützung bei der Verwaltung und Überprüfung der eigenen REDAXO-In
   - [Features](#section1)
   - [Installation](#section2)
   - [Plugins](#section3)
-  - [Changelog](#section4)
-  - [Credits](#section5)
-  - [Bug-Meldungen, Hilfe und Links](#section6)  
+ 
 * [Einstellungen](#einstellungen)
 * [Server-Plugin](#server-plugin)
   - [Server](#server)
@@ -29,6 +27,11 @@ Bietet Unterstützung bei der Verwaltung und Überprüfung der eigenen REDAXO-In
   - [Client](#client)
 * [Hosting-Plugin](#hosting-plugin)  
   - [Hosting](#hosting)
+* [Allgemein]
+  - [Changelog](#section4)
+  - [Credits](#section5)
+  - [Bug-Meldungen, Hilfe und Links](#section6)    
+  
 <a name="einleitung"></a>
 ## Einleitung
 
@@ -103,28 +106,6 @@ Auf den REDAXO Projekten sollte nur das Plugin **Client** installiert und konfig
 Der Projekt Manager Server benötigt das Plugin **Server**.
 
 &uarr; [zurück zur Übersicht](#top)
-
-<a name="section4"></a>
-### Changelog
-
-siehe CHANGELOG.md des AddOns
-
-<a name="section5"></a>
-### Credits
-
-Großes Danke geht an Alexander Walther - alexplusde welcher uns eine gute Codebasis für die Erstellung des Addons zur Verfügung gestellt hat.
-
-
-<a name="section6"></a>
-### Bug-Meldungen, Hilfe und Links
-
-* Auf Github: https://github.com/rkemmere/project_manager/issues/
-* im Forum: https://www.redaxo.org/forum/
-* im Slack-Channel: https://friendsofredaxo.slack.com/
-
-&uarr; [zurück zur Übersicht](#top)
-
-
 
 <a name="server-plugin"></a>
 ## Server-Plugin
@@ -265,3 +246,44 @@ Um die Hostingdaten von den REDAXO Projekten in den Projekt Manager zu laden, gi
 &uarr; [zurück zur Übersicht](#top)
 
 
+## Allgemein
+
+<a name="section4"></a>
+### Changelog
+
+siehe CHANGELOG.md des AddOns
+
+
+<a name="section6"></a>
+### Bug-Meldungen, Hilfe und Links
+
+* Auf Github: https://github.com/FriendsOfREDAXO/project_manager/issues
+* im Forum: https://www.redaxo.org/forum/
+* im Slack-Channel: https://friendsofredaxo.slack.com/
+
+
+### Lizenz
+
+siehe [LICENSE](https://github.com/FriendsOfREDAXO/project_manager/blob/master/LICENSE)
+
+### Autor
+
+**Friends Of REDAXO**
+
+* http://www.redaxo.org
+* https://github.com/FriendsOfREDAXO
+
+**Projekt-Lead**
+[Ronny Kemmereit](https://github.com/rkemmere)
+
+**Development-Team / Autoren**
+* [Ronny Kemmereit](https://github.com/rkemmere) 
+* [Pascal Schuchmann](https://github.com/pschuchmann)
+* [Alexander Walther](https://github.com/alexplusde)  
+
+
+<a name="section5"></a>
+### Credits
+
+Großes Danke geht an Alexander Walther - alexplusde welcher uns eine gute Codebasis für die Erstellung des Addons zur Verfügung gestellt hat.
+[Alexander Walther](https://github.com/alexplusde) 
