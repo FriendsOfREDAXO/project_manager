@@ -90,9 +90,8 @@ Das **Hosting-Plugin** dient zur Anzeige von Hosting Informationen
 &uarr; [zurück zur Übersicht](#top)
 
 
-
 <a name="section2"></a>
-### Installation
+## Installation
 
 Voraussetzung für die aktuelle Version des Projekt Manager Addons: REDAXO 5.3, Cronjob-Addon, MarkItUp-Addon
 Nach erfolgreicher Installation gibt es im Backend unter AddOns einen Eintrag "Projekt Manager".
@@ -274,7 +273,7 @@ siehe [LICENSE](https://github.com/FriendsOfREDAXO/project_manager/blob/master/L
 * https://github.com/FriendsOfREDAXO
 
 **Projekt-Lead**
-[Ronny Kemmereit](https://github.com/rkemmere)
+* Ronny Kemmereit](https://github.com/rkemmere)
 
 **Development-Team / Autoren**
 * [Ronny Kemmereit](https://github.com/rkemmere) 
@@ -285,5 +284,5 @@ siehe [LICENSE](https://github.com/FriendsOfREDAXO/project_manager/blob/master/L
 <a name="section5"></a>
 ### Credits
 
-Großes Danke geht an Alexander Walther - alexplusde welcher uns eine gute Codebasis für die Erstellung des Addons zur Verfügung gestellt hat.
-[Alexander Walther](https://github.com/alexplusde) 
+Großes Danke geht an [Alexander Walther](https://github.com/alexplusde) - alexplusde welcher uns eine gute Codebasis für die Erstellung des Addons zur Verfügung gestellt hat.
+
