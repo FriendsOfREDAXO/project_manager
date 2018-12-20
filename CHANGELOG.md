@@ -1,10 +1,33 @@
 # Changelog
 
+## Version 1.2.0 // 20.12.2018
+
+# Plugin: Server 1.1.0
+* Tablesorter in Listenansicht angepasst
+* Konfigurationsseite
+* Minimale PHP Version
+* Minimale CMS Version
+* Letzte Änderungen auf der Webseite nun in Listenansicht
+* Letzte Änderungen auf der Webseite nun in Detailansicht
+* Letzter Datenabgleich in Detailansicht
+* Cronjob aus Listenansicht aufrufbar
+
+# Plugin: Client 1.0.5
+* Letzte Änderungen auf der Webseite
+
+# Plugin: Pagespeed 1.0.4
+* Cronjob aus Listenansicht aufrufbar
+
+# Plugin: Hosting 1.0.2
+* idn_to_ascii Anpassungen PHP 7.1
+* Zertifikat Start/Enddatum werden abgerufen
+* Cronjob aus Listenansicht aufrufbar
+
+
 ## Version 1.1.3 // 05.11.2018
 
 # Plugin: Hosting 1.0.1
 * ip-api.com Aufrufe geändert
-
 
 ## Version 1.1.2 // 04.11.2018
 

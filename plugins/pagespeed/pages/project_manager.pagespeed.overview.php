@@ -3,8 +3,8 @@
 $showlist = true;
 $data_id = rex_request('data_id', 'int', 0);
 $func = rex_request('func', 'string');
-$csrf = rex_csrf_token::factory('project_manager_domain');
-
+$csrf_token = (rex_csrf_token::factory('cronjob'))->getValue();
+$csrf = rex_csrf_token::factory('project_manager');
 
 ###############
 ###
@@ -30,7 +30,17 @@ if ($showlist) {
             ';
 	  
 	$items = rex_sql::factory()->getArray($sql);
-	echo rex_view::info("Anzahl der Domains und Projekte: ".count($items));
+	
+	$sql2 = 'SELECT * FROM  '. rex::getTable('cronjob').'
+          WHERE type = "rex_cronjob_project_manager_pagespeed"';
+	$cronjob = rex_sql::factory()->getArray($sql2);
+	$cronjobId = $cronjob[0]['id'];
+	
+	$refresh = '';
+	if ($cronjobId != NULL) {
+	  $refresh = '<a href="#" data-cronjob="/redaxo/index.php?page=cronjob/cronjobs&func=execute&oid='.$cronjobId.'&_csrf_token='.$csrf_token.'" target="_blank" class="pull-right callCronjob"><i class="fa fa-refresh"></i> PageSpeed Daten aktualisieren</a>';
+	}
+	echo rex_view::info("Anzahl der Domains und Projekte: ".count($items) . $refresh);
 	
   $list = rex_list::factory($sql, 1000);
   $list->addTableAttribute('class', 'table-striped');
@@ -55,7 +65,7 @@ if ($showlist) {
   $list->removeColumn('is_ssl');
   $list->removeColumn('domain');
   $list->removeColumn('updatedate');
-  $list->removeColumn('logdate');
+  $list->removeColumn('createdate');
   $list->removeColumn('psi_domain');
   $list->removeColumn('psi_score_desktop');
   $list->removeColumn('psi_score_mobile');  
@@ -90,13 +100,13 @@ if ($showlist) {
   $list->setColumnLabel('status_psi', $this->i18n('status'));
   $list->setColumnFormat('status_psi', 'custom', function ($params) {
     if ($params['list']->getValue('status_psi') == "1") {
-      return '<span class="rex-icon fa-check text-success"></span>';
+      return '<span class="hidden">1</span><span class="rex-icon fa-check text-success"></span>';
     } else if ($params['list']->getValue('status_psi') == "0") {
-      return '<span class="rex-icon fa-question text-warning"></span>';
+      return '<span class="hidden">2</span><span class="rex-icon fa-question text-warning"></span>';
     } else if ($params['list']->getValue('status_psi') == "-1") {
-      return '<span class="rex-icon fa-exclamation-triangle text-danger"></span>';
+      return '<span class="hidden">3</span><span class="rex-icon fa-exclamation-triangle text-danger"></span>';
     } else if ($params['list']->getValue('status_psi') == "2") {
-      return '<span class="rex-icon fa-arrow-right text-danger"></span>';
+      return '<span class="hidden">3</span><span class="rex-icon fa-arrow-right text-danger"></span>';
     } else {
       if ($params['list']->getValue('is_ssl') == 1)
         return '<a href="https://www.'.$params['list']->getValue('domain').'/?rex-api-call=project_manager&api_key='.$params['list']->getValue('api_key').'"><span class="rex-icon fa-question"></span></a>';

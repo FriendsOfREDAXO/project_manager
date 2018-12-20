@@ -3,16 +3,17 @@ project_manager_server_menu_entry = Projekte
 #view
 project_manager_server_projects = Projekte
 project_manager_server_overview = Übersicht
+project_manager_server_config = Einstellungen
 project_manager_server_domain = Domain
 project_manager_server_api_key = API-Schlüssel
 project_manager_server_cms = REDAXO Hauptversion
-project_manager_server_createdate = Letzte Änderung
+project_manager_server_update_content = Letzte Änderung
 
 project_manager_server_updates_necessary = gefunden
 project_manager_server_updates = Updates
 project_manager_pm_client_version = Client
 project_manager_server_php_version = PHP
-project_manager_server_cms_version = CMS
+project_manager_server_cms_version = Version
 project_manager_server_syslog = Syslog
 project_manager_server_is_ssl = SSL
 project_manager_server_select_project = Projekt wählen
@@ -43,3 +44,12 @@ project_manager_cronjob_favicon_name = Projekt Manager: Hole Favicon
 project_manager_cronjob_data_name = Projekt Manager: Hole Domaindaten
 
 perm_general_project_manager_server[] = project_manager_server[] - Rechte für Projekt Manager Server Konfiguration
+
+
+#config
+project_manager_server_min_headline = Mindestanforderungen
+project_manager_server_php_min = PHP Version
+project_manager_server_cms_min = CMS Version
+project_manager_server_config_saved_successful = Einstellungen gespeichert!
+project_manager_server_min_color = Farbe
+project_manager_server_color_notice = Farbe bitte als HEX #F1F1F1 oder als RGBA angeben rgba(0,0,0,0.1)

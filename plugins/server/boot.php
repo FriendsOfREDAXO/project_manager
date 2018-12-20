@@ -28,6 +28,8 @@ if (rex::isBackend() && is_object(rex::getUser())) {
 }
 
 rex_view::addCssFile($this->getAssetsUrl('css/theme.default.min.css'));
+rex_view::addCssFile($this->getAssetsUrl('css/theme.css'));
 rex_view::addJsFile($this->getAssetsUrl('js/jquery.tablesorter.combined.min.js'));
 rex_view::addJsFile($this->getAssetsUrl('js/tablesorter-custom.js'));
+rex_view::addJsFile($this->getAssetsUrl('js/custom.js'));
 

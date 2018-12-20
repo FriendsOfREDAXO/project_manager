@@ -1,11 +1,11 @@
 package: project_manager/server
-version: '1.0.7'
+version: '1.1.0'
 author: 'Manétage - Ronny Kemmereit'
 supportpage: https://github.com/rkemmere/project_manager
 
 page:
     title: 'translate:project_manager_server_menu_entry'
-    icon: rex-icon fa-wrench # Icon von Font Awesome
+    icon: rex-icon fa-th-list
     perm: project_manager_server[]  
     
 pages:
@@ -13,6 +13,9 @@ pages:
         title: 'translate:project_manager_server_overview'
     project_manager/server/projects:
         title: 'translate:project_manager_server_project_detail'
+    project_manager/server/config:
+        title: 'translate:project_manager_server_config'
+        
         
 requires:
     packages:

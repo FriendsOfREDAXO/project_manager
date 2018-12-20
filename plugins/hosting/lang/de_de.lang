@@ -8,10 +8,12 @@ project_manager_cronjob_hosting_name = Projekt Manager: Hole Hosting Daten
 project_manager_hosting_name = Projektname
 project_manager_hosting_domain = Domain
 project_manager_hosting_createdate = Letzte Änderung
-project_manager_hosting_ip = IP Adresse
+project_manager_hosting_ip = IPv4-Adresse
 project_manager_hosting_is_ssl = SSL
 project_manager_hosting_organisation = Organisation
 project_manager_hosting_isp = ISP
 project_manager_hosting_domain_norows_message = Keine Einträge vorhanden
+project_manager_hosting_validTo = Zertifikat Enddatum
+project_manager_hosting_validFrom = Zertifikat Startdatum
 
 perm_general_project_manager_hosting[] = project_manager_hosting[] - Rechte für Projekt Manager Hosting

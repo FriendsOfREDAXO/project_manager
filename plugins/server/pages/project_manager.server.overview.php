@@ -6,20 +6,21 @@ $data_id = rex_request('data_id', 'int', 0);
 $func = rex_request('func', 'string');
 $sort = rex_request('sort', 'string');
 $sorttype = rex_request('sorttype', 'string');
-$csrf = rex_csrf_token::factory('project_manager_domain');
+$csrf_token = (rex_csrf_token::factory('cronjob'))->getValue();
+$csrf = rex_csrf_token::factory('project_manager');
+
 
 if ($func != '') {
 
     $yform = new rex_yform();
-    // $yform->setDebug(TRUE);
+    $yform->setDebug(FALSE);
     $yform->setHiddenField('page', 'project_manager/server/overview');
     $yform->setHiddenField('func', $func);
     $yform->setHiddenField('save', '1');
-
-
+    
     $yform->setObjectparams('main_table', rex::getTable('project_manager_domain'));
     $yform->setObjectparams('form_name', 'project_manager_form');
-
+    
     $yform->setValueField('text', ['name', $this->i18n('project_manager_server_name'), 'notice' => '<small>'.$this->i18n('name_info').'</small>']);
     $yform->setValidateField('empty', ['name', $this->i18n('no_name_defined')]);
     $yform->setValidateField('unique', ['name', $this->i18n('name_already_defined')]);
@@ -39,6 +40,7 @@ if ($func != '') {
     
     $yform->setValueField('select', array("cms", $this->i18n('project_manager_server_cms'),"REDAXO 5=5,REDAXO 4=4","","0","0"));
     
+    $yform->setValueField('hidden', array("createdate", date ('Y-m-d H:i:s', time())));
 
     if ($func == 'delete') {
 
@@ -129,7 +131,7 @@ if ($showlist) {
     $sql = 'SELECT * FROM (
                           SELECT id, name, domain, is_ssl, status, cms FROM `rex_project_manager_domain` ORDER BY domain ASC
                           ) AS D
-            LEFT JOIN (SELECT domain_id, `raw`, createdate FROM rex_project_manager_logs WHERE id IN (SELECT MAX(id) FROM rex_project_manager_logs GROUP BY domain_id)) AS L
+            LEFT JOIN (SELECT domain_id, `raw`, createdate  FROM rex_project_manager_logs WHERE id IN (SELECT MAX(id) FROM rex_project_manager_logs GROUP BY domain_id)) AS L
             ON D.id = L.domain_id
             ORDER BY '.$sort.' '.$sorttype.'';
 
@@ -139,8 +141,20 @@ if ($showlist) {
     $list->addParam('page', 'project_manager/server/overview');
     
     $items = rex_sql::factory()->getArray($sql);
-    echo rex_view::info("Anzahl der Domains und Projekte: ".count($items));
-
+    
+    // Cronjobcall
+    $sql2 = 'SELECT * FROM  '. rex::getTable('cronjob').'
+          WHERE type = "rex_cronjob_project_manager_data"';
+    $cronjob = rex_sql::factory()->getArray($sql2);
+    $cronjobId = $cronjob[0]['id'];
+    
+    $refresh = '';
+    if ($cronjobId != NULL) {
+      $refresh = '<a href="#" data-cronjob="/redaxo/index.php?page=cronjob/cronjobs&func=execute&oid='.$cronjobId.'&_csrf_token='.$csrf_token.'" target="_blank" class="pull-right callCronjob"><i class="fa fa-refresh"></i> Projektdaten aktualisieren</a>';
+    }
+    echo rex_view::info("Anzahl der Domains und Projekte: ".count($items) . $refresh);
+    
+    
 //     $tdIcon = '<i class="fa fa-sitemap"></i>';
 //     $thIcon = '<a href="' . $list->getUrl(['func' => 'add']) . '"' . rex::getAccesskey($this->i18n('add_project'), 'add') . '><i class="rex-icon rex-icon-add"></i></a>';
 //     $list->addColumn($thIcon, $tdIcon, 0, ['<th class="rex-table-icon">###VALUE###</th>', '<td class="rex-table-icon">###VALUE###</td>']);
@@ -171,6 +185,7 @@ if ($showlist) {
     $list->removeColumn('raw');
     $list->removeColumn('domain');
     $list->removeColumn('cms');
+    $list->removeColumn('createdate');
     
     $list->setColumnLabel('name', $this->i18n('name'));
     $list->setColumnParams('name', ['page' => 'project_manager/server/projects', 'func' => 'updateinfos', 'domain' => '###domain###']);
@@ -186,27 +201,47 @@ if ($showlist) {
     $list->setColumnLayout('is_ssl', ['<th data-sorter="string">###VALUE###</th>', '<td>###VALUE###</td>']);
     $list->setColumnFormat('is_ssl', 'custom', function ($params) {
       if ($params['list']->getValue('is_ssl') == "1") {
-        return '<span class="rex-icon fa-lock text-success"></span>';
+        return '<span class="hidden">1</span> <span class="rex-icon fa-lock text-success"></span>';
       } else if ($params['list']->getValue('is_ssl') == "0") {
-        return '<span class="rex-icon fa-unlock text-danger"></span>';
+        return '<span class="hidden">2</span> <span class="rex-icon fa-unlock text-danger"></span>';
       } else {
         return "?";
       }
     });    
     
+    $list->addColumn($this->i18n('update_content'), false, -1, ['<th>###VALUE###</th>', '<td class="rex-table-last_content_update">###VALUE### <i class="tablesorter-icon"></i></td>']);
+    $list->setColumnLabel('update_content', $this->i18n('update_content'));
+    $list->setColumnFormat($this->i18n('update_content'), 'custom', function ($params) {
+      if($params['list']->getValue('raw')) {
+        $raw= json_decode($params['list']->getValue('raw'), true);
+//         dump($raw);
+        if (substr($raw['cms_version'], 0, 1) == 4 ) { //if REX 4.x
+          if (array_key_exists('update_article', $raw) && array_key_exists('update_media', $raw)) {
+            if ($raw['update_media'] > $raw['update_article']) {
+              return date('Y-m-d H:i:s', $raw['update_media']);
+            } else {
+              return date('Y-m-d H:i:s', $raw['update_article']);
+            }
+          } else {
+            return "-";
+          }
+        } else { //if REX 5.x
+          return date('Y-m-d H:i:s', strtotime($raw['article'][0]['updatedate']));
+        }
+      }
+    });
     
-    $list->setColumnLabel('createdate', $this->i18n('createdate'));
     
     $list->setColumnLabel('status', $this->i18n('status'));
     $list->setColumnFormat('status', 'custom', function ($params) {
       if ($params['list']->getValue('status') == "1") {
-        return '<span class="rex-icon fa-check text-success"></span>';
+        return '<span class="hidden">1</span><span class="rex-icon fa-check text-success"></span>';
       } else if ($params['list']->getValue('status') == "0") {
-        return '<span class="rex-icon fa-question text-warning"></span>';
+        return '<span class="hidden">2</span><span class="rex-icon fa-question text-warning"></span>';
       } else if ($params['list']->getValue('status') == "-1") {
-        return '<span class="rex-icon fa-exclamation-triangle text-danger"></span>';
+        return '<span class="hidden">3</span><span class="rex-icon fa-exclamation-triangle text-danger"></span>';
       } else if ($params['list']->getValue('status') == "2") {
-        return '<span class="rex-icon fa-arrow-right text-danger"></span>';
+        return '<span class="hidden">3</span><span class="rex-icon fa-arrow-right text-danger"></span>';
       } else {
         
         $api_key = '';
@@ -223,10 +258,9 @@ if ($showlist) {
         }
       }
     });
-    $list->setColumnLayout('status', ['<th data-sorter="digit">###VALUE###</th>', '<td>###VALUE###</td>']);
-
-
     
+    $list->setColumnLayout('status', ['<th data-sorter="digit">###VALUE###</th>', '<td>###VALUE###</td>']);   
+
     $list->addColumn($this->i18n('pm_client_version'), false, -1, ['<th>###VALUE###</th>', '<td class="rex-table-cms-version">###VALUE### <i class="tablesorter-icon"></i></td>']);
     $list->setColumnLabel($this->i18n('pm_client_version'), $this->i18n('pm_client_version'));
     $list->setColumnFormat($this->i18n('pm_client_version'), 'custom', function ($params) {
@@ -241,19 +275,34 @@ if ($showlist) {
     $list->setColumnFormat($this->i18n('cms_version'), 'custom', function ($params) {
       if($params['list']->getValue('raw')) {
         $raw= json_decode($params['list']->getValue('raw'), true);
+        
+        $cms_min = rex_config::get('project_manager/server', 'cms_min');
+          
+        if ( $raw['cms_version'] < $cms_min) {
+          return '<span data-color="alert-danger">'.$raw['cms_version'].'</span>';
+        } else {
+          return $raw['cms_version'];
+        }
+        
         return $raw['cms_version'];
       }
     });
-      
+    
+
     $list->addColumn($this->i18n('php_version'), false, -1, ['<th>###VALUE###</th>', '<td class="rex-table-php-version">###VALUE###</td>']);
+    
     $list->setColumnLabel($this->i18n('php_version'), $this->i18n('php_version'));
     $list->setColumnFormat($this->i18n('php_version'), 'custom', function ($params) {
-      if($params['list']->getValue('raw')) {
-        $raw= json_decode($params['list']->getValue('raw'), true);
-        return $raw['php_version'];
-      }
-    });
-    
+        if($params['list']->getValue('raw')) {
+          $raw= json_decode($params['list']->getValue('raw'), true);
+          $php_min = rex_config::get('project_manager/server', 'php_min');
+          if ( $raw['php_version'] < $php_min) {
+            return '<span data-color="alert-danger">'.substr($raw['php_version'],0,3).'</span>';
+          } else {
+            return substr($raw['php_version'],0,3);
+          }
+        }
+     });
 
     $list->addColumn($this->i18n('updates'), false, -1, ['<th>###VALUE###</th>', '<td class="rex-table-updates">###VALUE###</td>']);
     $list->setColumnLabel($this->i18n('updates'), ($this->i18n('updates')));
@@ -290,9 +339,9 @@ if ($showlist) {
       if($params['list']->getValue('raw')) {
         $raw= json_decode($params['list']->getValue('raw'), true);        
         if (array_key_exists("syslog", $raw)) {    
-          return '<span class="rex-icon fa-exclamation-triangle text-danger"></span>';
+          return '<span class="hidden">2</span><span class="rex-icon fa-exclamation-triangle text-danger"></span>';
         } else if ($params['list']->getValue('cms') == 5) {
-          return '<span class="rex-icon fa-check text-success"></span>';
+          return '<span class="hidden">1</span><span class="rex-icon fa-check text-success"></span>';
         }else {
           return '-';
         }
@@ -306,7 +355,7 @@ if ($showlist) {
     $list->setColumnParams(rex_i18n::msg('view'), ['page' => 'project_manager/server/projects', 'domain' => '###domain###'] + $csrf->getUrlParams());
     
     $list->addColumn(rex_i18n::msg('function'), '<i class="rex-icon rex-icon-edit"></i>');
-    $list->setColumnLayout(rex_i18n::msg('function'), ['<th class="rex-table-action" colspan="3">###VALUE###</th>', '<td class="rex-table-action">###VALUE###</td>']);
+    $list->setColumnLayout(rex_i18n::msg('function'), ['<th class="rex-table-action" colspan="3" data-sorter="false">###VALUE###</th>', '<td class="rex-table-action">###VALUE###</td>']);
     $list->setColumnParams(rex_i18n::msg('function'), ['data_id' => '###id###', 'func' => 'edit']);
     
     

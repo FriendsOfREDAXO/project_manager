@@ -81,6 +81,29 @@ if($domain) {
       $content0 .= '<div class="col-md-12">'.$fragment->parse('core/page/section.php').'</div>';
   
       echo '<div class="row">'.$content0.'</div>';
+      
+      $content0 = '';
+      
+      // UPDATES
+      $output = '<table class="table table-striped"><thead><tr><th>Letzte Änderung</th><th>Datum</th></tr></thead><tbody>';
+      
+      if (array_key_exists('update_article', $raw) && array_key_exists('update_media', $raw)) {
+        $output .= '<tr><td>Artikel</td><td>'.date('Y-m-d H:i:s', $raw['update_article']).'</td></tr>';
+        $output .= '<tr><td>Medienpool</td><td>'.date('Y-m-d H:i:s', $raw['update_media']).'</td></tr>';
+      }
+      
+      $output .= '<tr><td>Synchronisierung mit Projekt Manager</td><td>'.$item['updatedate'].'</td></tr>';
+      $output .= '</tbody></table>';
+      
+      $fragment = new rex_fragment();
+      $fragment->setVar('class', 'info', false);
+      $fragment->setVar('title', "Änderungen", false);
+      $fragment->setVar('body', $output, false);
+      $fragment->setVar('collapse', true);
+      $fragment->setVar('collapsed', false);
+      $content0 .= '<div class="col-md-12">'.$fragment->parse('core/page/section.php').'</div>';
+      
+      echo '<div class="row">'.$content0.'</div>';
     }
     
     if ($item['cms'] == 5) {
@@ -99,7 +122,27 @@ if($domain) {
       $fragment->setVar('class', 'danger', false);
       $fragment->setVar('title', "Versionen", false);
       $fragment->setVar('body', $output, false);
+      $content1 .= '<div class="col-md-12">'.$fragment->parse('core/page/section.php').'</div>';
+      
+      echo '<div class="row">'.$content1.'</div>';
+      
+      $content1 = '';
+      
+      // UPDATES
+      $output = '<table class="table table-striped"><thead><tr><th>Letzte Änderung</th><th>Datum</th></tr></thead><tbody>';
+      $output .= '<tr><td>Artikel</td><td>'.$raw['article'][0]['updatedate'].'</td></tr>';
+      $output .= '<tr><td>Medienpool</td><td>'.$raw['media'][0]['updatedate'].'</td></tr>';
+      $output .= '<tr><td>Synchronisierung mit Projekt Manager</td><td>'.$item['updatedate'].'</td></tr>';
+      $output .= '</tbody></table>';
+      
+      $fragment = new rex_fragment();
+      $fragment->setVar('class', 'info', false);
+      $fragment->setVar('title', "Änderungen", false);
+      $fragment->setVar('body', $output, false);
+      $fragment->setVar('collapse', true);
+      $fragment->setVar('collapsed', false);
       $content1 .= '<div class="col-md-6">'.$fragment->parse('core/page/section.php').'</div>';
+            
       
       // USER
       $user = $raw['user'];
@@ -210,7 +253,7 @@ if($domain) {
         $output .= '<td>'.$value['name'].'</td>';
         $output .= '<td>'.$status.'</td>';
         if(rex_string::versionCompare($value['version_current'], $value['version_latest'], '<')) {
-          $output .= '<td><i title="" class="rex-icon fa-exclamation-triangle"></i> '.$value['version_current'].'</td>';
+          $output .= '<td ><i title="" class="rex-icon fa-exclamation-triangle text-danger"></i> '.$value['version_current'].'</td>';
           $i++;
         } else {
           $output .= '<td>'.$value['version_current'].'</td>';
@@ -220,10 +263,12 @@ if($domain) {
       }
       $output .= '</tbody></table>';
       
+      $icon = '';
+      if ($i > 0 )  $icon = ' <i title="" class="rex-icon fa-exclamation-triangle"></i>';
       $updates = "(".$i."&nbsp;". $this->i18n('project_manager_server_updates') ." ".$this->i18n('updates_necessary').")";
       $fragment = new rex_fragment();
       $fragment->setVar('class', 'info', false);
-      $fragment->setVar('title', "Installierte Addons ".$updates, false);
+      $fragment->setVar('title', "Installierte Addons ".$updates .' '.$icon, false);
       $fragment->setVar('body', $output, false);
       $fragment->setVar('collapse', true);
       $fragment->setVar('collapsed', true);

@@ -2,7 +2,7 @@
 $message = '';
 
 if (rex_post('btn_save', 'string') != '') {
-  $this->setConfig(rex_post('settings', [
+  $this->setConfig(rex_post('config', [
     ['project_manager_pagespeed_api_key', 'string']
   ]));
   
@@ -14,8 +14,8 @@ $content = '';
 
 $formElements = [];
 $n = [];
-$n['label'] = '<label for="phpmailer-project_manager_pagespeed_api_key">' . $this->i18n('project_manager_pagespeed_api_key_label') . '</label>';
-$n['field'] = '<input class="form-control" id="" name="settings[project_manager_pagespeed_api_key]" value="'.$this->getConfig('project_manager_pagespeed_api_key') . '" />';
+$n['label'] = '<label for="project_manager_pagespeed_api_key">' . $this->i18n('project_manager_pagespeed_api_key_label') . '</label>';
+$n['field'] = '<input class="form-control" id="" name="config[project_manager_pagespeed_api_key]" value="'.$this->getConfig('project_manager_pagespeed_api_key') . '" />';
 $n['note'] = $this->i18n('project_manager_pagespeed_api_key_notice');
 $formElements[] = $n;
 

@@ -1,5 +1,5 @@
 package: project_manager/client
-version: '1.0.4'
+version: '1.0.5'
 author: 'Manétage - Ronny Kemmereit'
 supportpage: https://github.com/rkemmere/project_manager
 
@@ -14,4 +14,4 @@ pages:
             
 requires:
     packages:
-        project_manager: '^1.0.0'            
+        project_manager: '^1.2.0'            

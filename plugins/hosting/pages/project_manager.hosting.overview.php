@@ -3,8 +3,8 @@
 $showlist = true;
 $data_id = rex_request('data_id', 'int', 0);
 $func = rex_request('func', 'string');
-$csrf = rex_csrf_token::factory('project_manager_domain');
-
+$csrf_token = (rex_csrf_token::factory('cronjob'))->getValue();
+$csrf = rex_csrf_token::factory('project_manager');
 
 ###############
 ###
@@ -24,7 +24,18 @@ if ($showlist) {
           ';
   
   $items = rex_sql::factory()->getArray($sql);
-  echo rex_view::info("Anzahl der Domains und Projekte: ".count($items));
+  
+  // Cronjobcall
+  $sql2 = 'SELECT * FROM  '. rex::getTable('cronjob').'
+          WHERE type = "rex_cronjob_project_manager_hosting"';
+  $cronjob = rex_sql::factory()->getArray($sql2);
+  $cronjobId = $cronjob[0]['id'];
+  
+  $refresh = '';
+  if ($cronjobId != NULL) {
+    $refresh = '<a href="#" data-cronjob="/redaxo/index.php?page=cronjob/cronjobs&func=execute&oid='.$cronjobId.'&_csrf_token='.$csrf_token.'" target="_blank" class="pull-right callCronjob"><i class="fa fa-refresh"></i> Hosting Daten aktualisieren</a>';
+  }
+  echo rex_view::info("Anzahl der Domains und Projekte: ".count($items) . $refresh);
   
   $list = rex_list::factory($sql, 1000);
   $list->addTableAttribute('class', 'table-striped');
@@ -43,6 +54,7 @@ if ($showlist) {
   $list->removeColumn('cms');
   $list->removeColumn('cms_version');
   $list->removeColumn('createdate');
+  $list->removeColumn('createdate_hosting');
   $list->removeColumn('rex_version');  
   $list->removeColumn('status');
   $list->removeColumn('http_code');
@@ -82,9 +94,9 @@ if ($showlist) {
   $list->setColumnLayout('is_ssl', ['<th data-sorter="string">###VALUE###</th>', '<td>###VALUE###</td>']);
   $list->setColumnFormat('is_ssl', 'custom', function ($params) {
     if ($params['list']->getValue('is_ssl') == "1") {
-      return '<span class="rex-icon fa-lock text-success"></span>';
+      return '<span class="hidden">1</span><span class="rex-icon fa-lock text-success"></span>';
     } else if ($params['list']->getValue('is_ssl') == "0") {
-      return '<span class="rex-icon fa-unlock text-danger"></span>';
+      return '<span class="hidden">2</span><span class="rex-icon fa-unlock text-danger"></span>';
     } else {
       return "?";
     }
@@ -101,25 +113,47 @@ if ($showlist) {
       }
     }
   });   
- 
   
   $list->setColumnLabel('ip', $this->i18n('project_manager_hosting_ip'));
-  
-  $list->setColumnLabel('createdate_hosting', $this->i18n('project_manager_hosting_createdate'));
   
   $list->setColumnLabel('status_hosting', $this->i18n('status'));
   $list->setColumnFormat('status_hosting', 'custom', function ($params) {
     if ($params['list']->getValue('status_hosting') == "1") {
-      return '<span class="rex-icon fa-check text-success"></span>';
+      return '<span class="hidden">1</span><span class="rex-icon fa-check text-success"></span>';
     } else if ($params['list']->getValue('status_hosting') == "0") {
-      return '<span class="rex-icon fa-question text-warning"></span>';
+      return '<span class="hidden">2</span><span class="rex-icon fa-question text-warning"></span>';
     } else if ($params['list']->getValue('status_hosting') == "-1") {
-      return '<span class="rex-icon fa-exclamation-triangle text-danger"></span>';
+      return '<span class="hidden">3</span><span class="rex-icon fa-exclamation-triangle text-danger"></span>';
     } else if ($params['list']->getValue('status_hosting') == "2") {
-      return '<span class="rex-icon fa-arrow-right text-danger"></span>';
+      return '<span class="hidden">3</span><span class="rex-icon fa-arrow-right text-danger"></span>';
     }
   });
   $list->setColumnLayout('status', ['<th data-sorter="digit">###VALUE###</th>', '<td>###VALUE###</td>']);
+  
+  $list->addColumn($this->i18n('validTo'), false, -1, ['<th>###VALUE###</th>', '<td class="rex-table-validTo">###VALUE### <i class="tablesorter-icon"></i></td>']);
+  $list->setColumnLabel($this->i18n('validTo'), $this->i18n('validTo'));
+  $list->setColumnFormat($this->i18n('validTo'), 'custom', function ($params) {
+    
+    if($params['list']->getValue('raw')) {
+      $raw= json_decode($params['list']->getValue('raw'), true);
+      if (array_key_exists("validTo", $raw)) {
+        
+        if (is_numeric($raw['validTo'])) {
+          
+          if ($raw['validTo'] < (time() + 2764800) ) {
+            return '<span data-color="alert-warning">'.date('Y-m-d H:i:s', $raw['validTo']).'</span>';
+          } else if ($raw['validTo'] < time()) {
+            return '<span data-color="alert-danger">'.date('Y-m-d H:i:s', $raw['validTo']).'</span>';
+          } else {
+            return date('Y-m-d H:i:s', $raw['validTo']);
+          }
+        } else {
+          return "-";
+        }
+        
+      }
+    }
+  });   
   
   $content = $list->get();
   $content = str_replace('<table class="', '<table class="project_manager-tablesorter ', $content);

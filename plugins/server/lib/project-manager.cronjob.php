@@ -5,7 +5,7 @@ class rex_cronjob_project_manager_data extends rex_cronjob
 
     public function execute()
     {
-        $websites = rex_sql::factory()->setDebug(0)->getArray('SELECT * FROM ' . rex::getTable('project_manager_domain') . ' ORDER BY logdate asc LIMIT 100'); 
+        $websites = rex_sql::factory()->setDebug(0)->getArray('SELECT * FROM ' . rex::getTable('project_manager_domain') . ' ORDER BY updatedate asc LIMIT 100'); 
 
         /* Addon-Abruf */
         $multi_curl = curl_multi_init();
@@ -61,19 +61,19 @@ class rex_cronjob_project_manager_data extends rex_cronjob
               
                 rex_sql::factory()->setDebug(0)->setQuery('INSERT INTO ' . rex::getTable('project_manager_logs') . ' (`domain_id`, `createdate`, `raw`) VALUES(?,NOW(),?)', [$project_manager_domain[0]['id'],  $resp] );
                 // SET STATUS
-                rex_sql::factory()->setDebug(0)->setQuery("UPDATE " . rex::getTable('project_manager_domain') . " SET status = ? WHERE id = ?", [1, $project_manager_domain[0]['id']]);
+                rex_sql::factory()->setDebug(0)->setQuery("UPDATE " . rex::getTable('project_manager_domain') . " SET status = ?, updatedate = NOW() WHERE id = ?", [1, $project_manager_domain[0]['id']]);
                 
               } else {
                 // SET STATUS
-                rex_sql::factory()->setDebug(0)->setQuery("UPDATE " . rex::getTable('project_manager_domain') . " SET status = ? WHERE id = ?", [0, $project_manager_domain[0]['id']]);
+                rex_sql::factory()->setDebug(0)->setQuery("UPDATE " . rex::getTable('project_manager_domain') . " SET status = ?, updatedate = NOW()WHERE id = ?", [0, $project_manager_domain[0]['id']]);
               }
               
             } else {
                // SET STATUS
-               rex_sql::factory()->setDebug(0)->setQuery("UPDATE " . rex::getTable('project_manager_domain') . " SET status = ? WHERE id = ?", [-1, $project_manager_domain[0]['id']]);
+               rex_sql::factory()->setDebug(0)->setQuery("UPDATE " . rex::getTable('project_manager_domain') . " SET status = ?, updatedate = NOW() WHERE id = ?", [-1, $project_manager_domain[0]['id']]);
             }
             
-            rex_sql::factory()->setDebug(0)->setQuery("UPDATE " . rex::getTable('project_manager_domain') . " SET logdate = NOW() WHERE id = ?", [$project_manager_domain[0]['id']]);
+            rex_sql::factory()->setDebug(0)->setQuery("UPDATE " . rex::getTable('project_manager_domain') . " SET updatedate = NOW() WHERE id = ?", [$project_manager_domain[0]['id']]);
 
         }
         

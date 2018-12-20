@@ -2,18 +2,18 @@
 
 // Create tables
 rex_sql_table::get(rex::getTable('project_manager_domain'))
-    ->ensurePrimaryIdColumn()
-    ->ensureColumn(new rex_sql_column('name', 'varchar(255)', true))
-    ->ensureColumn(new rex_sql_column('domain', 'varchar(255)', true))
-    ->ensureColumn(new rex_sql_column('api_key', 'varchar(32)', true))
-    ->ensureColumn(new rex_sql_column('is_ssl', 'tinyint', true))
-    ->ensureColumn(new rex_sql_column('description', 'text'))
-    ->ensureColumn(new rex_sql_column('cms', 'tinyint', true))
-    ->ensureColumn(new rex_sql_column('status', 'text'))
-    ->ensureColumn(new rex_sql_column('createdate', 'timestamp', false, '0000-00-00 00:00:00', 'default CURRENT_TIMESTAMP'))
-    ->ensureColumn(new rex_sql_column('updatedate', 'timestamp', false, '0000-00-00 00:00:00', 'on update CURRENT_TIMESTAMP'))
-    ->ensureColumn(new rex_sql_column('logdate', 'timestamp', false, '0000-00-00 00:00:00', 'default CURRENT_TIMESTAMP'))
-    ->ensure();
+->ensurePrimaryIdColumn()
+->ensureColumn(new rex_sql_column('name', 'varchar(255)', true))
+->ensureColumn(new rex_sql_column('domain', 'varchar(255)', true))
+->ensureColumn(new rex_sql_column('api_key', 'varchar(32)', true))
+->ensureColumn(new rex_sql_column('is_ssl', 'tinyint', true))
+->ensureColumn(new rex_sql_column('description', 'text'))
+->ensureColumn(new rex_sql_column('cms', 'tinyint', true))
+->ensureColumn(new rex_sql_column('status', 'text'))
+->ensureColumn(new rex_sql_column('createdate', 'timestamp', false, '0000-00-00 00:00:00'))
+->ensureColumn(new rex_sql_column('updatedate', 'timestamp', false, '0000-00-00 00:00:00', 'on update CURRENT_TIMESTAMP'))
+->removeColumn('logdate')
+->ensure();
 
 rex_sql_table::get(rex::getTable('project_manager_logs'))
     ->ensurePrimaryIdColumn()
@@ -29,13 +29,13 @@ $now = new DateTime();
 $startdate = date('Y-m-d 00:00:00',strtotime( "tomorrow" ));
 
 $cronjob = rex_sql::factory();
-$cronjob->setDebug(true);
+$cronjob->setDebug(false);
 $cronjob->setQuery('SELECT id FROM '.rex::getTable('cronjob'). ' WHERE type LIKE "rex_cronjob_project_manager_data"');
 
 if ($cronjob->getRows() == 0) {
   
   $cronjob = rex_sql::factory();
-  $cronjob->setDebug(true);
+  $cronjob->setDebug(false);
   $cronjob->setTable(rex::getTable('cronjob'));
   $cronjob->setValue('name','Projekt Manager: Domaindaten');
   $cronjob->setValue('description','');
@@ -60,13 +60,13 @@ if ($cronjob->getRows() == 0) {
 }
 
 $cronjob = rex_sql::factory();
-$cronjob->setDebug(true);
+$cronjob->setDebug(false);
 $cronjob->setQuery('SELECT id FROM '.rex::getTable('cronjob'). ' WHERE type LIKE "rex_cronjob_project_manager_favicon"');
 
 if ($cronjob->getRows() == 0) {
   
   $cronjob = rex_sql::factory();
-  $cronjob->setDebug(true);
+  $cronjob->setDebug(false);
   $cronjob->setTable(rex::getTable('cronjob'));
   $cronjob->setValue('name','Projekt Manager: Favicon');
   $cronjob->setValue('description','');
