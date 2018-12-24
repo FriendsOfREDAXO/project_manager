@@ -16,7 +16,7 @@ $formElements = [];
 $n = [];
 $n['label'] = '<label for="phpmailer-project_manager_api_key">' . $this->i18n('project_manager_api_key_label') . '</label>';
 $n['field'] = '<input class="form-control" id="" name="settings[project_manager_api_key]" value="'.$this->getConfig('project_manager_api_key') . '" />';
-$n['note'] = $this->i18n('project_manager_api_key_notice').' <code>'.md5(time()).'</code>';
+$n['note'] = $this->i18n('project_manager_api_key_notice').' <code>'.bin2hex(random_bytes(24)).'</code>';
 
 $formElements[] = $n;
 
