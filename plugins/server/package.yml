@@ -1,7 +1,7 @@
 package: project_manager/server
 version: '1.1.0'
-author: 'Manétage - Ronny Kemmereit'
-supportpage: https://github.com/rkemmere/project_manager
+author: 'FriendsOfREDAXO, Manétage - Ronny Kemmereit, Alexander Walther'
+supportpage: https://github.com/FriendsOfREDAXO/project_manager
 
 page:
     title: 'translate:project_manager_server_menu_entry'
