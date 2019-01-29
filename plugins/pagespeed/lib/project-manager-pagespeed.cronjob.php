@@ -6,9 +6,13 @@ class rex_cronjob_project_manager_pagespeed extends rex_cronjob
     public function execute() {
       
       $count = rex_sql::factory()->setDebug(0)->getArray('SELECT count(*) as count FROM rex_project_manager_domain');
-      $count = $count[0]['count'] / 10;
-      $count = round($count, 0, PHP_ROUND_HALF_UP);
-     
+      if ($count[0]['count'] <= 10) {
+        $count = 1;
+      } else {
+        $count = $count[0]['count'] / 10;
+        $count = round($count, 0, PHP_ROUND_HALF_UP);
+      }      
+      
       for ($i = 0; $i < $count; $i++) {
         $this->getData();
       }
@@ -60,6 +64,7 @@ class rex_cronjob_project_manager_pagespeed extends rex_cronjob
           curl_setopt_array($resps[$domain.";desktop"], $options);
           curl_multi_add_handle($multi_curl, $resps[$domain.";mobile"]);
           curl_multi_add_handle($multi_curl, $resps[$domain.";desktop"]);
+         
         }
         
         $active = null;

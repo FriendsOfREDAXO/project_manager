@@ -38,7 +38,7 @@ if ($showlist) {
 	
 	$refresh = '';
 	if ($cronjobId != NULL) {
-	  $refresh = '<a href="#" data-cronjob="/redaxo/index.php?page=cronjob/cronjobs&func=execute&oid='.$cronjobId.'&_csrf_token='.$csrf_token.'" target="_blank" class="pull-right callCronjob"><i class="fa fa-refresh"></i> PageSpeed Daten aktualisieren</a>';
+	  $refresh = '<a href="/redaxo/index.php?page=project_manager/pagespeed/overview/#" data-cronjob="/redaxo/index.php?page=cronjob/cronjobs&func=execute&oid='.$cronjobId.'&_csrf_token='.$csrf_token.'" target="_blank" class="pull-right callCronjob"><i class="fa fa-refresh"></i> PageSpeed Daten aktualisieren</a>';
 	}
 	echo rex_view::info("Anzahl der Domains und Projekte: ".count($items) . $refresh);
 	
@@ -56,6 +56,7 @@ if ($showlist) {
   $list->removeColumn('is_ssl');
   $list->removeColumn('description');
   $list->removeColumn('api_key');
+  $list->removeColumn('tags');
   $list->removeColumn('cms');
   $list->removeColumn('cms_version');
   $list->removeColumn('createdate');

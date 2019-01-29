@@ -162,7 +162,7 @@ if ($showlist) {
     
     $refresh = '';
     if ($cronjobId != NULL) {
-      $refresh = '<a href="#" data-cronjob="/redaxo/index.php?page=cronjob/cronjobs&func=execute&oid='.$cronjobId.'&_csrf_token='.$csrf_token.'" target="_blank" class="pull-right callCronjob"><i class="fa fa-refresh"></i> Projektdaten aktualisieren</a>';
+      $refresh = '<a href="/redaxo/index.php?page=project_manager/server/overview/#" data-cronjob="/redaxo/index.php?page=cronjob/cronjobs&func=execute&oid='.$cronjobId.'&_csrf_token='.$csrf_token.'" target="_blank" class="pull-right callCronjob"><i class="fa fa-refresh"></i> Projektdaten aktualisieren</a>';
     }
     echo rex_view::info("Anzahl der Domains und Projekte: ".count($items) . $refresh);
     
@@ -197,6 +197,7 @@ if ($showlist) {
     $list->removeColumn('raw');
     $list->removeColumn('domain');
     $list->removeColumn('cms');
+    $list->removeColumn('tags');
     $list->removeColumn('createdate');
     
     $list->setColumnLabel('name', $this->i18n('name'));
@@ -353,10 +354,13 @@ if ($showlist) {
               	if ($skip_addon_version_config != "") $skip_addon_versions = explode(',', $skip_addon_version_config);
                 
                 $skip = false;
-                foreach ($skip_addon_versions as $skip_addon_version) {
-
-                  if (strpos($addon['version_latest'], $skip_addon_version)) {
-                    $skip = true;
+                
+                if (is_array($skip_addon_versions)) {
+                  foreach ($skip_addon_versions as $skip_addon_version) {
+  
+                    if (strpos($addon['version_latest'], $skip_addon_version)) {
+                      $skip = true;
+                    }
                   }
                 }
                 

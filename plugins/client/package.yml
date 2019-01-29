@@ -1,6 +1,6 @@
 package: project_manager/client
 version: '1.0.5'
-author: 'FriendsOfREDAXO, Manétage - Ronny Kemmereit, Alexander Walther'
+author: 'Friends Of REDAXO, Manétage - Ronny Kemmereit, Alexander Walther'
 supportpage: https://github.com/FriendsOfREDAXO/project_manager
 
 page:

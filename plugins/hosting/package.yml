@@ -1,6 +1,6 @@
 package: project_manager/hosting
 version: '1.0.2'
-author: 'FriendsOfREDAXO, Manétage - Ronny Kemmereit, Alexander Walther'
+author: 'Friends Of REDAXO, Manétage - Ronny Kemmereit, Alexander Walther'
 supportpage: https://github.com/FriendsOfREDAXO/project_manager
 
 page:

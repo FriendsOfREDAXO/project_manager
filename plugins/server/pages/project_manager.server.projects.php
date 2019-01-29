@@ -272,9 +272,11 @@ if($domain) {
             if ($skip_addon_version_config != "") $skip_addon_versions = explode(',', $skip_addon_version_config);
             
             $skip = false;
-            foreach ($skip_addon_versions as $skip_addon_version) {
-              if (strpos($value['version_latest'],'-'.$skip_addon_version)) {
-                $skip = true;
+            if (is_array($skip_addon_versions)) {
+              foreach ($skip_addon_versions as $skip_addon_version) {
+                if (strpos($value['version_latest'],'-'.$skip_addon_version)) {
+                  $skip = true;
+                }
               }
             }
             

@@ -137,7 +137,7 @@ $buttons = $fragment->parse('core/form/submit.php');
 
 $fragment = new rex_fragment();
 $fragment->setVar('class', 'edit', false);
-$fragment->setVar('title', $this->i18n('project_manager_pagespeed_api_key_title'), false);
+$fragment->setVar('title', $this->i18n('project_manager_server_title'), false);
 $fragment->setVar('body', $content, false);
 $fragment->setVar('buttons', $buttons, false);
 $content = $fragment->parse('core/page/section.php');

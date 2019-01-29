@@ -1,6 +1,6 @@
 # Changelog
 
-## Version 1.2.1 // 29.01.2019
+## Version 1.2.2 // 29.01.2019
 
 # Plugin: Server 1.2.0
 * Tablesorter in Listenansicht Limitierung aufgehoben

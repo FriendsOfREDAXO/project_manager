@@ -48,6 +48,7 @@ perm_general_project_manager_server[] = project_manager_server[] - Rechte für P
 
 
 #config
+project_manager_server_title = Einstellungen
 project_manager_server_min_headline = Mindestanforderungen
 project_manager_server_php_min = PHP Version
 project_manager_server_cms_4_min = Redaxo 4 Version
