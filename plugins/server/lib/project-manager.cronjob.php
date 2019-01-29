@@ -5,7 +5,7 @@ class rex_cronjob_project_manager_data extends rex_cronjob
 
     public function execute()
     {
-        $websites = rex_sql::factory()->setDebug(0)->getArray('SELECT * FROM ' . rex::getTable('project_manager_domain') . ' ORDER BY updatedate asc LIMIT 100'); 
+        $websites = rex_sql::factory()->setDebug(0)->getArray('SELECT * FROM ' . rex::getTable('project_manager_domain') . ' ORDER BY updatedate asc LIMIT 10'); 
 
         /* Addon-Abruf */
         $multi_curl = curl_multi_init();
@@ -18,7 +18,7 @@ class rex_cronjob_project_manager_data extends rex_cronjob
             CURLOPT_SSL_VERIFYPEER => true,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_SSL_VERIFYPEER => false,
-            CURLOPT_TIMEOUT => 100
+            CURLOPT_TIMEOUT => 3 // seconds
         );
         foreach($websites as $website) {
             $domain = $website['domain'];
@@ -35,12 +35,12 @@ class rex_cronjob_project_manager_data extends rex_cronjob
             
             if ($cms == 4)
               $url = $protocol.urlencode($domain)."/project_manager_client.php?rex-api-call=project_manager&api_key=".$website['api_key'].'&t='.$timestamp;
-              
+
             $resps[$domain] = curl_init($url);
             curl_setopt_array($resps[$domain], $options);
             curl_multi_add_handle($multi_curl, $resps[$domain]);
-
         }
+        
         $active = null;
         do {
             curl_multi_exec($multi_curl, $active);
@@ -51,7 +51,7 @@ class rex_cronjob_project_manager_data extends rex_cronjob
             $resp = curl_multi_getcontent($response);
             curl_multi_remove_handle($multi_curl, $response);
 
-            $json = json_decode($resp, true);           
+            $json = json_decode($resp, true);     
 
             $project_manager_domain = rex_sql::factory()->setDebug(0)->getArray('SELECT * FROM ' . rex::getTable('project_manager_domain') . ' WHERE domain = ? LIMIT 1', [$domain]); 
             

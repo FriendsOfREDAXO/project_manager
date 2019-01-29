@@ -1,7 +1,7 @@
 package: project_manager/server
-version: '1.1.0'
-author: 'Manétage - Ronny Kemmereit'
-supportpage: https://github.com/rkemmere/project_manager
+version: '1.2.0'
+author: 'FriendsOfREDAXO, Manétage - Ronny Kemmereit, Alexander Walther'
+supportpage: https://github.com/FriendsOfREDAXO/project_manager
 
 page:
     title: 'translate:project_manager_server_menu_entry'
@@ -21,4 +21,6 @@ requires:
     packages:
         cronjob: '^ 2.3.0'
         project_manager: '^1.0.0'
-        yform: '^ 2.3.0'               
+        yform: '^ 2.3.0'
+    php:
+        version: '>=7.0'        

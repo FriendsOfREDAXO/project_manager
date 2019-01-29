@@ -55,13 +55,14 @@ Das **Client-Plugin** ist für den Abruf der einzelnen Parameter zuständig.
   * Verwendete YRewrite-Domains
   * Letzte Logins
   * Letzte Änderungen im Medienpool
+  * Letzte Änderungen in der Struktur
   * Letzte Meldungen aus dem Syslog
-  * weiter geplant: Letzte Änderungen, Medienpool-Verzeichnisgröße, Backup-Status 
+  * weiter geplant: Medienpool-Verzeichnisgröße, Backup-Status 
   * weiter geplant: EXTENSION_POINT, um eigene Prüfregeln zu hinterlegen
 
 Das **Server-Plugin** dient zur Verwaltung der REDAXO Projekte
 
-* Verwaltung der REDAXO-Projekte und deren API-Keys
+* Verwaltung der REDAXO-Projekte
 * Darstellung der wichtigsten Parameter in der Listenansicht
 * Darstellung aller Parameter in der Detailansicht
 * Abruf und Überwachung der Parameter von den Clients
@@ -156,7 +157,7 @@ Die einzelnen Felder sind:
 
 * API-Key
 
-Beim Installieren und Aktivieren des Plugins wird automatisch ein API-Key eingerichtet.
+Dieser wird beim Projekt anlegen im Server-Plugin erzeugt und kann hier ein eingetragen werden.
 
 
 &uarr; [zurück zur Übersicht](#top)

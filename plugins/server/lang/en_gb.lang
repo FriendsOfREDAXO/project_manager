@@ -7,3 +7,17 @@ documentation_noparser = No Markdown Parser available! Please install a parser f
 
 documentation_navinotfound = Navigation-File <strong>{0}</strong> not found!<br>This file is required!
 documentation_filenotfound = File <strong>{0}</strong> not found. Contents does not exist (yet). <br><br>We're happy if you want to help: <a href="{1}" target="_blank">{1}</a>
+
+#config
+project_manager_server_min_headline = Minimum requirement
+project_manager_server_php_min = PHP Version
+project_manager_server_cms_4_min = Redaxo 4 Version
+project_manager_server_cms_min = Redaxo 5 Version
+project_manager_server_config_saved_successful = Configuration saved!
+project_manager_server_min_color = Color
+project_manager_server_color_notice = Please set color as HEX #F1F1F1 or as RGBA rgba(0,0,0,0.1)
+project_manager_server_configuration = Configuration
+project_manager_server_skip_addon = Skip Addon
+project_manager_server_skip_addon_version = Skip Version
+project_manager_server_skip_addon_notice = Addon is not included in the check. e.g. structure_tweaks, modulsammlung
+project_manager_server_skip_addon_version_notice = Addonversion is not included in the check. e.g. beta, dev, rc

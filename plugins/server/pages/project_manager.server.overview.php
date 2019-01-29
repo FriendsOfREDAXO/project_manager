@@ -24,6 +24,8 @@ if ($func != '') {
     $yform->setValueField('text', ['name', $this->i18n('project_manager_server_name'), 'notice' => '<small>'.$this->i18n('name_info').'</small>']);
     $yform->setValidateField('empty', ['name', $this->i18n('no_name_defined')]);
     $yform->setValidateField('unique', ['name', $this->i18n('name_already_defined')]);
+    
+    $yform->setValueField('text', ['tags', $this->i18n('project_manager_server_tags'), '#attributes: {"data-role":"tagsinput"}']);
 
     $yform->setValueField('text', ['domain', $this->i18n('project_manager_server_domain'), 'notice' => '<small>'.$this->i18n('domain_info').'</small>']);
     $yform->setValidateField('empty', ['domain', $this->i18n('no_domain_defined')]);
@@ -33,12 +35,6 @@ if ($func != '') {
     $yform->setValidateField('preg_match', array('domain', $regex, $this->i18n('domain_no_protocol')));
     
     $yform->setValueField('select', array("is_ssl", $this->i18n('project_manager_server_ssl'),"Ja=1,Nein=0","","0","0"));
-    
-    $yform->setValueField('text', ['api_key', $this->i18n('project_manager_server_api_key_info'), 'notice' => '<small>'.$this->i18n('api_key_notice').'</small>']);
-    $yform->setValidateField('empty', ['api_key', $this->i18n('no_api_key_defined')]);
-    // $yform->setValidateField('unique', ['api_key', $this->i18n('api_key_already_defined')]);
-    
-    $yform->setValueField('select', array("cms", $this->i18n('project_manager_server_cms'),"REDAXO 5=5,REDAXO 4=4","","0","0"));
     
     $yform->setValueField('hidden', array("createdate", date ('Y-m-d H:i:s', time())));
 
@@ -57,6 +53,12 @@ if ($func != '') {
     } else if ($func == 'edit') {
 
     
+      $yform->setValueField('text', ['api_key', $this->i18n('project_manager_server_api_key_info'), 'notice' => '<small>'.$this->i18n('api_key_notice').'</small>']);
+      $yform->setValidateField('empty', ['api_key', $this->i18n('no_api_key_defined')]);
+      // $yform->setValidateField('unique', ['api_key', $this->i18n('api_key_already_defined')]);
+      
+      $yform->setValueField('select', array("cms", $this->i18n('project_manager_server_cms'),"REDAXO 5=5,REDAXO 4=4","","0","0"));
+      
         $yform->setHiddenField('data_id', $data_id);
         $yform->setActionField('db', [rex::getTable('project_manager_domain'), 'id=' . $data_id]);
         $yform->setObjectparams('main_id', $data_id);
@@ -84,7 +86,17 @@ if ($func != '') {
    
 
     } else if ($func == 'domain_add') {
-
+        
+      $yform->setValueField('text', ['api_key', $this->i18n('project_manager_server_api_key_info'), 'default' => bin2hex(random_bytes(24)), 'notice' => '<small>'.$this->i18n('api_key_notice').'</small>']);
+      $yform->setValidateField('empty', ['api_key', $this->i18n('no_api_key_defined')]);
+      //$yform->setValidateField('unique', ['api_key', $this->i18n('api_key_already_defined')]);
+      
+      $yform->setValueField('select', array("cms", $this->i18n('project_manager_server_cms'),"REDAXO 5=5,REDAXO 4=4","","0","0"));
+      
+      
+      
+      
+        
         $yform->setActionField('db', [rex::getTable('project_manager_domain')]);
         $yform->setObjectparams('submit_btn_label', $this->i18n('save'));
         $form = $yform->getForm();
@@ -136,7 +148,7 @@ if ($showlist) {
             ORDER BY '.$sort.' '.$sorttype.'';
 
 
-    $list = rex_list::factory($sql, 100);
+    $list = rex_list::factory($sql, 2000);
     $list->setColumnFormat('id', 'Id');
     $list->addParam('page', 'project_manager/server/overview');
     
@@ -277,11 +289,20 @@ if ($showlist) {
         $raw= json_decode($params['list']->getValue('raw'), true);
         
         $cms_min = rex_config::get('project_manager/server', 'cms_min');
-          
-        if ( $raw['cms_version'] < $cms_min) {
-          return '<span data-color="alert-danger">'.$raw['cms_version'].'</span>';
-        } else {
-          return $raw['cms_version'];
+        $cms_4_min = rex_config::get('project_manager/server', 'cms_4_min');
+
+        if ($params['list']->getValue('cms') == '4') {
+        	if ( $raw['cms_version'] < $cms_4_min) {
+        		return '<span data-color="alert-danger">'.$raw['cms_version'].'</span>';
+        	} else {
+        		return $raw['cms_version'];
+        	}
+        } else if ($params['list']->getValue('cms') == '5') {       
+	        if ( $raw['cms_version'] < $cms_min) {
+	          return '<span data-color="alert-danger">'.$raw['cms_version'].'</span>';
+	        } else {
+	          return $raw['cms_version'];
+	        }
         }
         
         return $raw['cms_version'];
@@ -316,13 +337,45 @@ if ($showlist) {
             $i = 0;
             $j = 0;
             foreach($log["rex_addons"] as $addon) {
+            	
+            	$skip_addon_config = '';
+            	$skip_addon_config = rex_config::get('project_manager/server', 'skip_addon');
+            	if ($skip_addon_config != "") {
+            		$skip_addons = explode(',', $skip_addon_config);
+            		if (in_array($addon['name'], $skip_addons)) continue;
+            	}
+            	
               if(rex_string::versionCompare($addon['version_current'], $addon['version_latest'], '<')) {
-                $i++;
+                
+              	$skip_addon_version_config = '';
+              	$skip_addon_version_config = rex_config::get('project_manager/server', 'skip_addon_version');
+              	
+              	if ($skip_addon_version_config != "") $skip_addon_versions = explode(',', $skip_addon_version_config);
+                
+                $skip = false;
+                foreach ($skip_addon_versions as $skip_addon_version) {
+
+                  if (strpos($addon['version_latest'], $skip_addon_version)) {
+                    $skip = true;
+                  }
+                }
+                
+                if ($addon['version_latest'] == 0) $skip = true;
+                
+                if ($skip === false) {
+                  $i++;
+                }
+                
               } else {
                 $j++;
               }
             }
-            return $i ."&nbsp;". $this->i18n('updates_necessary');
+            
+            if ($i > 0) { 
+              return $i ."&nbsp;". $this->i18n('updates_necessary');
+            } else {
+              return "-";
+            } 
           } else {
             return "";
           }  

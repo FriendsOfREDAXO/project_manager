@@ -14,7 +14,7 @@ project_manager_client_title = Einstellungen
 project_manager_client_readme = Hilfe
 project_manager_api_key_title = Client
 project_manager_api_key_label = API-Schlüssel
-project_manager_api_key_notice = API-Schlüssel, z.B.
+project_manager_api_key_notice = API-Schlüssel aus Server Plugin eintragen, z.B.
 project_manager_save = Speichern
 
 

@@ -1,5 +1,17 @@
 # Changelog
 
+## Version 1.2.1 // 29.01.2019
+
+# Plugin: Server 1.2.0
+* Tablesorter in Listenansicht Limitierung aufgehoben
+* Ausschließen von Addons und Versionen bei der Prüfung
+* Umstellung auf bin2hex Token (Mindestanforderung für das Server Plugin PHP 7)
+* Tags können für ein Projekt vergeben werden 
+
+# Plugin: Pagespeed 1.1.0
+* Performance und API Anpassungen
+* Screenshot wird an Server Hook übergeben
+
 ## Version 1.2.0 // 20.12.2018
 
 # Plugin: Server 1.1.0

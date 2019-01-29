@@ -107,7 +107,7 @@ if($domain) {
     }
     
     if ($item['cms'] == 5) {
-      
+
       $content1 = '';
       
       $output = '<table class="table table-striped"><thead><tr><th>Version</th><th>Version</th></tr></thead><tbody>';
@@ -252,12 +252,45 @@ if($domain) {
         $output .= '<tr>';
         $output .= '<td>'.$value['name'].'</td>';
         $output .= '<td>'.$status.'</td>';
+        
+        $skip_addon_config = '';
+        $skip_addon_config = rex_config::get('project_manager/server', 'skip_addon');
+        if ($skip_addon_config != "") {
+        	$skip_addons = explode(',', $skip_addon_config);
+        	if (in_array($value['name'], $skip_addons)) {
+        		$output .= '<td>'.$value['version_current'].'</td>';
+        		$output .= '<td>'.$value['version_latest'].'</td>';
+        		$output .= '</tr>';
+        		continue;
+        	}
+        }
+
         if(rex_string::versionCompare($value['version_current'], $value['version_latest'], '<')) {
-          $output .= '<td ><i title="" class="rex-icon fa-exclamation-triangle text-danger"></i> '.$value['version_current'].'</td>';
-          $i++;
+          
+            $skip_addon_version_config = rex_config::get('project_manager/server', 'skip_addon_version');
+             
+            if ($skip_addon_version_config != "") $skip_addon_versions = explode(',', $skip_addon_version_config);
+            
+            $skip = false;
+            foreach ($skip_addon_versions as $skip_addon_version) {
+              if (strpos($value['version_latest'],'-'.$skip_addon_version)) {
+                $skip = true;
+              }
+            }
+            
+            if ($value['version_latest'] == 0) $skip = true;
+            
+            if ($skip === false) {
+             $output .= '<td ><i title="" class="rex-icon fa-exclamation-triangle text-danger"></i> '.$value['version_current'].'</td>';
+             $i++;
+            } else {
+              $output .= '<td>'.$value['version_current'].'</td>';
+            }
+            
         } else {
           $output .= '<td>'.$value['version_current'].'</td>';
         }
+        
         $output .= '<td>'.$value['version_latest'].'</td>';
         $output .= '</tr>';
       }

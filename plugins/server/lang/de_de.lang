@@ -33,8 +33,9 @@ project_manager_server_edit_domain = Domain editieren
 project_manager_server_name_info = Bitte Namen des Projekts eingeben!
 project_manager_server_domain_info = Bitte Domain des Projekts eingeben!
 project_manager_server_api_key_info = API-Schlüssel
-project_manager_server_api_key_notice = Redaxo 5 API-Schlüssel, z.B. <code>AIzaSyCp0Em_UPY78238es-9CZViEbq7CB_zcFBs</code>, bei Redaxo 4 Instanzen <code>legacy</code>
+project_manager_server_api_key_notice = Redaxo 5 API-Schlüssel, z.B. <code>83f15d69755585c3a825c3eccf2d654fc6578dadb7e05475</code>, bei Redaxo 4 Instanzen <code>legacy</code>
 project_manager_server_ssl = SSL Verbindung
+project_manager_server_tags = Tags 
 
 #detail
 project_manager_server_project_detail = Details
@@ -49,7 +50,18 @@ perm_general_project_manager_server[] = project_manager_server[] - Rechte für P
 #config
 project_manager_server_min_headline = Mindestanforderungen
 project_manager_server_php_min = PHP Version
-project_manager_server_cms_min = CMS Version
+project_manager_server_cms_4_min = Redaxo 4 Version
+project_manager_server_cms_min = Redaxo 5 Version
 project_manager_server_config_saved_successful = Einstellungen gespeichert!
 project_manager_server_min_color = Farbe
 project_manager_server_color_notice = Farbe bitte als HEX #F1F1F1 oder als RGBA angeben rgba(0,0,0,0.1)
+project_manager_server_configuration = Einstellungen
+project_manager_server_skip_addon = Addons ausschließen
+project_manager_server_skip_addon_version = Versionen ausschließen
+project_manager_server_skip_addon_notice = Addon wird bei der Prüfung nicht berücksichtigt. z.B. structure_tweaks, modulsammlung
+project_manager_server_skip_addon_version_notice = Addonversion wird bei der Prüfung nicht berücksichtigt. z.B. beta, dev, rc
+
+
+#validate
+no_name_defined = Kein Projektname angegeben!
+no_domain_defined = Keine Domain angegeben!

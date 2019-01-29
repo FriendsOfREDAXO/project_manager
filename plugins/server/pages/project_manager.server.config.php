@@ -4,10 +4,12 @@ $message = '';
 if (rex_post('btn_save', 'string') != '') {
   $this->setConfig(rex_post('config', [
     ['php_min', 'string'],
+  	['cms_4_min', 'string'],
     ['cms_min', 'string'],
     ['php_min_color', 'string'],
     ['cms_min_color', 'string'],
-    
+  	['skip_addon', 'string'],    
+  	['skip_addon_version', 'string'],
   ]));
   
   $message = $this->i18n('project_manager_server_config_saved_successful');
@@ -15,13 +17,11 @@ if (rex_post('btn_save', 'string') != '') {
 
 $content = '';
 
-
 $formElements = [];
 $n = [];
 $n['label'] = '<h3>'.$this->i18n('project_manager_server_min_headline').'</h3>';
 $n['field'] = '';
 $formElements[] = $n;
-
 
 // PHP MIN
 $n = [];
@@ -46,7 +46,27 @@ $fragment = new rex_fragment();
 $fragment->setVar('elements', $formElements, false);
 $content .= $fragment->parse('core/form/container.php');
 
-// CMS MIN
+// CMS 4 MIN
+$formElements = [];
+$n = [];
+$n['label'] = '<label for="cms_4_min">' . $this->i18n('project_manager_server_cms_4_min') . '</label>';
+$select = new rex_select();
+$select->setId('cms_4_min');
+$select->setAttribute('class', 'form-control');
+$select->setName('config[cms_4_min]');
+$select->addOption('4.7.0', '4.7.0');
+$select->addOption('4.7.1', '4.7.1');
+$select->addOption('4.7.2', '4.7.2');
+$select->addOption('4.7.3', '4.7.3');
+$select->setSelected($this->getConfig('cms_4_min'));
+$n['field'] = $select->get();
+$formElements[] = $n;
+
+$fragment = new rex_fragment();
+$fragment->setVar('elements', $formElements, false);
+$content .= $fragment->parse('core/form/container.php');
+
+// CMS 5 MIN
 $formElements = [];
 $n = [];
 $n['label'] = '<label for="cms_min">' . $this->i18n('project_manager_server_cms_min') . '</label>';
@@ -54,9 +74,6 @@ $select = new rex_select();
 $select->setId('cms_min');
 $select->setAttribute('class', 'form-control');
 $select->setName('config[cms_min]');
-$select->addOption('4.7.0', '4.7.0');
-$select->addOption('4.7.1', '4.7.1');
-$select->addOption('4.7.2', '4.7.2');
 $select->addOption('5.3.0', '5.3.0');
 $select->addOption('5.4.0', '5.4.0');
 $select->addOption('5.5.1', '5.5.1');
@@ -66,8 +83,42 @@ $select->addOption('5.6.1', '5.6.1');
 $select->addOption('5.6.2', '5.6.2');
 $select->addOption('5.6.3', '5.6.3');
 $select->addOption('5.6.4', '5.6.4');
+$select->addOption('5.6.5', '5.6.5');
+$select->addOption('5.7.0', '5.7.0');
 $select->setSelected($this->getConfig('cms_min'));
 $n['field'] = $select->get();
+$formElements[] = $n;
+
+$fragment = new rex_fragment();
+$fragment->setVar('elements', $formElements, false);
+$content .= $fragment->parse('core/form/container.php');
+
+$formElements = [];
+$n = [];
+$n['label'] = '<h3>'.$this->i18n('project_manager_server_configuration').'</h3>';
+$n['field'] = '';
+$formElements[] = $n;
+
+$fragment = new rex_fragment();
+$fragment->setVar('elements', $formElements, false);
+$content .= $fragment->parse('core/form/container.php');
+
+$formElements = [];
+$n = [];
+$n['label'] = '<label for="skip-addon">' . $this->i18n('project_manager_server_skip_addon') . '</label>';
+$n['field'] = '<input class="form-control" type="text" id="skip_addon" name="config[skip_addon]" value="' . $this->getConfig('skip_addon') . '" data-role="tagsinput"/>
+		 					 <p class="help-block">' . $this->i18n('project_manager_server_skip_addon_notice') . '</p>';
+$formElements[] = $n;
+
+$fragment = new rex_fragment();
+$fragment->setVar('elements', $formElements, false);
+$content .= $fragment->parse('core/form/container.php');
+
+$formElements = [];
+$n = [];
+$n['label'] = '<label for="skip-addon-version">' . $this->i18n('project_manager_server_skip_addon_version') . '</label>';
+$n['field'] = '<input class="form-control" type="text" id="skip_addon_version" name="config[skip_addon_version]" value="' . $this->getConfig('skip_addon_version') . '" data-role="tagsinput"/>
+							 <p class="help-block">' . $this->i18n('project_manager_server_skip_addon_version_notice') . '</p>';
 $formElements[] = $n;
 
 $fragment = new rex_fragment();

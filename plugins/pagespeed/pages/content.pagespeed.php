@@ -21,7 +21,7 @@ if($domain) {
     $query = '
         SELECT * FROM (SELECT * FROM  ' . rex::getTable('project_manager_domain') . ' ORDER BY domain) AS D
                     LEFT JOIN (
-                                SELECT domain, score_desktop AS psi_score_desktop
+                                SELECT domain, raw, score_desktop AS psi_score_desktop
                                 FROM ' . rex::getTable('project_manager_domain_psi') . '
                                 WHERE score_desktop NOT LIKE "") as PSI
                     ON D.domain = PSI.domain
@@ -37,6 +37,14 @@ if($domain) {
 
     $item = rex_sql::factory()->setDebug(0)->getArray($query, [$domain])[0];
     
+    // Screenshot
+    $raw= json_decode($item['raw'], true);
+    $image = '';
+    $data = '';
+    $data = $raw['screenshot']['data'];
+    $data = str_replace(["_", "-"], ["/", "+"], $data);
+    $image = 'data:'.$raw['screenshot']['mime_type'].';base64,'.$data;
+        
     if($item['psi_score_desktop'] < 70) {
       $class = '<span class="rex-icon fa-desktop text-danger"></span> ';
     } else if($item['psi_score_desktop'] < 90) {
@@ -54,8 +62,8 @@ if($domain) {
     }
     
     $output = '';    
-    $output = '<table class="table table-striped"><thead><tr><th>Name</th><th>Result</th></tr></thead><tbody>';
-    $output .= '<tr><td>Page Speed</td><td>'.$class.$item['psi_score_desktop'].' | '.$classmobile.$item['psi_score_mobile'].'</td></tr>';
+    $output = '<table class="table table-striped"><thead><tr><th>Name</th><th>Result</th><th>Screenshot</th></tr></thead><tbody>';
+    $output .= '<tr><td>Page Speed</td><td>'.$class.$item['psi_score_desktop'].' | '.$classmobile.$item['psi_score_mobile'].'</td><td style="width: 320px"><img src="'.$image.'" alt="" title=""/></td></tr>';
     $output .= '</tbody></table>';
 
     return $output;
