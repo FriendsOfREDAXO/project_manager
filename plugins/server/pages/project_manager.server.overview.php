@@ -92,10 +92,6 @@ if ($func != '') {
       //$yform->setValidateField('unique', ['api_key', $this->i18n('api_key_already_defined')]);
       
       $yform->setValueField('select', array("cms", $this->i18n('project_manager_server_cms'),"REDAXO 5=5,REDAXO 4=4","","0","0"));
-      
-      
-      
-      
         
         $yform->setActionField('db', [rex::getTable('project_manager_domain')]);
         $yform->setObjectparams('submit_btn_label', $this->i18n('save'));

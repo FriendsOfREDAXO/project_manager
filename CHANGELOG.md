@@ -1,5 +1,33 @@
 # Changelog
 
+## Version 1.2.6 // 01.02.2019
+
+# Plugin: Server 1.2.2
+
+* Tablesorter speichert nun die Sortierung
+* REX API: Projekt Manager Server hinzugefügt
+* Systemlog kann für einzelnes Projekt gelöscht werden (Client muss auf Redaxo 5 laufen und mind. Client Version 1.0.6 haben)
+* Einzelne Projektdaten können aktualisiert werden 
+
+# Plugin: Server 1.0.6
+
+* Systemlog kann vom Server aus gelöscht werden
+* Debugmode wird mit übermittelt
+
+# Plugin: Hosting 1.0.3
+
+* Bugfix für nicht SSL Server
+* Notices entfernt
+
+
+## Version 1.2.5 // 30.01.2019
+
+# Plugin: Server 1.2.1
+
+* Performance Anpassungen
+* Limitierung aufgehoben
+
+
 ## Version 1.2.2 // 29.01.2019
 
 # Plugin: Server 1.2.0
@@ -11,6 +39,7 @@
 # Plugin: Pagespeed 1.1.0
 * Performance und API Anpassungen
 * Screenshot wird an Server Hook übergeben
+
 
 ## Version 1.2.0 // 20.12.2018
 

@@ -11,6 +11,7 @@ td.alert-warning.project-manager,
   color: #fff !important;
 }
 
+button.loading .fa-refresh,
 a.loading .fa-refresh {
   -webkit-animation: rotating 2s linear infinite;
   -moz-animation: rotating 2s linear infinite;
@@ -54,4 +55,8 @@ a.loading .fa-refresh {
   -ms-animation: rotating 2s linear infinite;
   -o-animation: rotating 2s linear infinite;
   animation: rotating 2s linear infinite;
+}
+
+.btn-toolbar .btn.btn-project-manager-update {
+  margin-bottom: 20px;
 }

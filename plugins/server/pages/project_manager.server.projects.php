@@ -62,6 +62,14 @@ if($domain) {
   
   if(is_array($raw)) {
     
+    $ssl = $item['is_ssl'];
+    $protocol = ($ssl == 1) ? "https://" : "http://";
+    
+    $refresh = '';
+    $refresh = '<div class="btn-toolbar"><button data-func="updateData"  data-protocol="'.$protocol.'"  data-domain="'.$item['domain'].'" data-api_key="'.$item['api_key'].'" class="btn btn-save btn-project-manager-update pull-right" type="submit" name="del_btn"><i class="fa fa-refresh"></i> Projekt Aktualisieren</button></div>';
+    
+    echo $refresh;
+    
     if ($item['cms'] == 4) {
       $content0 = '';
       
@@ -110,12 +118,19 @@ if($domain) {
 
       $content1 = '';
       
+      
       $output = '<table class="table table-striped"><thead><tr><th>Version</th><th>Version</th></tr></thead><tbody>';
       $output .= '<tr><td>Projekt Manager Version</td><td>'.$raw['pm_version'].'</td></tr>';
       $output .= '<tr><td>Projekt Manager Client Version</td><td>'.$raw['client_version'].'</td></tr>';
       $output .= '<tr><td>REDAXO Version</td><td>'.$raw['rex_version'].'</td></tr>';
       $output .= '<tr><td>PHP Version</td><td>'.$raw['php_version'].'</td></tr>';
       $output .= '<tr><td>MySQL Version</td><td>'.$raw['mysql_version'].'</td></tr>';
+      if ($raw['client_version'] >= "1.0.6") {
+        if ($raw['debug'] == 1)
+          $output .= '<tr><td>Debug Modus</td><td><i title="" class="rex-icon fa-exclamation-triangle text-danger"></i> aktiv</td></tr>';
+        if ($raw['debug'] == 0)
+          $output .= '<tr><td>Debug Modus</td><td><i title="" class="rex-icon fa-check text-success"></i> nicht aktiv</td></tr>';
+      }
       $output .= '</tbody></table>';
       
       $fragment = new rex_fragment();
@@ -170,14 +185,14 @@ if($domain) {
       $content2 = '';
         
       // ARTICLES
-      $article = $raw['article'];
+      $articles = $raw['article'];
   
       $output = '<table class="table table-striped"><thead><tr><th>Artikel</th><th>Benutzer</th><th>Änderungsdatum</th></tr></thead><tbody>';
-      foreach ($article as $item) {
+      foreach ($articles as $article) {
         $output .= '<tr>';
-        $output .= '<td>'.$item["name"].'</td>';
-        $output .= '<td>'.$item["updateuser"].'</td>';
-        $output .= '<td>'.$item["updatedate"].'</td>';
+        $output .= '<td>'.$article["name"].'</td>';
+        $output .= '<td>'.$article["updateuser"].'</td>';
+        $output .= '<td>'.$article["updatedate"].'</td>';
         $output .= '</tr>';
       }
       $output .= '</tbody></table>';
@@ -358,12 +373,19 @@ if($domain) {
             $output .= '<td>'.$entry["syslog_line"].'</td>';
             $output .= '</tr>';
           }
-          
           $output .= '</tbody></table>';
+          
+          if ($raw['client_version'] >= "1.0.6")
+            $output .= '<div class="rex-form-panel-footer"><button data-func="delLog"  data-protocol="'.$protocol.'"  data-domain="'.$item['domain'].'" data-api_key="'.$item['api_key'].'" class="btn btn-delete btn-project-manager-update" type="submit" name="del_btn"><i class="fa fa-refresh"></i> Systemlog löschen</button></div>';
+            
+          
+          
         } 
       }else {
         $output = 'Keine Einträge vorhanden.';        
       } 
+      
+      
 
   
       $fragment = new rex_fragment();

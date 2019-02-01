@@ -5,7 +5,7 @@ class rex_cronjob_project_manager_data extends rex_cronjob
 
     public function execute()
     {
-        $websites = rex_sql::factory()->setDebug(0)->getArray('SELECT * FROM ' . rex::getTable('project_manager_domain') . ' ORDER BY updatedate asc LIMIT 10'); 
+        $websites = rex_sql::factory()->setDebug(0)->getArray('SELECT * FROM ' . rex::getTable('project_manager_domain') . ' ORDER BY updatedate asc'); 
 
         /* Addon-Abruf */
         $multi_curl = curl_multi_init();
