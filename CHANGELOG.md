@@ -1,5 +1,14 @@
 # Changelog
 
+## Version 1.2.7 // 26.04.2019
+
+* Abhängigkeiten YFORM 3 wurden angepasst
+
+# Plugin: Server 1.2.3
+
+* Uninstallroutine für die Cronjobs
+
+
 ## Version 1.2.6 // 01.02.2019
 
 # Plugin: Server 1.2.2

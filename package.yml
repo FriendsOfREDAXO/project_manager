@@ -1,5 +1,5 @@
 package: project_manager
-version: '1.2.6'
+version: '1.2.7'
 author: 'Friends Of REDAXO, Manétage - Ronny Kemmereit, Alexander Walther'
 supportpage: https://github.com/FriendsOfREDAXO/project_manager
 
@@ -26,7 +26,7 @@ plugins:
 # Abhängigkeiten
 # Anforderungen ans System oder anderere AddOns, um dieses AddOn installieren oder update zu können
 requires:
-    redaxo: '^5.2' # benötigt mindestens REDAXO 5.4
+    redaxo: '>=5.2' # benötigt mindestens REDAXO 5.4
     php:
         version: '>=5.6' # benötigt mindestens PHP 5.6
 

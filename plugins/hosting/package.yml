@@ -15,5 +15,5 @@ pages:
 requires:
     packages:
         project_manager: '^1.2.0'
-        cronjob: '^ 2.3.0'
+        cronjob: '>=2.3.0'
         project_manager/server: '^1.1.0'        
