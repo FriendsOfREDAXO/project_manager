@@ -1,9 +1,19 @@
-documentation_menu_entry = Dokumentation
+project_manager_pagespeed_menu_entry = PageSpeed
 
-documentation_navigation_title = Navigation [ main_navi.md ]
-documentation_content_title = Innehåll [ <span id="doc-file-name">{0}</span> ]
+project_manager_pagespeed_projects = Projekter
+project_manager_pagespeed_title = Översikt
+project_manager_pagespeed_config = Inställningar
+project_manager_pagespeed_api_key_title = Inställningar
+project_manager_pagespeed_api_key_label = PageSpeed API-key
+project_manager_pagespeed_api_key_notice = PageSpeed API-nyckel, t.ex. <Code> AIzaSyCp0Em_UPY78238es-9CZViEbq7CB_zcFBs </ code>
+project_manager_pagespeed_domain_norows_message = Inga poster tillgängliga
+project_manager_cronjob_pagespeed_name = Projektledare: Hämta PageSpeed-uppgifter
 
-documentation_noparser = Ingen Markdown Parser tillgänglig! Var god installera en parser först (AddOn markitup eller textil)
 
-documentation_navinotfound = Navigationsfilen <strong> {0} </ strong> hittades inte! <br> Den här filen är obligatorisk!
-documentation_filenotfound = Filen <strong> {0} </ strong> hittades inte. Innehållet finns inte (ännu). <br> <br> Vi är glada om du vill hjälpa till: <a href="{1}" target="_blank"> {1} </a>
+project_manager_pagespeed_name = Projektnamn
+project_manager_pagespeed_domain = Domän
+project_manager_pagespeed_updatedate = Senaste ändring
+project_manager_pagespeed_logdate = Senaste datafetch
+project_manager_pagespeed_domain_norows_message = Inga poster tillgängliga
+
+perm_general_project_manager_pagespeed[] = project_manager_pagespeed [] - Rättigheter till Projekt Manager PageSpeed

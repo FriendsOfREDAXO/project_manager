@@ -1,9 +1,68 @@
-documentation_menu_entry = Dokumentation
+project_manager_server_menu_entry = Projekter
 
-documentation_navigation_title = Navigation [ main_navi.md ]
-documentation_content_title = Innehåll [ <span id="doc-file-name">{0}</span> ]
+#view
+project_manager_server_projects = Projekter
+project_manager_server_overview = Översikt
+project_manager_server_config = Inställnigar
+project_manager_server_domain = Domän
+project_manager_server_api_key = API-key
+project_manager_server_cms = REDAXO huvudversion
+project_manager_server_update_content = Senaste ändring
 
-documentation_noparser = Ingen Markdown Parser tillgänglig! Var god installera en parser först (AddOn markitup eller textil)
+project_manager_server_updates_necessary = hittat
+project_manager_server_updates = Updates
+project_manager_pm_client_version = Client
+project_manager_server_php_version = PHP
+project_manager_server_cms_version = Version
+project_manager_server_syslog = Syslog
+project_manager_server_is_ssl = SSL
+project_manager_server_select_project = Välj projekt
 
-documentation_navinotfound = Navigationsfilen <strong> {0} </ strong> hittades inte! <br> Den här filen är obligatorisk!
-documentation_filenotfound = Filen <strong> {0} </ strong> hittades inte. Innehållet finns inte (ännu). <br> <br> Vi är glada om du vill hjälpa till: <a href="{1}" target="_blank"> {1} </a>
+#add
+project_manager_add_domain = Tillfoga domän
+project_manager_server_project_added = Projektet lagt till
+project_manager_server_domain_already_defined = Domänen finns redan!
+
+#del
+project_manager_server_project_deleted = Projektet raderades
+
+project_manager_server_name = Projketnamn
+
+#edit
+project_manager_server_edit_domain = Redigera domän
+project_manager_server_name_info = Vänligen ange projektets namn!
+project_manager_server_domain_info = Vänligen ange projektets domän!
+project_manager_server_api_key_info = API-nyckel
+project_manager_server_api_key_notice = Redaxo 5 API-nyckel, t.ex. <code> 83f15d69755585c3a825c3eccf2d654fc6578dadb7e05475 </ code>, för Redaxo 4 instanser <code>legacy </ code>
+project_manager_server_ssl = SSL förbindelse
+project_manager_server_tags = Tags
+
+#detail
+project_manager_server_project_detail = Detaljer
+project_manager_server_project_choose = Välj projekt
+
+project_manager_cronjob_favicon_name = Projekt Manager: hämta Favicon
+project_manager_cronjob_data_name = Projekt Manager: Hämta Domänuppgifter
+
+perm_general_project_manager_server[] = project_manager_server [] - Project Manager Server Configurations rättigheter
+
+
+#config
+project_manager_server_title = Inställningar
+project_manager_server_min_headline = minimikrav
+project_manager_server_php_min = PHP version
+project_manager_server_cms_4_min = Redaxo 4 version
+project_manager_server_cms_min = Redaxo 5 version
+project_manager_server_config_saved_successful = Inställningarna sparades!
+project_manager_server_min_color = Färg
+project_manager_server_color_notice = Vänligen ange färg som HEX # F1F1F1 eller som RGBA rgba (0,0,0,0.1)
+project_manager_server_configuration = Inställningar
+project_manager_server_skip_addon = Uteslut tillägg
+project_manager_server_skip_addon_version = Uteslut versioner
+project_manager_server_skip_addon_notice = Addon prövas inte. t.ex. struktur_tweaks, modulsamling
+project_manager_server_skip_addon_version_notice = Addon-versionen kommer inte att beaktas under testet. t.ex. beta, dev, rc
+
+
+#validate
+no_name_defined = Inget projektnamn har angetts!
+no_domain_defined = Ingen domän har angetts!
