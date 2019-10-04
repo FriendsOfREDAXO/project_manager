@@ -9,7 +9,7 @@ class rex_api_project_manager extends rex_api_function
 
     public function execute()
     {
-        ob_end_clean();
+        rex_response::cleanOutputBuffers();
         $api_key = rex_request('api_key','string');
         $func = rex_request('func','string');
         
