@@ -11,7 +11,6 @@ class rex_cronjob_project_manager_favicon extends rex_cronjob
         $ch = [];
 
         foreach($domains as $domain) {
-          
             $ch[$domain['domain']] = curl_init();
             $fp[$domain['domain']] = fopen(rex_path::pluginAssets('project_manager', 'server', 'favicon/'.$domain['domain'].'.png'), 'w+');
             curl_setopt($ch[$domain['domain']], CURLOPT_URL, "https://www.google.com/s2/favicons?domain=".$domain['domain']);
@@ -25,7 +24,6 @@ class rex_cronjob_project_manager_favicon extends rex_cronjob
         } while ($active > 0);
         
         foreach($domains as $domain) {
-
             curl_multi_remove_handle($multi_curl,$ch[$domain['domain']]);
             fwrite($fp[$domain['domain']], "");
             fclose($fp[$domain['domain']]);

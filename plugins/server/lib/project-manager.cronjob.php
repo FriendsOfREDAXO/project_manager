@@ -47,12 +47,12 @@ class rex_cronjob_project_manager_data extends rex_cronjob
         } while ($active > 0);
 
         foreach ($resps as $domain => $response) {
-        	
+          
             $resp = curl_multi_getcontent($response);
             curl_multi_remove_handle($multi_curl, $response);
 
             $json = json_decode($resp, true);     
-
+          
             $project_manager_domain = rex_sql::factory()->setDebug(0)->getArray('SELECT * FROM ' . rex::getTable('project_manager_domain') . ' WHERE domain = ? LIMIT 1', [$domain]); 
             
             if(json_last_error() === JSON_ERROR_NONE && $json !== null) {
