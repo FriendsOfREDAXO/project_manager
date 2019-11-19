@@ -1,5 +1,17 @@
 # Changelog
 
+## Version 1.2.8 // 19.11.2019
+
+## Plugin: Server 1.2.4
+
+* Versions-Auswahl um R7.1, R5.8, R5.8.1, PHP 7.4, PHP 8.0 erweitert
+* Fragezeichen nach Neuanlage mit API Key versehen
+
+## Plugin: Pagespeed 1.2.0
+
+* Umstellung auf Lighthouse API V5
+
+
 ## Version 1.2.7 // 26.04.2019
 
 * Abhängigkeiten YFORM 3 wurden angepasst

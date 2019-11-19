@@ -56,8 +56,8 @@ class rex_cronjob_project_manager_pagespeed extends rex_cronjob
               $prefix = "http://";
           }
   
-          $url_desktop = 'https://www.googleapis.com/pagespeedonline/v4/runPagespeed?filter_third_party_resources=false&locale=de_DE&screenshot=true&snapshots=false&strategy=desktop&key='.rex_config::get('project_manager/pagespeed', 'project_manager_pagespeed_api_key').'&url='.urlencode($prefix.$website['domain']);
-          $url_mobile = 'https://www.googleapis.com/pagespeedonline/v4/runPagespeed?filter_third_party_resources=false&locale=de_DE&screenshot=true&snapshots=false&strategy=mobile&key='.rex_config::get('project_manager/pagespeed', 'project_manager_pagespeed_api_key').'&url='.urlencode($prefix.$website['domain']);
+          $url_desktop = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed?filter_third_party_resources=false&locale=de_DE&screenshot=true&snapshots=false&strategy=desktop&key='.rex_config::get('project_manager/pagespeed', 'project_manager_pagespeed_api_key').'&url='.urlencode($prefix.$website['domain']);
+          $url_mobile = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed?filter_third_party_resources=false&locale=de_DE&screenshot=true&snapshots=false&strategy=mobile&key='.rex_config::get('project_manager/pagespeed', 'project_manager_pagespeed_api_key').'&url='.urlencode($prefix.$website['domain']);
           $resps[$domain.";mobile"] = curl_init($url_mobile);
           $resps[$domain.";desktop"] = curl_init($url_desktop);
           curl_setopt_array($resps[$domain.";mobile"], $options);
@@ -80,13 +80,19 @@ class rex_cronjob_project_manager_pagespeed extends rex_cronjob
           curl_multi_remove_handle($multi_curl, $response);
           $pagespeed = json_decode($resp, true);
           
+          $score_mobile = 0;
+          $score_desktop = 0;
+          if (isset($pagespeed['lighthouseResult'])) {
+            if ($pagespeed['lighthouseResult']['categories']['performance']['score'] != NULL) $score_mobile = $pagespeed['lighthouseResult']['categories']['performance']['score'];
+            if ($pagespeed['lighthouseResult']['categories']['performance']['score'] != NULL) $score_desktop = $pagespeed['lighthouseResult']['categories']['performance']['score'];
+          }
           if(json_last_error() === JSON_ERROR_NONE && (!array_key_exists("error", $pagespeed)))  {
            		if($mode == "mobile") {
                   rex_sql::factory()->setDebug(0)->setQuery('INSERT INTO ' . rex::getTable('project_manager_domain_psi') . ' (`domain`, `raw`, `createdate`, `score_mobile`, `status`) VALUES(:domain, :resp, NOW(), :score_mobile, 1) 
-                  ON DUPLICATE KEY UPDATE domain = :domain, `raw` = :resp, createdate = NOW(), `score_mobile` = :score_mobile,  `status` = 1', [":domain" => $domain, ":resp" => $resp, ":score_mobile" => $pagespeed['ruleGroups']["SPEED"]["score"]] );
+                  ON DUPLICATE KEY UPDATE domain = :domain, `raw` = :resp, createdate = NOW(), `score_mobile` = :score_mobile,  `status` = 1', [":domain" => $domain, ":resp" => $resp, ":score_mobile" => $score_mobile] );
               } else if($mode == "desktop") {                  
               	  rex_sql::factory()->setDebug(0)->setQuery('INSERT INTO ' . rex::getTable('project_manager_domain_psi') . ' (`domain`, `raw`, `createdate`, `score_desktop`, `status`) VALUES(:domain, :resp, NOW(), :score_desktop, 1) 
-                  ON DUPLICATE KEY UPDATE domain = :domain, `raw` = :resp, createdate = NOW(), `score_desktop` = :score_desktop, `status` = 1', [":domain" => $domain, ":resp" => $resp, ":score_desktop" => $pagespeed['ruleGroups']["SPEED"]["score"]] );
+                  ON DUPLICATE KEY UPDATE domain = :domain, `raw` = :resp, createdate = NOW(), `score_desktop` = :score_desktop, `status` = 1', [":domain" => $domain, ":resp" => $resp, ":score_desktop" => $score_desktop] );              
               } 
           } else {
             

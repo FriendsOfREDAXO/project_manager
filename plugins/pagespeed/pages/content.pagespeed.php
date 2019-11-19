@@ -41,21 +41,22 @@ if($domain) {
     $raw= json_decode($item['raw'], true);
     $image = '';
     $data = '';
-    $data = $raw['screenshot']['data'];
-    $data = str_replace(["_", "-"], ["/", "+"], $data);
-    $image = 'data:'.$raw['screenshot']['mime_type'].';base64,'.$data;
+    if (isset($raw['lighthouseResult'])) {
+      $data = $raw['lighthouseResult']['audits']['final-screenshot']['details']['data'];
+      $image = $data;
+    }
         
-    if($item['psi_score_desktop'] < 70) {
+    if($item['psi_score_desktop'] < 0.7) {
       $class = '<span class="rex-icon fa-desktop text-danger"></span> ';
-    } else if($item['psi_score_desktop'] < 90) {
+    } else if($item['psi_score_desktop'] < 0.9) {
       $class = '<span class="rex-icon fa-desktop text-warning"></span> ';
     } else {
       $class = '<span class="rex-icon fa-desktop text-success"></span> ';
     }
     
-    if($item['psi_score_mobile'] < 70) {
+    if($item['psi_score_mobile'] < 0.7) {
       $classmobile = '<span class="rex-icon fa-mobile text-danger"></span> ';
-    } else if($item['psi_score_mobile'] < 90) {
+    } else if($item['psi_score_mobile'] < 0.9) {
       $classmobile = '<span class="rex-icon fa-mobile text-warning"></span> ';
     } else {
       $classmobile = '<span class="rex-icon fa-mobile text-success"></span> ';

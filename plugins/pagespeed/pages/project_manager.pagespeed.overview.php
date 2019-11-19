@@ -119,20 +119,20 @@ if ($showlist) {
     $list->setColumnLayout('status', ['<th data-sorter="digit">###VALUE###</th>', '<td>###VALUE###</td>']);
     
     
-  $list->addColumn("Pagespeed", false, -1, ['<th>PageSpeed</th>', '<td data-title="psi" width="120px">###VALUE###</td>']);
+  $list->addColumn("Pagespeed", false, -1, ['<th>PageSpeed</th>', '<td data-title="psi" width="150px">###VALUE###</td>']);
   $list->setColumnFormat("Pagespeed", 'custom', function ($params) {
 
-      if($params['list']->getValue('psi_score_desktop') < 70) {
+      if($params['list']->getValue('psi_score_desktop') < 0.7) {
         $return = '<span class="rex-icon fa-desktop text-danger"></span> '.$params['list']->getValue('psi_score_desktop');
-      } else if($params['list']->getValue('psi_score_desktop') < 90) {
+      } else if($params['list']->getValue('psi_score_desktop') < 0.9) {
         $return = '<span class="rex-icon fa-desktop text-warning"></span> '.$params['list']->getValue('psi_score_desktop');
       } else {
         $return = '<span class="rex-icon fa-desktop text-success"></span> '.$params['list']->getValue('psi_score_desktop');
       }
       $return .= " | ";
-      if($params['list']->getValue('psi_score_mobile') < 70) {
+      if($params['list']->getValue('psi_score_mobile') < 0.7) {
         $return .= '<span class="rex-icon fa-mobile text-danger"></span> '.$params['list']->getValue('psi_score_mobile');
-      } else if($params['list']->getValue('psi_score_mobile') < 90) {
+      } else if($params['list']->getValue('psi_score_mobile') < 0.9) {
         $return .= '<span class="rex-icon fa-mobile text-warning"></span> '.$params['list']->getValue('psi_score_mobile');
       } else {
         $return .= '<span class="rex-icon fa-mobile text-success"></span> '.$params['list']->getValue('psi_score_mobile');

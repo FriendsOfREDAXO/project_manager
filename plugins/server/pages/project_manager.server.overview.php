@@ -137,7 +137,7 @@ if ($showlist) {
     if ($sorttype == "") $sorttype = "ASC";
     
     $sql = 'SELECT * FROM (
-                          SELECT id, name, domain, is_ssl, status, cms FROM `rex_project_manager_domain` ORDER BY domain ASC
+                          SELECT id, name, domain, is_ssl, status, cms, api_key FROM `rex_project_manager_domain` ORDER BY domain ASC
                           ) AS D
             LEFT JOIN (SELECT domain_id, `raw`, createdate  FROM rex_project_manager_logs WHERE id IN (SELECT MAX(id) FROM rex_project_manager_logs GROUP BY domain_id)) AS L
             ON D.id = L.domain_id
@@ -254,10 +254,10 @@ if ($showlist) {
       } else {
         
         $api_key = '';
-        if (property_exists($params['list'], 'api_key')) $api_key = $params['list']->getValue('api_key');
+        if ($params['list']->getValue('api_key') != "") $api_key = $params['list']->getValue('api_key');
         
       	if ($params['list']->getValue('is_ssl') == 1) {
-      	  
+      	     
       	  return '<a href="https://www.'.$params['list']->getValue('domain').'/?rex-api-call=project_manager&api_key='.$api_key.'"><span class="rex-icon fa-question"></span></a>';
       	}
       	
