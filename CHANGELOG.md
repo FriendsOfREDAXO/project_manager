@@ -2,6 +2,8 @@
 
 ## Version 1.2.8 // 19.11.2019
 
+* Svensk översättning - Danke @interweave-media @gharlan  
+
 ## Plugin: Server 1.2.4
 
 * Versions-Auswahl um R7.1, R5.8, R5.8.1, PHP 7.4, PHP 8.0 erweitert
