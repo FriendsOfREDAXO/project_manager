@@ -59,6 +59,8 @@ class rex_cronjob_project_manager_data extends rex_cronjob
               
               if ($json['status'] == 1) {
               
+                rex_sql::factory()->setDebug(0)->setQuery('DELETE FROM ' . rex::getTable('project_manager_logs') . ' WHERE domain_id = ?', [$project_manager_domain[0]['id']]);
+                
                 rex_sql::factory()->setDebug(0)->setQuery('INSERT INTO ' . rex::getTable('project_manager_logs') . ' (`domain_id`, `createdate`, `raw`) VALUES(?,NOW(),?)', [$project_manager_domain[0]['id'],  $resp] );
                 // SET STATUS
                 rex_sql::factory()->setDebug(0)->setQuery("UPDATE " . rex::getTable('project_manager_domain') . " SET status = ?, updatedate = NOW() WHERE id = ?", [1, $project_manager_domain[0]['id']]);

@@ -1,5 +1,12 @@
 # Changelog
 
+## Version 1.2.9 // 27.11.2019
+
+## Plugin: Server 1.2.5
+
+* Cleanup Datenbank hinzugefügt
+
+
 ## Version 1.2.8 // 19.11.2019
 
 * Svensk översättning - Danke @interweave-media @gharlan  
