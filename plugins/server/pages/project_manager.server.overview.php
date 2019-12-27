@@ -351,7 +351,7 @@ if ($showlist) {
                 
                 $skip = false;
                 
-                if (is_array($skip_addon_versions)) {
+                if (isset($skip_addon_versions) && is_array($skip_addon_versions)) {
                   foreach ($skip_addon_versions as $skip_addon_version) {
   
                     if (strpos($addon['version_latest'], $skip_addon_version)) {
