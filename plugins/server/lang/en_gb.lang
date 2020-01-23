@@ -1,14 +1,54 @@
-documentation_menu_entry = Documentation
+project_manager_server_menu_entry = Projects
 
-documentation_navigation_title = Navigation [ main_navi.md ]
-documentation_content_title = Contents [ <span id="doc-file-name">{0}</span> ]
+#view
+project_manager_server_projects = Projects
+project_manager_server_overview = Overview
+project_manager_server_config = Settings
+project_manager_server_domain = Domain
+project_manager_server_api_key = API key
+project_manager_server_cms = REDAXO main version
+project_manager_server_update_content = Latest change
 
-documentation_noparser = No Markdown Parser available! Please install a parser first (AddOn markitup or textile)
+project_manager_server_updates_necessary = found
+project_manager_server_updates = Updates
+project_manager_pm_client_version = Client
+project_manager_server_php_version = PHP
+project_manager_server_cms_version = Version
+project_manager_server_syslog = Syslog
+project_manager_server_is_ssl = SSL
+project_manager_server_select_project = Choose project
 
-documentation_navinotfound = Navigation-File <strong>{0}</strong> not found!<br>This file is required!
-documentation_filenotfound = File <strong>{0}</strong> not found. Contents does not exist (yet). <br><br>We're happy if you want to help: <a href="{1}" target="_blank">{1}</a>
+#add
+project_manager_add_domain = Add domain
+project_manager_server_project_added = Project added
+project_manager_server_domain_already_defined = Domain already exists
+
+#del
+project_manager_server_project_deleted = Project deleted
+
+project_manager_server_name = Project name
+
+#edit
+project_manager_server_edit_domain = Edit domain
+project_manager_server_name_info = Please enter a project name
+project_manager_server_domain_info = Please enter a project domain
+project_manager_server_api_key_info = API key
+project_manager_server_api_key_notice = Redaxo 5 API key, ex.: <code>83f15d69755585c3a825c3eccf2d654fc6578dadb7e05475</code>, for Redaxo 4 instances <code>legacy</code>
+project_manager_server_ssl = SSL connection
+project_manager_server_tags = Tags
+
+#detail
+project_manager_server_project_detail = Details
+project_manager_server_project_choose = Choose project
+
+project_manager_cronjob_favicon_name = Project Manager: fetch favicon
+project_manager_cronjob_data_name = Project Manager: fetch domain data
+
+perm_general_project_manager_server[] = project_manager_server[] - Rights for Project Manager Server configuration
+
 
 #config
+project_manager_server_title = Settings
 project_manager_server_min_headline = Minimum requirement
 project_manager_server_php_min = PHP Version
 project_manager_server_cms_4_min = Redaxo 4 Version
@@ -21,3 +61,8 @@ project_manager_server_skip_addon = Skip Addon
 project_manager_server_skip_addon_version = Skip Version
 project_manager_server_skip_addon_notice = Addon is not included in the check. e.g. structure_tweaks, modulsammlung
 project_manager_server_skip_addon_version_notice = Addonversion is not included in the check. e.g. beta, dev, rc
+
+
+#validate
+no_name_defined = No project name entered!
+no_domain_defined = No domain name entered!

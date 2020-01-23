@@ -1,9 +1,21 @@
-documentation_menu_entry = Documentation
 
-documentation_navigation_title = Navigation [ main_navi.md ]
-documentation_content_title = Contents [ <span id="doc-file-name">{0}</span> ]
 
-documentation_noparser = No Markdown Parser available! Please install a parser first (AddOn markitup or textile)
+client_navigation_title = Navigation [ main_navi.md ]
+client_content_title = Content [ <span id="doc-file-name">{0}</span> ]
 
-documentation_navinotfound = Navigation-File <strong>{0}</strong> not found!<br>This file is required!
-documentation_filenotfound = File <strong>{0}</strong> not found. Contents does not exist (yet). <br><br>We're happy if you want to help: <a href="{1}" target="_blank">{1}</a>
+client_noparser = No Markdown parser available! Please install a parser first (ex. addon markitup or textile)
+
+client_navinotfound = Navigation file <strong>{0}</strong> not found!<br />This file is required!
+client_filenotfound = File <strong>{0}</strong> not found! Content does not (yet) exist.<br /><br />Help wanted and welcome: <a href="{1}" target="_blank">{1}</a>
+
+project_manager_client_menu_entry = Client
+project_manager_client_page_entry = Settings
+project_manager_client_title = Settings
+project_manager_client_readme = Help
+project_manager_api_key_title = Client
+project_manager_api_key_label = API key
+project_manager_api_key_notice = Enter API key from Server plugin, ex.:
+project_manager_save = Save
+
+
+perm_general_project_manager_client[] = project_manager_client[] - Rights for Project Manager Client
