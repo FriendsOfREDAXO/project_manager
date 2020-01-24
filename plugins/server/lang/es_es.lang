@@ -1,10 +1,68 @@
-documentation_menu_entry = Documentación
+project_manager_server_menu_entry = 
+
+#view
+project_manager_server_projects = 
+project_manager_server_overview = 
+project_manager_server_config = 
+project_manager_server_domain = 
+project_manager_server_api_key = 
+project_manager_server_cms = 
+project_manager_server_update_content = 
+
+project_manager_server_updates_necessary = 
+project_manager_server_updates = 
+project_manager_pm_client_version = 
+project_manager_server_php_version = 
+project_manager_server_cms_version = 
+project_manager_server_syslog = 
+project_manager_server_is_ssl = 
+project_manager_server_select_project = 
+
+#add
+project_manager_add_domain = 
+project_manager_server_project_added = 
+project_manager_server_domain_already_defined = 
+
+#del
+project_manager_server_project_deleted = 
+
+project_manager_server_name = 
+
+#edit
+project_manager_server_edit_domain = 
+project_manager_server_name_info = 
+project_manager_server_domain_info = 
+project_manager_server_api_key_info = 
+project_manager_server_api_key_notice = 
+project_manager_server_ssl = 
+project_manager_server_tags = 
+
+#detail
+project_manager_server_project_detail = 
+project_manager_server_project_choose = 
+
+project_manager_cronjob_favicon_name = 
+project_manager_cronjob_data_name = 
+
+perm_general_project_manager_server[] = 
 
 
-documentation_navigation_title = Navegación [main_navi.md]
-documentation_content_title = Contenido [ <span id="doc-file-name">{0}</span> ]
+#config
+project_manager_server_title = 
+project_manager_server_min_headline = 
+project_manager_server_php_min = 
+project_manager_server_cms_4_min = 
+project_manager_server_cms_min = 
+project_manager_server_config_saved_successful = 
+project_manager_server_min_color = 
+project_manager_server_color_notice = 
+project_manager_server_configuration = 
+project_manager_server_skip_addon = 
+project_manager_server_skip_addon_version = 
+project_manager_server_skip_addon_notice = 
+project_manager_server_skip_addon_version_notice = 
 
-documentation_noparser = ¡No hay ningún Markdown parser disponible! Instale primero un analizador (addon markitup o textil)
 
-documentation_navinotfound = ¡No se encontró el archivo de navegación <strong>{0}</strong>!<br>¡Este archivo es obligatorio!
-documentation_filenotfound = No se encontró el archivo <strong>{0}</ strong>. El contenido no existe (aún).<br><br>Estamos entusiasmados con la ayuda: <a href="{1}" target="_blank">{1}</a>
+#validate
+no_name_defined = ¡No se ha especificado el nombre del proyecto!
+no_domain_defined = ¡Ningún dominio especificado!

@@ -8,6 +8,6 @@ project_manager_config = Ajustes
 
 project_manager_config_save = Guardar
 project_manager_config_saved = Guardado!
+save = Guardar
 
 perm_general_project_manager[] = project_manager[] - Derechos
-perm_general_project_manager[config] = project_manager[config] - Derechos para la configuración
