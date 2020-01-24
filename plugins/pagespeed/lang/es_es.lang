@@ -1,9 +1,19 @@
-documentation_menu_entry = Documentación
+project_manager_pagespeed_menu_entry = 
 
-documentation_navigation_title = Navegación [main_navi.md]
-documentation_content_title = Contenido [ <span id="doc-file-name">{0}</span> ]
+project_manager_pagespeed_projects = 
+project_manager_pagespeed_title = 
+project_manager_pagespeed_config = 
+project_manager_pagespeed_api_key_title = 
+project_manager_pagespeed_api_key_label = 
+project_manager_pagespeed_api_key_notice = 
+project_manager_pagespeed_domain_norows_message = 
+project_manager_cronjob_pagespeed_name = 
 
-documentation_noparser = ¡No hay ningún Markdown parser disponible! Instale primero un analizador (addon markitup o textil)
 
-documentation_navinotfound = ¡No se encontró el archivo de navegación <strong>{0}</strong>!<br>¡Este archivo es obligatorio!
-documentation_filenotfound = No se encontró el archivo <strong>{0}</ strong>. El contenido no existe (aún).<br><br>Estamos entusiasmados con la ayuda: <a href="{1}" target="_blank">{1}</a>
+project_manager_pagespeed_name = 
+project_manager_pagespeed_domain = 
+project_manager_pagespeed_updatedate = 
+project_manager_pagespeed_logdate = 
+project_manager_pagespeed_domain_norows_message = 
+
+perm_general_project_manager_pagespeed[] = 

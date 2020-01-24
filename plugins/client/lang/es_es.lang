@@ -1,7 +1,21 @@
-documentation_navigation_title = Navegación [main_navi.md]
-documentation_content_title = Contenido [ <span id="doc-file-name">{0}</span> ]
 
-documentation_noparser = ¡No hay ningún Markdown parser disponible! Instale primero un analizador (addon markitup o textil)
 
-documentation_navinotfound = ¡No se encontró el archivo de navegación <strong>{0}</strong>!<br>¡Este archivo es obligatorio!
-documentation_filenotfound = No se encontró el archivo <strong>{0}</ strong>. El contenido no existe (aún).<br><br>Estamos entusiasmados con la ayuda: <a href="{1}" target="_blank">{1}</a>
+client_navigation_title = Navegación [main_navi.md]
+client_content_title = Contenido [<span id = "doc-file-name"> {0} </ span>]
+
+client_noparser = ¡No hay analizador de rebajas disponible! Primero instale un analizador (marcado adicional o textil)
+
+client_navinotfound = ¡No se encontró el archivo de navegación <strong> {0} </ strong>! <br> ¡Este archivo es obligatorio!
+client_filenotfound = No se encontró el archivo <strong> {0} </ strong>. El contenido no existe (todavía). <br> <br> Nos complace ayudar: <a href="{1}" target="_blank"> {1} </a>
+
+project_manager_client_menu_entry = Cliente
+project_manager_client_page_entry = Ajustes
+project_manager_client_title = Ajustes
+project_manager_client_readme = Ayuda
+project_manager_api_key_title = Cliente
+project_manager_api_key_label = 
+project_manager_api_key_notice = 
+project_manager_save = 
+
+
+perm_general_project_manager_client[] = 
