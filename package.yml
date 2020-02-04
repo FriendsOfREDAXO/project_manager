@@ -26,9 +26,9 @@ plugins:
 # Abhängigkeiten
 # Anforderungen ans System oder anderere AddOns, um dieses AddOn installieren oder update zu können
 requires:
-    redaxo: '>=5.2' # benötigt mindestens REDAXO 5.4
+    redaxo: '^5.2' # benötigt mindestens REDAXO 5.2
     php:
-        version: '>=5.6' # benötigt mindestens PHP 5.6
+        version: '^5.6' # benötigt mindestens PHP 5.6
 
 # Plugins die automatisch installiert werden sollen
 #system_plugins:
