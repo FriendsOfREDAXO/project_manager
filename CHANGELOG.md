@@ -1,5 +1,23 @@
 # Changelog
 
+## Version 1.2.10 // 11.03.2020
+
+# Plugin: Server 1.2.6
+* Versions-Auswahl um R5.9.0 und R5.10.0 erweitert
+* Tablesorter in Listenansicht angepasst
+* Lesbare Darstellung vom Datum in Listen- und Detailansicht
+
+# Plugin: Client 1.0.7
+* Syslog Abfrage für > R5.9 geändert
+ 
+# Plugin: Pagespeed 1.2.1
+* Lesbare Darstellung vom Datum in Listenansicht
+
+# Plugin: Hosting 1.0.4
+* Lesbare Darstellung vom Datum in Listenansicht
+* Notices entfernt 
+
+
 ## Version 1.2.9 // 27.11.2019
 
 ## Plugin: Server 1.2.5

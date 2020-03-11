@@ -88,7 +88,11 @@ class rex_api_project_manager extends rex_api_function
   
               # SYSLOG 
   
-              $log = new rex_log_file(rex_path::coreData('system.log'));
+              if (version_compare(rex::getVersion(), '5.9') >= 0) {
+                $log = new rex_log_file(rex_path::log('system.log'));
+              } else {
+                $log = new rex_log_file(rex_path::coreData('system.log'));
+              }
   
               $i = 0;
               foreach (new LimitIterator($log, 0, 30) as $entry) {

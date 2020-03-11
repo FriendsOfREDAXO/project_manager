@@ -1,6 +1,6 @@
 package: project_manager/server
-version: '1.2.5'
-author: 'Friends Of REDAXO, Manétage - Ronny Kemmereit, Alexander Walther'
+version: '1.2.6'
+author: 'Friends Of REDAXO'
 supportpage: https://github.com/FriendsOfREDAXO/project_manager
 
 page:

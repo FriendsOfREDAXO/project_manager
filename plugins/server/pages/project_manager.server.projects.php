@@ -96,11 +96,11 @@ if($domain) {
       $output = '<table class="table table-striped"><thead><tr><th>Letzte Änderung</th><th>Datum</th></tr></thead><tbody>';
       
       if (array_key_exists('update_article', $raw) && array_key_exists('update_media', $raw)) {
-        $output .= '<tr><td>Artikel</td><td>'.date('Y-m-d H:i:s', $raw['update_article']).'</td></tr>';
-        $output .= '<tr><td>Medienpool</td><td>'.date('Y-m-d H:i:s', $raw['update_media']).'</td></tr>';
+        $output .= '<tr><td>Artikel</td><td>'.date('d.m.Y H:i:s', $raw['update_article']).'</td></tr>';
+        $output .= '<tr><td>Medienpool</td><td>'.date('d.m.Y H:i:s', $raw['update_media']).'</td></tr>';
       }
       
-      $output .= '<tr><td>Synchronisierung mit Projekt Manager</td><td>'.$item['updatedate'].'</td></tr>';
+      $output .= '<tr><td>Synchronisierung mit Projekt Manager</td><td>'.date('d.m.Y H:i:s', $item['updatedate']).'</td></tr>';
       $output .= '</tbody></table>';
       
       $fragment = new rex_fragment();
@@ -145,9 +145,9 @@ if($domain) {
       
       // UPDATES
       $output = '<table class="table table-striped"><thead><tr><th>Letzte Änderung</th><th>Datum</th></tr></thead><tbody>';
-      $output .= '<tr><td>Artikel</td><td>'.$raw['article'][0]['updatedate'].'</td></tr>';
-      $output .= '<tr><td>Medienpool</td><td>'.$raw['media'][0]['updatedate'].'</td></tr>';
-      $output .= '<tr><td>Synchronisierung mit Projekt Manager</td><td>'.$item['updatedate'].'</td></tr>';
+      $output .= '<tr><td>Artikel</td><td>'.rex_formatter::format($raw['article'][0]['updatedate'],'date','d.m.Y H:i:s').'</td></tr>';
+      $output .= '<tr><td>Medienpool</td><td>'.rex_formatter::format($raw['media'][0]['updatedate'],'date','d.m.Y H:i:s').'</td></tr>';
+      $output .= '<tr><td>Synchronisierung mit Projekt Manager</td><td>'.rex_formatter::format($item['updatedate'],'date','d.m.Y H:i:s').'</td></tr>';
       $output .= '</tbody></table>';
       
       $fragment = new rex_fragment();
@@ -166,7 +166,7 @@ if($domain) {
         $output .= '<tr>';
         $output .= '<td>'.$login["name"].'</td>';
         $output .= '<td>'.$login["login"].'</td>';
-        $output .= '<td>'.$login["lastlogin"].'</td>';
+        $output .= '<td>'.rex_formatter::format($login["lastlogin"],'date','d.m.Y H:i:s').'</td>';
         $output .= '</tr>';
       }
       $output .= '</tbody></table>';
@@ -192,7 +192,7 @@ if($domain) {
         $output .= '<tr>';
         $output .= '<td>'.$article["name"].'</td>';
         $output .= '<td>'.$article["updateuser"].'</td>';
-        $output .= '<td>'.$article["updatedate"].'</td>';
+        $output .= '<td>'.rex_formatter::format($article["updatedate"],'date','d.m.Y H:i:s').'</td>';
         $output .= '</tr>';
       }
       $output .= '</tbody></table>';
@@ -213,7 +213,7 @@ if($domain) {
         $output .= '<tr>';
         $output .= '<td>'.$file["filename"].'</td>';
         $output .= '<td>'.$file["updateuser"].'</td>';
-        $output .= '<td>'.$file["updatedate"].'</td>';
+        $output .= '<td>'.rex_formatter::format($file["updatedate"],'date','d.m.Y H:i:s').'</td>';
         $output .= '</tr>';
       }
       $output .= '</tbody></table>';
@@ -237,7 +237,7 @@ if($domain) {
       foreach ($modules as $file) {
         $output .= '<tr>';
         $output .= '<td>'.$file["name"].'</td>';
-        $output .= '<td>'.$file["updatedate"].'</td>';
+        $output .= '<td>'.rex_formatter::format($file["updatedate"],'date','d.m.Y H:i:s').'</td>';
         $output .= '</tr>';
       }
       $output .= '</tbody></table>';

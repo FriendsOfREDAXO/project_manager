@@ -22,14 +22,14 @@ if($domain) {
       if (is_numeric($raw['validTo'])) {
         
         if ($raw['validTo'] < (time() + 2764800) ) {
-          $validTo = '<span data-color="alert-warning">'.date('Y-m-d H:i:s', $raw['validTo']).'</span>';
-          $validFrom = date('Y-m-d H:i:s', $raw['validFrom']);
+          $validTo = '<span data-color="alert-warning">'.rex_formatter::format($raw['validTo'],'date','d.m.Y H:i:s').'</span>';
+          $validFrom = rex_formatter::format($raw['validFrom'],'date','d.m.Y H:i:s');
         } else if ($raw['validTo'] < time()) {
-          $validTo = '<span data-color="alert-danger">'.date('Y-m-d H:i:s', $raw['validTo']).'</span>';
-          $validFrom = date('Y-m-d H:i:s', $raw['validFrom']);
+          $validTo = '<span data-color="alert-danger">'.rex_formatter::format($raw['validTo'],'date','d.m.Y H:i:s').'</span>';
+          $validFrom = rex_formatter::format($raw['validFrom'],'date','d.m.Y H:i:s');
         } else {
-          $validTo = date('Y-m-d H:i:s', $raw['validTo']);
-          $validFrom = date('Y-m-d H:i:s', $raw['validFrom']);
+          $validTo = rex_formatter::format($raw['validTo'],'date','d.m.Y H:i:s');
+          $validFrom = rex_formatter::format($raw['validFrom'],'date','d.m.Y H:i:s');
         }
       } else {
         $validFrom = "-";
@@ -37,7 +37,7 @@ if($domain) {
       }
            
       $output = '<table class="table table-striped"><thead><tr><th>'.$this->i18n('organisation').'</th><th>'.$this->i18n('isp').'</th><th>'. $this->i18n('project_manager_hosting_ip').'</th><th>'.$this->i18n('validFrom').'</th><th>'.$this->i18n('validTo').'</th></tr></thead><tbody>';
-      $output .= '<tr><td>'.$raw['org'].'</td><td>'.$raw['isp'].'<br />'.$raw['zip'].' '.$raw['city'].'<br />'.$raw['country'].'</td><td>'.$item['ip'].'</td><td class="project-manager rex-table-validFrom">'.$validFrom.'</td><td class="project-manager rex-table-validTo">'.$validTo.'</td></tr>';
+      $output .= '<tr><td>'.(isset($raw['org']) ? $raw['org'] : '').'</td><td>'.(isset($raw['isp']) ? $raw['isp'] : '').'<br />'.(isset($raw['zip']) ? $raw['zip'] : '').' '.(isset($raw['city']) ? $raw['city'] : '').'<br />'.(isset($raw['country']) ? $raw['country'] : '').'</td><td>'.(isset($item['ip']) ? $item['ip']: '').'</td><td class="project-manager rex-table-validFrom">'.$validFrom.'</td><td class="project-manager rex-table-validTo">'.$validTo.'</td></tr>';
       $output .= '</tbody></table>';
     }
     

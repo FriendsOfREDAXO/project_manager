@@ -90,6 +90,8 @@ $select->addOption('5.7.0', '5.7.0');
 $select->addOption('5.7.1', '5.7.1');
 $select->addOption('5.8.0', '5.8.0');
 $select->addOption('5.8.1', '5.8.1');
+$select->addOption('5.9.0', '5.9.0');
+$select->addOption('5.10.0', '5.10.0');
 $select->setSelected($this->getConfig('cms_min'));
 $n['field'] = $select->get();
 $formElements[] = $n;

@@ -68,6 +68,9 @@ if ($showlist) {
   $list->setColumnParams('name', ['page' => 'project_manager/server/projects', 'func' => 'updateinfos', 'domain' => '###domain###']);
   
   $list->setColumnLabel('createdate_psi', $this->i18n('project_manager_hosting_updatedate'));
+  $list->setColumnFormat('createdate_psi', 'custom', function ($params) {
+    return (rex_formatter::format($params['list']->getValue('createdate_psi'),'date','d.m.Y H:i:s'));
+  });
   
   // icon column (Domain hinzufügen bzw. bearbeiten)
   $thIcon = '<a href="'.$list->getUrl(['func' => 'domain_add']).'"><i class="rex-icon rex-icon-add-category"></i></a>';
@@ -142,11 +145,11 @@ if ($showlist) {
         if (is_numeric($raw['validTo'])) {
           
           if ($raw['validTo'] < (time() + 2764800) ) {
-            return '<span data-color="alert-warning">'.date('Y-m-d H:i:s', $raw['validTo']).'</span>';
+            return '<span data-color="alert-warning">'.rex_formatter::format($raw['validTo'],'date','d.m.Y H:i:s').'</span>';
           } else if ($raw['validTo'] < time()) {
-            return '<span data-color="alert-danger">'.date('Y-m-d H:i:s', $raw['validTo']).'</span>';
+            return '<span data-color="alert-danger">'.rex_formatter::format($raw['validTo'],'date','d.m.Y H:i:s').'</span>';
           } else {
-            return date('Y-m-d H:i:s', $raw['validTo']);
+            return rex_formatter::format($raw['validTo'],'date','d.m.Y H:i:s');
           }
         } else {
           return "-";

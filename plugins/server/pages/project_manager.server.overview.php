@@ -51,7 +51,6 @@ if ($func != '') {
         }
 
     } else if ($func == 'edit') {
-
     
       $yform->setValueField('text', ['api_key', $this->i18n('project_manager_server_api_key_info'), 'notice' => '<small>'.$this->i18n('api_key_notice').'</small>']);
       $yform->setValidateField('empty', ['api_key', $this->i18n('no_api_key_defined')]);
@@ -227,15 +226,16 @@ if ($showlist) {
         if (substr($raw['cms_version'], 0, 1) == 4 ) { //if REX 4.x
           if (array_key_exists('update_article', $raw) && array_key_exists('update_media', $raw)) {
             if ($raw['update_media'] > $raw['update_article']) {
-              return date('Y-m-d H:i:s', $raw['update_media']);
+              return date('d.m.Y H:i:s', $raw['update_media']);
             } else {
-              return date('Y-m-d H:i:s', $raw['update_article']);
+              return date('d.m.Y H:i:s', $raw['update_article']);
             }
           } else {
             return "-";
           }
         } else { //if REX 5.x
-          return date('Y-m-d H:i:s', strtotime($raw['article'][0]['updatedate']));
+          return date('d.m.Y H:i:s', strtotime($raw['article'][0]['updatedate']));
+          
         }
       }
     });
@@ -294,8 +294,8 @@ if ($showlist) {
         	} else {
         		return $raw['cms_version'];
         	}
-        } else if ($params['list']->getValue('cms') == '5') {       
-	        if ( $raw['cms_version'] < $cms_min) {
+        } else if ($params['list']->getValue('cms') == '5') {    
+          if (version_compare($raw['cms_version'], $cms_min) < 0 ) {
 	          return '<span data-color="alert-danger">'.$raw['cms_version'].'</span>';
 	        } else {
 	          return $raw['cms_version'];
@@ -314,7 +314,8 @@ if ($showlist) {
         if($params['list']->getValue('raw')) {
           $raw= json_decode($params['list']->getValue('raw'), true);
           $php_min = rex_config::get('project_manager/server', 'php_min');
-          if ( $raw['php_version'] < $php_min) {
+          
+          if (version_compare($raw['php_version'], $php_min) < 0 ) {
             return '<span data-color="alert-danger">'.substr($raw['php_version'],0,3).'</span>';
           } else {
             return substr($raw['php_version'],0,3);

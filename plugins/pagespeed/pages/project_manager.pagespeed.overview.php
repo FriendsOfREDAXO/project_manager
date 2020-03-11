@@ -75,6 +75,9 @@ if ($showlist) {
   $list->setColumnParams('name', ['page' => 'project_manager/server/projects', 'func' => 'updateinfos', 'domain' => '###domain###']);
   
   $list->setColumnLabel('createdate_psi', $this->i18n('project_manager_pagespeed_updatedate'));
+  $list->setColumnFormat('createdate_psi', 'custom', function ($params) {
+    return (rex_formatter::format($params['list']->getValue('createdate_psi'),'date','d.m.Y H:i:s'));
+  });
   
   // icon column (Domain hinzufügen bzw. bearbeiten)
   $thIcon = '<a href="'.$list->getUrl(['func' => 'domain_add']).'"><i class="rex-icon rex-icon-add-category"></i></a>';
@@ -116,7 +119,8 @@ if ($showlist) {
           return '<a href="http://www.'.$params['list']->getValue('domain').'/?rex-api-call=project_manager&api_key='.$params['list']->getValue('api_key').'"><span class="rex-icon fa-question"></span></a>';
     }
   });
-    $list->setColumnLayout('status', ['<th data-sorter="digit">###VALUE###</th>', '<td>###VALUE###</td>']);
+  
+  $list->setColumnLayout('status', ['<th data-sorter="digit">###VALUE###</th>', '<td>###VALUE###</td>']);
     
     
   $list->addColumn("Pagespeed", false, -1, ['<th>PageSpeed</th>', '<td data-title="psi" width="150px">###VALUE###</td>']);
