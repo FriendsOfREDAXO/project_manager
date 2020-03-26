@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 1.2.14 // 26.03.2020
+
+# Plugin: Server 1.2.8
+Version Compare umgestellt
+
+
 ## Version 1.2.12 // 26.03.2020
 
 # Plugin: Server 1.2.7
