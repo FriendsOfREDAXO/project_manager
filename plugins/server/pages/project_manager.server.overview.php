@@ -285,9 +285,18 @@ if ($showlist) {
       if($params['list']->getValue('raw')) {
         $raw= json_decode($params['list']->getValue('raw'), true);
         
-        $cms_min = rex_config::get('project_manager/server', 'cms_min');
-        $cms_4_min = rex_config::get('project_manager/server', 'cms_4_min');
-
+        if (rex_config::get('project_manager/server', 'cms_min') != "") {
+          $cms_min = rex_config::get('project_manager/server', 'cms_min');
+        } else {
+          $cms_min = '5.3.0';
+        }
+        
+        if (rex_config::get('project_manager/server', 'cms_4_min') != "") {
+          $cms_4_min = rex_config::get('project_manager/server', 'cms_4_min');
+        } else {
+          $cms_4_min = '4.7.0';
+        }
+        
         if ($params['list']->getValue('cms') == '4') {
         	if ( $raw['cms_version'] < $cms_4_min) {
         		return '<span data-color="alert-danger">'.$raw['cms_version'].'</span>';
@@ -313,7 +322,12 @@ if ($showlist) {
     $list->setColumnFormat($this->i18n('php_version'), 'custom', function ($params) {
         if($params['list']->getValue('raw')) {
           $raw= json_decode($params['list']->getValue('raw'), true);
-          $php_min = rex_config::get('project_manager/server', 'php_min');
+          
+          if (rex_config::get('project_manager/server', 'php_min') != "") {
+            $php_min = rex_config::get('project_manager/server', 'php_min');
+          } else {
+            $php_min = '5.3';
+          }
           
           if (version_compare($raw['php_version'], $php_min) < 0 ) {
             return '<span data-color="alert-danger">'.substr($raw['php_version'],0,3).'</span>';

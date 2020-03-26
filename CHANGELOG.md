@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 1.2.12 // 26.03.2020
+
+# Plugin: Server 1.2.7
+* Default Config wird nun gesetzt
+
+
 ## Version 1.2.10 // 11.03.2020
 
 # Plugin: Server 1.2.6
