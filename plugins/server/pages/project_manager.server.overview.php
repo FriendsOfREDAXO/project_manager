@@ -357,7 +357,7 @@ if ($showlist) {
             		if (in_array($addon['name'], $skip_addons)) continue;
             	}
             	
-            	if(version_compare($addon['version_current'], $addon['version_latest'] < 0)) {
+            	if(version_compare($addon['version_current'], $addon['version_latest']) < 0) {
                 
               	$skip_addon_version_config = '';
               	$skip_addon_version_config = rex_config::get('project_manager/server', 'skip_addon_version');

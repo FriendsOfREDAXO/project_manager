@@ -1,5 +1,10 @@
 # Changelog
 
+## Version 1.2.15 // 30.03.2020
+
+# Plugin: Server 1.2.9
+Bugfix Version Compare
+
 ## Version 1.2.14 // 26.03.2020
 
 # Plugin: Server 1.2.8
