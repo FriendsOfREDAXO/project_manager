@@ -13,9 +13,9 @@ project_manager_client_page_entry = Ajustes
 project_manager_client_title = Ajustes
 project_manager_client_readme = Ayuda
 project_manager_api_key_title = Cliente
-project_manager_api_key_label = 
-project_manager_api_key_notice = 
-project_manager_save = 
+project_manager_api_key_label = Clave API
+project_manager_api_key_notice = Ingrese la clave API del complemento del servidor, por ejemplo:
+project_manager_save = Guardar
 
 
-perm_general_project_manager_client[] = 
+perm_general_project_manager_client[] = project_manager_client[] - Derechos para Project Manager Client
