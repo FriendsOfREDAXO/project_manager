@@ -1,19 +1,19 @@
-project_manager_pagespeed_menu_entry = 
+project_manager_pagespeed_menu_entry = PageSpeed
 
-project_manager_pagespeed_projects = 
-project_manager_pagespeed_title = 
-project_manager_pagespeed_config = 
-project_manager_pagespeed_api_key_title = 
-project_manager_pagespeed_api_key_label = 
-project_manager_pagespeed_api_key_notice = 
-project_manager_pagespeed_domain_norows_message = 
-project_manager_cronjob_pagespeed_name = 
+project_manager_pagespeed_projects = Proyectos
+project_manager_pagespeed_title = Visión general
+project_manager_pagespeed_config = Ajustes
+project_manager_pagespeed_api_key_title = Ajustes
+project_manager_pagespeed_api_key_label = Clave de API de PageSpeed
+project_manager_pagespeed_api_key_notice = Clave API de PageSpeed, por ejemplo, <code>AIzaSyCp0Em_UPY78238es-9CZViEbq7CB_zcFBs </code>
+project_manager_pagespeed_domain_norows_message = No hay entradas disponibles.
+project_manager_cronjob_pagespeed_name = Project Manager: obtenga datos de PageSpeed
 
 
-project_manager_pagespeed_name = 
-project_manager_pagespeed_domain = 
-project_manager_pagespeed_updatedate = 
-project_manager_pagespeed_logdate = 
-project_manager_pagespeed_domain_norows_message = 
+project_manager_pagespeed_name = Nombre del proyecto
+project_manager_pagespeed_domain = Dominio
+project_manager_pagespeed_updatedate = Último cambio
+project_manager_pagespeed_logdate = Última fecha de recuperación
+project_manager_pagespeed_domain_norows_message = No hay entradas disponibles.
 
 perm_general_project_manager_pagespeed[] = 
