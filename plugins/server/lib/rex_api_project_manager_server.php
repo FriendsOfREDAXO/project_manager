@@ -20,7 +20,7 @@ class rex_api_project_manager_server extends rex_api_function
 
           // ?rex-api-call=project_manager&api_key=634de6b36b4b4fde90e09c0a9588a7df&func=delLog&t=1549014945&_=1549014940721
           
-          $url = $protocol.urlencode($domain).'?rex-api-call=project_manager&api_key='.$api_key.'&func='.$func;          
+          $url = $protocol.urlencode($domain).'/index.php?rex-api-call=project_manager&api_key='.$api_key.'&func='.$func;          
           $curl = curl_init();
           curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
@@ -47,7 +47,7 @@ class rex_api_project_manager_server extends rex_api_function
           }
           
           // reload data          
-          $url = $protocol.urlencode($domain)."?rex-api-call=project_manager&api_key=".$api_key.'&t='.$timestamp;
+          $url = $protocol.urlencode($domain)."/index.php?rex-api-call=project_manager&api_key=".$api_key.'&t='.$timestamp;
           $curl = curl_init();
           curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,

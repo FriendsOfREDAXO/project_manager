@@ -16,6 +16,7 @@ project_manager_server_php_version = PHP
 project_manager_server_cms_version = Version
 project_manager_server_syslog = Syslog
 project_manager_server_is_ssl = SSL
+project_manager_server_maintenance = Underhåll
 project_manager_server_select_project = Välj projekt
 
 #add

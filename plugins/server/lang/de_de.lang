@@ -21,6 +21,9 @@ project_manager_server_select_project = Projekt wählen
 #add
 project_manager_add_domain = Domain hinzufügen
 project_manager_server_project_added = Projekt hinzugefügt
+project_manager_server_no_name_defined = Bitte Projektnamen eingeben!
+project_manager_server_name_already_defined = Projektname existiert bereits!
+project_manager_server_no_domain_defined = Bitte Domain eingeben!
 project_manager_server_domain_already_defined = Domain existiert bereits!
 
 #del
@@ -35,7 +38,8 @@ project_manager_server_domain_info = Bitte Domain des Projekts eingeben!
 project_manager_server_api_key_info = API-Schlüssel
 project_manager_server_api_key_notice = Redaxo 5 API-Schlüssel, z.B. <code>83f15d69755585c3a825c3eccf2d654fc6578dadb7e05475</code>, bei Redaxo 4 Instanzen <code>legacy</code>
 project_manager_server_ssl = SSL Verbindung
-project_manager_server_tags = Tags 
+project_manager_server_tags = Tags
+project_manager_server_maintenance = Wartungsvertrag? 
 
 #detail
 project_manager_server_project_detail = Details

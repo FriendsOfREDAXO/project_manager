@@ -1,21 +1,22 @@
-project_manager_server_menu_entry = Proyectos
+project_manager_server_menu_entry = 
 
 #view
-project_manager_server_projects = Proyectos
+project_manager_server_projects = 
 project_manager_server_overview = 
-project_manager_server_config = Ajustes
-project_manager_server_domain = Dominio
-project_manager_server_api_key = API key
+project_manager_server_config = 
+project_manager_server_domain = 
+project_manager_server_api_key = 
 project_manager_server_cms = 
 project_manager_server_update_content = 
 
 project_manager_server_updates_necessary = 
 project_manager_server_updates = 
 project_manager_pm_client_version = 
-project_manager_server_php_version = PHP
-project_manager_server_cms_version = Versión
+project_manager_server_php_version = 
+project_manager_server_cms_version = 
 project_manager_server_syslog = 
-project_manager_server_is_ssl = SSL
+project_manager_server_is_ssl = 
+project_manager_server_maintenance = 
 project_manager_server_select_project = 
 
 #add
@@ -35,7 +36,7 @@ project_manager_server_domain_info =
 project_manager_server_api_key_info = 
 project_manager_server_api_key_notice = 
 project_manager_server_ssl = 
-project_manager_server_tags = Etiquetas
+project_manager_server_tags = 
 
 #detail
 project_manager_server_project_detail = 

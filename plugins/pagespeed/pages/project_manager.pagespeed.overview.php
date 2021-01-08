@@ -69,7 +69,8 @@ if ($showlist) {
   $list->removeColumn('createdate');
   $list->removeColumn('psi_domain');
   $list->removeColumn('psi_score_desktop');
-  $list->removeColumn('psi_score_mobile');  
+  $list->removeColumn('psi_score_mobile');
+  $list->removeColumn('maintenance');
   
   $list->setColumnLabel('name', $this->i18n('project_manager_pagespeed_name'));
   $list->setColumnParams('name', ['page' => 'project_manager/server/projects', 'func' => 'updateinfos', 'domain' => '###domain###']);

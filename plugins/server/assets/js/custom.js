@@ -16,6 +16,8 @@ $(document).ready(function(){
   $('a.callCronjob').click(function(event){
 
     var callUrl = $(this).data('cronjob');
+    var reloadUrl = $(this).attr('href');
+    
     $(this).addClass('loading');
     
     $.ajax({
@@ -23,7 +25,7 @@ $(document).ready(function(){
         type: 'GET',
         cache: false,
         success: function(data){
-          location.reload();
+          $(location).attr('href', reloadUrl).reload();              
         }
     });
   

@@ -1,19 +1,9 @@
-project_manager_pagespeed_menu_entry = PageSpeed
+documentation_menu_entry = Documentación
 
-project_manager_pagespeed_projects = Proyectos
-project_manager_pagespeed_title = Visión general
-project_manager_pagespeed_config = Ajustes
-project_manager_pagespeed_api_key_title = Ajustes
-project_manager_pagespeed_api_key_label = Clave de API de PageSpeed
-project_manager_pagespeed_api_key_notice = Clave API de PageSpeed, por ejemplo, <code>AIzaSyCp0Em_UPY78238es-9CZViEbq7CB_zcFBs </code>
-project_manager_pagespeed_domain_norows_message = No hay entradas disponibles.
-project_manager_cronjob_pagespeed_name = Project Manager: obtenga datos de PageSpeed
+documentation_navigation_title = Navegación [main_navi.md]
+documentation_content_title = Contenido [ <span id="doc-file-name">{0}</span> ]
 
+documentation_noparser = ¡No hay ningún Markdown parser disponible! Instale primero un analizador (addon markitup o textil)
 
-project_manager_pagespeed_name = Nombre del proyecto
-project_manager_pagespeed_domain = Dominio
-project_manager_pagespeed_updatedate = Último cambio
-project_manager_pagespeed_logdate = Última fecha de recuperación
-project_manager_pagespeed_domain_norows_message = No hay entradas disponibles.
-
-perm_general_project_manager_pagespeed[] = 
+documentation_navinotfound = ¡No se encontró el archivo de navegación <strong>{0}</strong>!<br>¡Este archivo es obligatorio!
+documentation_filenotfound = No se encontró el archivo <strong>{0}</ strong>. El contenido no existe (aún).<br><br>Estamos entusiasmados con la ayuda: <a href="{1}" target="_blank">{1}</a>

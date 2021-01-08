@@ -63,6 +63,7 @@ if ($showlist) {
   $list->removeColumn('domain');
   $list->removeColumn('updatedate');
   $list->removeColumn('logdate');
+  $list->removeColumn('maintenance');
   
   $list->setColumnLabel('name', $this->i18n('project_manager_hosting_name'));
   $list->setColumnParams('name', ['page' => 'project_manager/server/projects', 'func' => 'updateinfos', 'domain' => '###domain###']);

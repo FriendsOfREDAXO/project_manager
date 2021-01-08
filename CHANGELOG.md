@@ -1,9 +1,30 @@
 # Changelog
 
+## Version 1.2.16 // 08.01.2021
+
+# Plugin: Server 1.2.10
+* Link "Projektdaten aktualisieren" nach Hinzufügen falsch bug #47
+* Fehlende Übersetzung bei Fehlermeldung #46
+* Uninstall Routine der Tabellen hinzugefügt
+
+# Plugin: Client 1.0.8
+* Overview: maintenance Spalte entfernt
+* Uninstall Routine der Tabellen hinzugefügt
+ 
+# Plugin: Pagespeed 1.2.2
+* Overview: maintenance Spalte entfernt
+* Uninstall Routine der Tabellen hinzugefügt
+
+# Plugin: Hosting 1.0.6
+* Overview: maintenance Spalte entfernt
+* Uninstall Routine der Tabellen hinzugefügt
+
+
+
 ## Version 1.2.15 // 30.03.2020
 
 # Plugin: Server 1.2.9
-Bugfix Version Compare
+Bugfix Version Compare 
 
 ## Version 1.2.14 // 26.03.2020
 

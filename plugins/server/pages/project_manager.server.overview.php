@@ -22,14 +22,12 @@ if ($func != '') {
     $yform->setObjectparams('form_name', 'project_manager_form');
     
     $yform->setValueField('text', ['name', $this->i18n('project_manager_server_name'), 'notice' => '<small>'.$this->i18n('name_info').'</small>']);
-    $yform->setValidateField('empty', ['name', $this->i18n('no_name_defined')]);
-    $yform->setValidateField('unique', ['name', $this->i18n('name_already_defined')]);
+    $yform->setValidateField('empty', ['name', $this->i18n('project_manager_server_no_name_defined')]);
+    $yform->setValidateField('unique', ['name', $this->i18n('project_manager_server_name_already_defined')]);
     
-    $yform->setValueField('text', ['tags', $this->i18n('project_manager_server_tags'), '#attributes: {"data-role":"tagsinput"}']);
-
     $yform->setValueField('text', ['domain', $this->i18n('project_manager_server_domain'), 'notice' => '<small>'.$this->i18n('domain_info').'</small>']);
-    $yform->setValidateField('empty', ['domain', $this->i18n('no_domain_defined')]);
-    $yform->setValidateField('unique', ['domain', $this->i18n('domain_already_defined')]);    
+    $yform->setValidateField('empty', ['domain', $this->i18n('project_manager_server_no_domain_defined')]);
+    $yform->setValidateField('unique', ['domain', $this->i18n('project_manager_server_domain_already_defined')]);
 
     $regex = '/^(?:(?!https?:\/\/).*)$/';
     $yform->setValidateField('preg_match', array('domain', $regex, $this->i18n('domain_no_protocol')));
@@ -58,6 +56,10 @@ if ($func != '') {
       
       $yform->setValueField('select', array("cms", $this->i18n('project_manager_server_cms'),"REDAXO 5=5,REDAXO 4=4","","0","0"));
       
+      $yform->setValueField('select', array("maintenance", $this->i18n('project_manager_server_maintenance'),"Nein=0,Ja=1","","0","0"));
+      
+      $yform->setValueField('text', ['tags', $this->i18n('project_manager_server_tags'), '#attributes: {"data-role":"tagsinput"}']);
+            
         $yform->setHiddenField('data_id', $data_id);
         $yform->setActionField('db', [rex::getTable('project_manager_domain'), 'id=' . $data_id]);
         $yform->setObjectparams('main_id', $data_id);
@@ -91,6 +93,10 @@ if ($func != '') {
       //$yform->setValidateField('unique', ['api_key', $this->i18n('api_key_already_defined')]);
       
       $yform->setValueField('select', array("cms", $this->i18n('project_manager_server_cms'),"REDAXO 5=5,REDAXO 4=4","","0","0"));
+      
+      $yform->setValueField('select', array("maintenance", $this->i18n('project_manager_server_maintenance'),"Nein=0,Ja=1","","0","0"));
+      
+      $yform->setValueField('text', ['tags', $this->i18n('project_manager_server_tags'), '#attributes: {"data-role":"tagsinput"}']);
         
         $yform->setActionField('db', [rex::getTable('project_manager_domain')]);
         $yform->setObjectparams('submit_btn_label', $this->i18n('save'));
@@ -113,6 +119,8 @@ if ($func != '') {
         // API Call inkl. reponse into DB
 
     }
+    
+    
 }
 
 ###############

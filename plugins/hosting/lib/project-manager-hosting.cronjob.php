@@ -22,7 +22,7 @@ class rex_cronjob_project_manager_hosting extends rex_cronjob
         foreach($websites as $website) {
 
           // because call limit ip-api.com
-          usleep(500000); // half second     
+          usleep(800000);     
           $domain = $website['domain'];
           $ip = gethostbyname(idn_to_ascii($domain, INTL_IDNA_VARIANT_UTS46));   
           $url = 'http://ip-api.com/json/'.$ip;
