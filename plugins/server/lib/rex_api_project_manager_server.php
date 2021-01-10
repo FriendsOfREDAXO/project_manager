@@ -92,7 +92,7 @@ class rex_api_project_manager_server extends rex_api_function
         if($func == "updateData") {
           
           // reload data
-          $url = $protocol.urlencode($domain)."?rex-api-call=project_manager&api_key=".$api_key.'&t='.$timestamp;
+          $url = $protocol.urlencode($domain)."index.php?rex-api-call=project_manager&api_key=".$api_key.'&t='.$timestamp;
           $curl = curl_init();
           curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
