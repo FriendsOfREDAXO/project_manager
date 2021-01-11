@@ -210,7 +210,23 @@ if ($showlist) {
     $list->addColumn($this->i18n('domain'), '###domain###', 3);
     //$list->setColumnParams($this->i18n('domain'), ['page' => 'project_manager/server/projects', 'domain' => '###domain###']);
     $list->setColumnFormat($this->i18n('domain'), 'custom', function ($params) {
-        return '<a href="http://'.$params['list']->getValue('domain').'/" target="_blank">'.$params['list']->getValue('domain').'</a>';
+      
+      $ssl = $params['list']->getValue('is_ssl');
+      $protocol = ($ssl == 1) ? "https://" : "http://";
+
+      
+      if($params['list']->getValue('raw')) {
+        $raw= json_decode($params['list']->getValue('raw'), true);
+        if ($raw['rex_url_backend']) {
+          
+          $rex_url_backend = ' <a href="'.$protocol.$params['list']->getValue('domain').$raw['rex_url_backend'].'" title="Redaxo Backend" target="_blank">
+                                <img src="'.rex_url::pluginAssets('project_manager','server','favicon/redaxo-favicon.png').'" class="project-manager-server--redaxo-favicon" title="" alt="" />
+                               </a>';
+        }
+      }
+      
+      
+      return '<a href="'.$protocol.$params['list']->getValue('domain').'" target="_blank">'.$params['list']->getValue('domain').'</a>'. $rex_url_backend;
     });    
     
     $list->setColumnLabel('is_ssl', $this->i18n('is_ssl'));    

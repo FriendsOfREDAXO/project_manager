@@ -1,5 +1,5 @@
 package: project_manager
-version: '1.2.16'
+version: '1.3.0'
 author: 'Friends Of REDAXO'
 supportpage: https://github.com/FriendsOfREDAXO/project_manager
 
@@ -28,7 +28,7 @@ plugins:
 requires:
     redaxo: '^5.2' # benötigt mindestens REDAXO 5.2
     php:
-        version: '^7.0' # benötigt mindestens PHP 7
+        version: '>=7.0' # benötigt mindestens PHP 7
 
 # Plugins die automatisch installiert werden sollen
 #system_plugins:

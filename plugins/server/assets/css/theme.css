@@ -60,3 +60,8 @@ a.loading .fa-refresh {
 .btn-toolbar .btn.btn-project-manager-update {
   margin-bottom: 20px;
 }
+
+.project-manager-server--redaxo-favicon {
+  height: 15px;
+  margin-top: -3px;
+}

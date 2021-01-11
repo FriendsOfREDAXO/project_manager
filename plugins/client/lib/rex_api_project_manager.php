@@ -35,6 +35,7 @@ class rex_api_project_manager extends rex_api_function
               $params['rex_version']      = rex::getVersion();
               $params['cms']              = "REDAXO";
               $params['cms_version']      = rex::getVersion();
+              $params['rex_url_backend']  = rex_url::backend();
               $params['php_version']      = phpversion();
               $params['mysql_version']    = rex_sql::getServerVersion();
               $params['status']           = 1;

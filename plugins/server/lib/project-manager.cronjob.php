@@ -21,6 +21,7 @@ class rex_cronjob_project_manager_data extends rex_cronjob
             CURLOPT_TIMEOUT => 3 // seconds
         );
         foreach($websites as $website) {
+          
             $domain = $website['domain'];
             $cms = $website['cms'];
             $ssl = $website['is_ssl'];            
@@ -28,10 +29,10 @@ class rex_cronjob_project_manager_data extends rex_cronjob
             
             $timestamp = time();
             
-            $url = $protocol.urlencode($domain)."?rex-api-call=project_manager&api_key=".$website['api_key'].'&t='.$timestamp;
+            $url = $protocol.urlencode($domain)."/index.php?rex-api-call=project_manager&api_key=".$website['api_key'].'&t='.$timestamp;
             
             if ($cms == 5)
-              $url = $protocol.urlencode($domain)."?rex-api-call=project_manager&api_key=".$website['api_key'].'&t='.$timestamp;
+              $url = $protocol.urlencode($domain)."/index.php?rex-api-call=project_manager&api_key=".$website['api_key'].'&t='.$timestamp;
             
             if ($cms == 4)
               $url = $protocol.urlencode($domain)."/project_manager_client.php?rex-api-call=project_manager&api_key=".$website['api_key'].'&t='.$timestamp;
@@ -54,8 +55,8 @@ class rex_cronjob_project_manager_data extends rex_cronjob
             $json = json_decode($resp, true);     
           
             $project_manager_domain = rex_sql::factory()->setDebug(0)->getArray('SELECT * FROM ' . rex::getTable('project_manager_domain') . ' WHERE domain = ? LIMIT 1', [$domain]); 
-            
-            if(json_last_error() === JSON_ERROR_NONE && $json !== null) {
+ 
+             if(json_last_error() === JSON_ERROR_NONE && $json !== null) {
               
               if ($json['status'] == 1) {
               

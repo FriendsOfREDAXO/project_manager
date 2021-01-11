@@ -7,6 +7,8 @@ if($_GET['rex-api-call'] == "project_manager" && $_GET['api_key'] !== "") {
   $project_manager["client_version"] = "1.0.4-legacy";
   $project_manager["status"] = 1;
   
+  error_reporting(E_ALL & ~E_NOTICE);
+  
   $rex_master_file = "redaxo/include/master.inc.php";
   if(file_exists($rex_master_file)) {
     include($rex_master_file);

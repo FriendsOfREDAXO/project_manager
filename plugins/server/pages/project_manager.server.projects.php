@@ -131,6 +131,12 @@ if($domain) {
         if ($raw['debug'] == 0)
           $output .= '<tr><td>Debug Modus</td><td><i title="" class="rex-icon fa-check text-success"></i> nicht aktiv</td></tr>';
       }
+      
+      if ($raw['client_version'] >= "1.1.0") {
+        if (!empty($raw['rex_url_backend'])) 
+          $output .= '<tr><td>REDAXO Backend</td><td><a href="'.$protocol.$item['domain'].$raw['rex_url_backend'].'" target="_blank" title=""> <i class="fa fa-external-link"></i> '.$raw['rex_url_backend'].'</a></td></tr>';
+      }      
+      
       $output .= '</tbody></table>';
       
       $fragment = new rex_fragment();

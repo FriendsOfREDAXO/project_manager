@@ -1,5 +1,17 @@
 # Changelog
 
+## Version 1.3 // 11.01.2021
+
+# Plugin: Server 1.3
+* Bug: Abfrage auf Servern mit vorgeschalter index.html behoben
+* PHP Anforderungen package.yml um Version 8 erweitert
+* Listenansicht mit Redaxo Backend Link erweitert
+* Detailansicht mit Redaxo Backend Link
+
+# Plugin: Client 1.1
+* Redaxo Backend Verzeichnis wird mit übertragen
+
+
 ## Version 1.2.16 // 08.01.2021
 
 # Plugin: Server 1.2.10
