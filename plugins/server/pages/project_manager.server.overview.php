@@ -226,7 +226,7 @@ if ($showlist) {
       }
       
       
-      return '<a href="'.$protocol.$params['list']->getValue('domain').'" target="_blank">'.$params['list']->getValue('domain').'</a>'. $rex_url_backend;
+      return $rex_url_backend.' <a href="'.$protocol.$params['list']->getValue('domain').'" target="_blank">'.$params['list']->getValue('domain').'</a>';
     });    
     
     $list->setColumnLabel('is_ssl', $this->i18n('is_ssl'));    
