@@ -11,4 +11,3 @@ project_manager_config_saved = Inställningarna har sparats!
 save = Spara
 
 perm_general_project_manager[] = project_manager[] - Rättigheter
-perm_general_project_manager[config] = project_manager[config] - Konfigurationsrättigheter
