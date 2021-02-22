@@ -1,9 +1,19 @@
-documentation_menu_entry = Documentation
+project_manager_pagespeed_menu_entry = PageSpeed
 
-documentation_navigation_title = Navigation [ main_navi.md ]
-documentation_content_title = Contents [ <span id="doc-file-name">{0}</span> ]
+project_manager_pagespeed_projects = Projects
+project_manager_pagespeed_title = Overview
+project_manager_pagespeed_config = Settings
+project_manager_pagespeed_api_key_title = Settings
+project_manager_pagespeed_api_key_label = PageSpeed API key
+project_manager_pagespeed_api_key_notice = PageSpeed API key, ex. <code>AIzaSyCp0Em_UPY78238es-9CZViEbq7CB_zcFBs</code>
+project_manager_pagespeed_domain_norows_message = No entries found
+project_manager_cronjob_pagespeed_name = Project manager: get PageSpeed data
 
-documentation_noparser = No Markdown Parser available! Please install a parser first (AddOn markitup or textile)
 
-documentation_navinotfound = Navigation-File <strong>{0}</strong> not found!<br>This file is required!
-documentation_filenotfound = File <strong>{0}</strong> not found. Contents does not exist (yet). <br><br>We're happy if you want to help: <a href="{1}" target="_blank">{1}</a>
+project_manager_pagespeed_name = Project name
+project_manager_pagespeed_domain = Domain
+project_manager_pagespeed_updatedate = Last update
+project_manager_pagespeed_logdate = Last data fetch
+project_manager_pagespeed_domain_norows_message = No entries found
+
+perm_general_project_manager_pagespeed[] = project_manager_pagespeed[] - Permissions for Project Manager Pagespeed
