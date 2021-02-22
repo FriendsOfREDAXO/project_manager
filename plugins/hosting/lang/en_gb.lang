@@ -16,4 +16,4 @@ project_manager_hosting_domain_norows_message = no entries found
 project_manager_hosting_validTo = Certificate enddate
 project_manager_hosting_validFrom = Certificate startdate
 
-perm_general_project_manager_hosting[] = project_manager_hosting[] - Project Manager Hosting
+perm_general_project_manager_hosting[] = project_manager_hosting[] - Permissions for Project Manager Hosting

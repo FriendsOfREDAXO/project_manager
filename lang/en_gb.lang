@@ -11,4 +11,3 @@ project_manager_config_saved = Saved!
 save = Save
 
 perm_general_project_manager[] = project_manager[] - Perms for Project Manager
-perm_general_project_manager[config] = project_manager[config] - Perms for Project Manager-Configuration
