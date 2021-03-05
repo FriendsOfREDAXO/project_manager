@@ -391,9 +391,6 @@ if($domain) {
         $output = 'Keine Einträge vorhanden.';        
       } 
       
-      
-
-  
       $fragment = new rex_fragment();
       $fragment->setVar('class', 'info', false);
       $fragment->setVar('title', "Syslog".$icon, false);

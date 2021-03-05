@@ -1,5 +1,14 @@
 # Changelog
 
+## Version 1.3.1 // 05.03.2021
+
+# Plugin: Server 1.3.1
+* Datenbankspalte hat beim Update gefehlt 
+* Weitere Redaxo Versionen aufgenommen
+* Useragent wird beim Abruf der Domaindaten mitgegeben
+* Übersetzungen hinzugefügt (Danke an interweave-media und ynamite)
+
+
 ## Version 1.3 // 11.01.2021
 
 # Plugin: Server 1.3

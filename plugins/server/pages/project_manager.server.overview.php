@@ -49,7 +49,7 @@ if ($func != '') {
         }
 
     } else if ($func == 'edit') {
-    
+      
       $yform->setValueField('text', ['api_key', $this->i18n('project_manager_server_api_key_info'), 'notice' => '<small>'.$this->i18n('api_key_notice').'</small>']);
       $yform->setValidateField('empty', ['api_key', $this->i18n('no_api_key_defined')]);
       // $yform->setValidateField('unique', ['api_key', $this->i18n('api_key_already_defined')]);
@@ -217,8 +217,7 @@ if ($showlist) {
       
       if($params['list']->getValue('raw')) {
         $raw= json_decode($params['list']->getValue('raw'), true);
-        if ($raw['rex_url_backend']) {
-          
+        if (isset($raw['rex_url_backend'])) {          
           $rex_url_backend = ' <a href="'.$protocol.$params['list']->getValue('domain').$raw['rex_url_backend'].'" title="Redaxo Backend" target="_blank">
                                 <img src="'.rex_url::pluginAssets('project_manager','server','favicon/redaxo-favicon.png').'" class="project-manager-server--redaxo-favicon" title="" alt="" />
                                </a>';
