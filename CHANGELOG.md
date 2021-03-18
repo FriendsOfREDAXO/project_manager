@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 1.3.2 // 18.03.2021
+* Datenbankspalte hinzufügen beim Update
+
+
 ## Version 1.3.1 // 05.03.2021
 
 # Plugin: Server 1.3.1
