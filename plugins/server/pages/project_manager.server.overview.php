@@ -225,7 +225,13 @@ if ($showlist) {
       }
       
       
-      return $rex_url_backend.' <a href="'.$protocol.$params['list']->getValue('domain').'" target="_blank">'.$params['list']->getValue('domain').'</a>';
+      $return_string = '';
+      if ((isset($rex_url_backend)) && ('' !== $rex_url_backend)) {
+          $return_string .= $rex_url_backend;
+      }
+      $return_string .= ' <a href="' . $protocol . $params['list']->getValue('domain') . '" target="_blank">' . $params['list']->getValue('domain') . '</a>';
+
+      return $return_string;
     });    
     
     $list->setColumnLabel('is_ssl', $this->i18n('is_ssl'));    
