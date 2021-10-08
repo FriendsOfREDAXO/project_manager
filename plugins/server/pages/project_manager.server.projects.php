@@ -57,10 +57,21 @@ if($domain) {
             ON D.id = L.domain_id
             WHERE domain = ? ORDER BY L.id DESC LIMIT 1';
   
-  $item = rex_sql::factory()->setDebug(0)->getArray($query, [$domain])[0];
-  $raw = json_decode($item['raw'], true);
-  
-  if(is_array($raw)) {
+  try {
+      $result = rex_sql::factory()->setDebug(0)->getArray($query, [$domain]);
+  } catch (rex_sql_exception $e) {
+      rex_logger::logException($e);
+  }
+
+  if (!empty($result)){
+      $item = $result[0];
+  }
+
+  if ((isset($item)) && (null !== $item)){
+      $raw = json_decode($item['raw'], true);
+  }
+
+  if((isset($raw)) && (is_array($raw))) { 
     
     $ssl = $item['is_ssl'];
     $protocol = ($ssl == 1) ? "https://" : "http://";
