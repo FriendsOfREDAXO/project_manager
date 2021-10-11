@@ -376,12 +376,13 @@ if($domain) {
         
         $output = '';
         $syslog = $raw['syslog'];
+        $show_triangle = false;
         
         if (!is_null($syslog)) {
           
-          $icon = ' <i title="" class="rex-icon fa-exclamation-triangle"></i>';
+          
           $output .= '<table class="table table-striped"><thead><tr><th>Zeitstempel</th><th>Typ</th><th>Nachricht</th><th>Datei</th><th>Zeile</th></tr></thead><tbody>';
-       
+          
           foreach ($syslog as $entry) {
             $output .= '<tr>';
             $output .= '<td>'.$entry["timestamp"].'</td>';
@@ -390,8 +391,17 @@ if($domain) {
             $output .= '<td>'.$entry["syslog_file"].'</td>';
             $output .= '<td>'.$entry["syslog_line"].'</td>';
             $output .= '</tr>';
+            
+            if ($entry["syslog_type"] != 'Info') $show_triangle = true;
           }
           $output .= '</tbody></table>';
+          
+          if ($show_triangle == true) {
+            $icon = ' <i title="" class="rex-icon fa-exclamation-triangle"></i>';
+          } else {
+            $icon = '';
+          }
+          
           
           if ($raw['client_version'] >= "1.0.6")
             $output .= '<div class="rex-form-panel-footer"><button data-func="delLog"  data-protocol="'.$protocol.'"  data-domain="'.$item['domain'].'" data-api_key="'.$item['api_key'].'" class="btn btn-delete btn-project-manager-update" type="submit" name="del_btn"><i class="fa fa-refresh"></i> Systemlog löschen</button></div>';

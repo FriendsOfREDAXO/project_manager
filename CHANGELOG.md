@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 1.3.4 // 11.10.2021
+
+# Plugin: Server 1.3.4
+* Sysloginfo zeigt Ausrufezeichen erst ab Errorlevel "Notice"
+
+
 ## Version 1.3.3 // 11.10.2021
 
 # Plugin: Server 1.3.3

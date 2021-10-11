@@ -451,8 +451,19 @@ if ($showlist) {
     $list->setColumnFormat($this->i18n('syslog'), 'custom', function ($params) {
       if($params['list']->getValue('raw')) {
         $raw= json_decode($params['list']->getValue('raw'), true);        
-        if (array_key_exists("syslog", $raw)) {    
-          return '<span class="hidden">2</span><span class="rex-icon fa-exclamation-triangle text-danger"></span>';
+        if (array_key_exists("syslog", $raw)) {
+          
+          $syslog = $raw['syslog'];
+          $show_triangle = false;
+          
+          foreach ($syslog as $entry) {            
+            if ($entry["syslog_type"] != 'Info') $show_triangle = true;
+          }
+          if ($show_triangle == true) {
+            return '<span class="hidden">2</span><span class="rex-icon fa-exclamation-triangle text-danger"></span>';
+          } else {
+            return '<span class="hidden">1</span><span class="rex-icon fa-check text-success"></span>';            
+          }
         } else if ($params['list']->getValue('cms') == 5) {
           return '<span class="hidden">1</span><span class="rex-icon fa-check text-success"></span>';
         }else {
