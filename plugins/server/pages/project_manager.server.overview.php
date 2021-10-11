@@ -144,7 +144,7 @@ if ($showlist) {
     if ($sorttype == "") $sorttype = "ASC";
     
     $sql = 'SELECT * FROM (
-                          SELECT id, name, domain, is_ssl, status, cms, api_key FROM `rex_project_manager_domain` ORDER BY domain ASC
+                          SELECT id, name, domain, is_ssl, status, cms, api_key, maintenance FROM `rex_project_manager_domain` ORDER BY domain ASC
                           ) AS D
             LEFT JOIN (SELECT domain_id, `raw`, createdate  FROM rex_project_manager_logs WHERE id IN (SELECT MAX(id) FROM rex_project_manager_logs GROUP BY domain_id)) AS L
             ON D.id = L.domain_id
@@ -224,8 +224,14 @@ if ($showlist) {
         }
       }
       
+      $return_string = '';
+      if ((isset($rex_url_backend)) && ('' !== $rex_url_backend)) {
+        $return_string .= $rex_url_backend;
+      }
+      $return_string .= ' <a href="' . $protocol . $params['list']->getValue('domain') . '" target="_blank">' . $params['list']->getValue('domain') . '</a>';
       
-      return $rex_url_backend.' <a href="'.$protocol.$params['list']->getValue('domain').'" target="_blank">'.$params['list']->getValue('domain').'</a>';
+      return $return_string;
+    
     });    
     
     $list->setColumnLabel('is_ssl', $this->i18n('is_ssl'));    
@@ -239,6 +245,7 @@ if ($showlist) {
         return "?";
       }
     });    
+
     
     $list->addColumn($this->i18n('update_content'), false, -1, ['<th>###VALUE###</th>', '<td class="rex-table-last_content_update">###VALUE### <i class="tablesorter-icon"></i></td>']);
     $list->setColumnLabel('update_content', $this->i18n('update_content'));
@@ -291,8 +298,23 @@ if ($showlist) {
       }
     });
     
-    $list->setColumnLayout('status', ['<th data-sorter="digit">###VALUE###</th>', '<td>###VALUE###</td>']);   
-
+    $list->setColumnLayout('status', ['<th data-sorter="digit">###VALUE###</th>', '<td>###VALUE###</td>']); 
+    
+    $list->setColumnLabel('maintenance', $this->i18n('maintenance_short'));
+    $list->setColumnFormat('maintenance', 'custom', function ($params) {
+      
+      if ($params['list']->getValue('maintenance') == "1") {
+        return '<span class="hidden">1</span><span class="rex-icon fa-file-text-o text-success"></span>';
+      } else if ($params['list']->getValue('maintenance') == "0") {
+        return '<span class="hidden">0</span><span class="rex-icon fa-file-text-o  text-danger"></span>';
+      } else if ($params['list']->getValue('maintenance') == null) {
+        return '<span class="hidden">-1</span><span class="rex-icon fa-question text-warning"></span>';
+      } 
+    });
+      
+     $list->setColumnLayout('maintenance', ['<th data-sorter="digit">###VALUE###</th>', '<td>###VALUE###</td>']);   
+      
+      
     $list->addColumn($this->i18n('pm_client_version'), false, -1, ['<th>###VALUE###</th>', '<td class="rex-table-cms-version">###VALUE### <i class="tablesorter-icon"></i></td>']);
     $list->setColumnLabel($this->i18n('pm_client_version'), $this->i18n('pm_client_version'));
     $list->setColumnFormat($this->i18n('pm_client_version'), 'custom', function ($params) {

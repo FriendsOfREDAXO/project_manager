@@ -37,6 +37,7 @@ class rex_cronjob_project_manager_hosting extends rex_cronjob
             CURLOPT_SSL_VERIFYPEER => false,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_TIMEOUT => 10,
+            CURLOPT_USERAGENT      => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:86.0) Gecko/20100101 Firefox/86.0',
             CURLOPT_URL => $url
           );
           

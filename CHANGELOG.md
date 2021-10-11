@@ -1,8 +1,16 @@
 # Changelog
 
-## Version 1.3.2 // 18.03.2021
-* Datenbankspalte hinzufügen beim Update
+## Version 1.3.3 // 11.10.2021
 
+# Plugin: Server 1.3.3
+* Overview: maintenance Spalte hinzugefügt
+* Warnings bei fehlenden Client Daten abgefangen (Danke an https://github.com/omphteliba)
+
+
+## Version 1.3.2 // 18.03.2021
+
+# Plugin: Server 1.3.2
+* Datenbankspalte hat beim Update gefehlt 
 
 ## Version 1.3.1 // 05.03.2021
 
