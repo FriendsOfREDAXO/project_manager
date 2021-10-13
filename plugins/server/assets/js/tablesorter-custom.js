@@ -11,7 +11,8 @@ $(document).on('rex:ready', function (event, container) {
          0: { sorter: false},
          5: { sorter: "shortDate", dateFormat: "ddmmyyyy" },         
          6: { sorter: 'text' },
-         7: { sorter: 'text' }
+         7: { sorter: 'text' },
+         8: { sorter: 'text' }
        }
        
     });

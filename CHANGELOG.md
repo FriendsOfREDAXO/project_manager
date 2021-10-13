@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 1.3.5 // 13.10.2021
+
+# Plugin: Server 1.3.5
+* Tablesorter in Listenansicht angepasst 
+
+
 ## Version 1.3.4 // 11.10.2021
 
 # Plugin: Server 1.3.4
