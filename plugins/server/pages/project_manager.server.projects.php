@@ -297,7 +297,7 @@ if($domain) {
         		continue;
         	}
         }
-
+        
         if(rex_string::versionCompare($value['version_current'], $value['version_latest'], '<')) {
           
             $skip_addon_version_config = rex_config::get('project_manager/server', 'skip_addon_version');

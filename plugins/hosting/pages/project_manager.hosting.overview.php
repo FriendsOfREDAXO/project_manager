@@ -13,15 +13,16 @@ $csrf = rex_csrf_token::factory('project_manager');
 ###############
 if ($showlist) {
 
-  $sql = 'SELECT * FROM (SELECT * FROM  '. rex::getTable('project_manager_domain') . ' ORDER BY domain ASC) AS D
-					LEFT JOIN (
-					  					SELECT  status as status_hosting, createdate as createdate_hosting, domain, ip, raw
-					  					FROM ' . rex::getTable('project_manager_domain_hosting') . '
-										 ) as H
-					ON D.domain = H.domain
+  $sql = 'SELECT * FROM (
+              SELECT * FROM  '. rex::getTable('project_manager_domain') . ' as X  ORDER BY name ASC 
+          ) AS D
+          LEFT JOIN (
+                        SELECT  status as status_hosting, createdate as createdate_hosting, domain as hostingdomain, ip, raw
+                        FROM ' . rex::getTable('project_manager_domain_hosting') . '
+              ) as H
+          ON D.domain = H.hostingdomain
           GROUP by D.domain
-          ORDER BY name ASC
-          ';
+          ORDER BY name ASC';
   
   $items = rex_sql::factory()->getArray($sql);
   
@@ -61,6 +62,7 @@ if ($showlist) {
   $list->removeColumn('http_code');
   $list->removeColumn('raw');
   $list->removeColumn('domain');
+  $list->removeColumn('hostingdomain');
   $list->removeColumn('updatedate');
   $list->removeColumn('logdate');
   $list->removeColumn('maintenance');

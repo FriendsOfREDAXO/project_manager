@@ -17,6 +17,11 @@ project_manager_server_cms_version = Version
 project_manager_server_syslog = Syslog
 project_manager_server_is_ssl = SSL
 project_manager_server_select_project = Projekt wählen
+project_manager_server_syslog_code_1 = Keine Syslog Einträge
+project_manager_server_syslog_code_2 = Syslog Einträge vorhanden
+project_manager_server_status_code_0 = Falscher API-Schlüssel
+project_manager_server_status_code_1 = Status Ok
+project_manager_server_status_code_minus_1 = Abruf fehlerhaft
 
 #add
 project_manager_add_domain = Domain hinzufügen

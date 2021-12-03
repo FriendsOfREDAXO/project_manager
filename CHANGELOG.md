@@ -1,5 +1,14 @@
 # Changelog
 
+## Version 1.3.6 // 03.12.2021
+
+# Plugin: Hosting 1.0.7
+* Listenansicht Redaxo 5.13 Anpassungen
+
+# Plugin: Pagespeed 1.2.3
+* Listenansicht Redaxo 5.13 Anpassungen
+
+
 ## Version 1.3.5 // 13.10.2021
 
 # Plugin: Server 1.3.5

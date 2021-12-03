@@ -12,19 +12,15 @@ $csrf = rex_csrf_token::factory('project_manager');
 ###
 ###############
 if ($showlist) {
-					
-//   $sql = 'SELECT * FROM (SELECT * FROM  '. rex::getTable('project_manager_domain') . ' ORDER BY domain) AS D
-// 					LEFT JOIN (
-//                    SELECT domain, MAX(score_desktop) AS psi_score_desktop, MAX(score_mobile) AS psi_score_mobile FROM ' . rex::getTable('project_manager_domain_psi') . '
-// 					WHERE domain IN (SELECT domain FROM ' . rex::getTable('project_manager_domain_psi') . ' GROUP BY domain)) as PSI
-// 			ON D.domain = PSI.domain
-// 					ORDER BY D.domain';
-	  $sql = 'SELECT * FROM (SELECT * FROM  '. rex::getTable('project_manager_domain') . ' ORDER BY domain ASC) AS D
+
+	  $sql = 'SELECT * FROM (
+              SELECT * FROM  '. rex::getTable('project_manager_domain') . ' as X ORDER BY name ASC
+            ) AS D
 						LEFT JOIN (
-						  					SELECT status as status_psi, createdate as createdate_psi, domain, score_desktop AS psi_score_desktop, score_mobile AS psi_score_mobile
+						  					SELECT status as status_psi, createdate as createdate_psi, domain as psidomain, score_desktop AS psi_score_desktop, score_mobile AS psi_score_mobile
 						  					FROM ' . rex::getTable('project_manager_domain_psi') . '
 											 ) as PSI
-						ON D.domain = PSI.domain
+						ON D.domain = PSI.psidomain
             GROUP by D.domain
             ORDER BY name ASC
             ';
@@ -65,6 +61,7 @@ if ($showlist) {
   $list->removeColumn('http_code');
   $list->removeColumn('is_ssl');
   $list->removeColumn('domain');
+  $list->removeColumn('psidomain');
   $list->removeColumn('updatedate');
   $list->removeColumn('createdate');
   $list->removeColumn('psi_domain');

@@ -274,13 +274,13 @@ if ($showlist) {
     $list->setColumnLabel('status', $this->i18n('status'));
     $list->setColumnFormat('status', 'custom', function ($params) {
       if ($params['list']->getValue('status') == "1") {
-        return '<span class="hidden">1</span><span class="rex-icon fa-check text-success"></span>';
+        return '<span class="hidden">1</span><span class="rex-icon fa-check text-success" title="'.$this->i18n('project_manager_server_status_code_1').'"></span>';
       } else if ($params['list']->getValue('status') == "0") {
-        return '<span class="hidden">2</span><span class="rex-icon fa-question text-warning"></span>';
+        return '<span class="hidden">2</span><span class="rex-icon fa-question text-warning" title="'.$this->i18n('project_manager_server_status_code_0').'"></span>';
       } else if ($params['list']->getValue('status') == "-1") {
-        return '<span class="hidden">3</span><span class="rex-icon fa-exclamation-triangle text-danger"></span>';
+        return '<span class="hidden">3</span><span class="rex-icon fa-exclamation-triangle text-danger" title="'.$this->i18n('project_manager_server_status_code_minus_1').'"></span>';
       } else if ($params['list']->getValue('status') == "2") {
-        return '<span class="hidden">3</span><span class="rex-icon fa-arrow-right text-danger"></span>';
+        return '<span class="hidden">3</span><span class="rex-icon fa-arrow-right text-danger" title="'.$this->i18n('project_manager_server_status_code_2').'"></span>';
       } else {
         
         $api_key = '';
@@ -460,12 +460,12 @@ if ($showlist) {
             if ($entry["syslog_type"] != 'Info') $show_triangle = true;
           }
           if ($show_triangle == true) {
-            return '<span class="hidden">2</span><span class="rex-icon fa-exclamation-triangle text-danger"></span>';
+            return '<span class="hidden">2</span><span class="rex-icon fa-exclamation-triangle text-danger" title="'.$this->i18n('project_manager_server_syslog_code_2').'"></span>';
           } else {
-            return '<span class="hidden">1</span><span class="rex-icon fa-check text-success"></span>';            
+            return '<span class="hidden">1</span><span class="rex-icon fa-check text-success" title="'.$this->i18n('project_manager_server_syslog_code_1').'"></span>';            
           }
         } else if ($params['list']->getValue('cms') == 5) {
-          return '<span class="hidden">1</span><span class="rex-icon fa-check text-success"></span>';
+          return '<span class="hidden">1</span><span class="rex-icon fa-check text-success" title="'.$this->i18n('project_manager_server_syslog_code_1').'"></span>';
         }else {
           return '-';
         }

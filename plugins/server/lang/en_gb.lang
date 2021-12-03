@@ -17,6 +17,11 @@ project_manager_server_cms_version = Version
 project_manager_server_syslog = Syslog
 project_manager_server_is_ssl = SSL
 project_manager_server_select_project = Choose project
+project_manager_server_syslog_code_1 = No Syslog entries
+project_manager_server_syslog_code_2 = Syslog entries found
+project_manager_server_status_code_0 = Wrong API key
+project_manager_server_status_code_1 = Status Ok
+project_manager_server_status_code_minus_1 = JSON Error
 
 #add
 project_manager_add_domain = Add domain
