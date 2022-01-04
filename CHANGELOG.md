@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 1.3.7 // 04.01.2022
+
+# Plugin: Server 1.3.7
+* Favicon Cronjob an Google API angepasst 
+
+
 ## Version 1.3.6 // 03.12.2021
 
 # Plugin: Server 1.3.6

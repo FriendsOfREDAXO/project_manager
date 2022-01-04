@@ -150,7 +150,6 @@ if ($showlist) {
             ON D.id = L.domain_id
             ORDER BY '.$sort.' '.$sorttype.'';
 
-
     $list = rex_list::factory($sql, 2000);
     $list->setColumnFormat('id', 'Id');
     $list->addParam('page', 'project_manager/server/overview');
@@ -184,7 +183,7 @@ if ($showlist) {
     	if (file_exists($this->getAssetsPath('favicon/'.$params['list']->getValue('domain').'.png'))) {
     		
     		$filename = $this->getAssetsUrl('favicon/'.$params['list']->getValue('domain').'.png');
-    		return '<a href="http://'.$params['list']->getValue('domain').'/" target="_blank"><img src="'.$filename.'" /></a>';
+    		return '<a href="http://'.$params['list']->getValue('domain').'/" target="_blank"><img src="'.$filename.'" width="16"/></a>';
     	} else {
     		return '<a href="http://'.$params['list']->getValue('domain').'/" target="_blank"><i class="fa fa-sitemap"></i></a>';
     	}  	
@@ -217,6 +216,7 @@ if ($showlist) {
       
       if($params['list']->getValue('raw')) {
         $raw= json_decode($params['list']->getValue('raw'), true);
+        
         if (isset($raw['rex_url_backend'])) {          
           $rex_url_backend = ' <a href="'.$protocol.$params['list']->getValue('domain').$raw['rex_url_backend'].'" title="Redaxo Backend" target="_blank">
                                 <img src="'.rex_url::pluginAssets('project_manager','server','favicon/redaxo-favicon.png').'" class="project-manager-server--redaxo-favicon" title="" alt="" />
