@@ -120,10 +120,14 @@ class rex_cronjob_project_manager_favicon extends rex_cronjob
             
             if ($found == FALSE) return 'FALSE';
             
+            
           }
           
           
         }
+        
+        
+        
         
         
         // 2. CHECK DIRECTLY FOR favicon.ico OR favicon.png FILE

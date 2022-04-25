@@ -1,5 +1,13 @@
 # Changelog
 
+
+## Version 1.3.8 // 25.04.2022
+
+# Plugin: Server 1.3.8
+* YFORM 4 Kompatibel 
+
+
+
 ## Version 1.3.7 // 04.01.2022
 
 # Plugin: Server 1.3.7

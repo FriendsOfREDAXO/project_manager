@@ -4,12 +4,12 @@ $message = '';
 if (rex_post('btn_save', 'string') != '') {
   $this->setConfig(rex_post('config', [
     ['php_min', 'string'],
-  	['cms_4_min', 'string'],
+    ['cms_4_min', 'string'],
     ['cms_min', 'string'],
     ['php_min_color', 'string'],
     ['cms_min_color', 'string'],
-  	['skip_addon', 'string'],    
-  	['skip_addon_version', 'string'],
+    ['skip_addon', 'string'],
+    ['skip_addon_version', 'string'],
   ]));
   
   $message = $this->i18n('project_manager_server_config_saved_successful');
@@ -40,6 +40,8 @@ $select->addOption('7.2', '7.2');
 $select->addOption('7.3', '7.3');
 $select->addOption('7.4', '7.4');
 $select->addOption('8.0', '8.0');
+$select->addOption('8.1', '8.1');
+$select->addOption('8.2', '8.2');
 $select->setSelected($this->getConfig('php_min'));
 $n['field'] = $select->get();
 $formElements[] = $n;
@@ -97,6 +99,10 @@ $select->addOption('5.11.1', '5.11.1');
 $select->addOption('5.11.2', '5.11.2');
 $select->addOption('5.12.0', '5.12.0');
 $select->addOption('5.12.1', '5.12.1');
+$select->addOption('5.13.0', '5.13.0');
+$select->addOption('5.13.1', '5.13.1');
+$select->addOption('5.13.2', '5.13.2');
+$select->addOption('5.14.0', '5.14.0');
 
 $select->setSelected($this->getConfig('cms_min'));
 $n['field'] = $select->get();

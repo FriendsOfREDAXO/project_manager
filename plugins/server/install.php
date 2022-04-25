@@ -21,7 +21,7 @@ rex_sql_table::get(rex::getTable('project_manager_logs'))
     ->ensurePrimaryIdColumn()
     ->ensureColumn(new rex_sql_column('domain_id', 'int(10) unsigned', false))
     ->ensureForeignKey(new rex_sql_foreign_key('domain_id', rex::getTable('project_manager_domain'), ['domain_id' => 'id']))
-    ->ensureColumn(new rex_sql_column('raw', 'text'))
+    ->ensureColumn(new rex_sql_column('raw', 'longtext'))
     ->ensureColumn(new rex_sql_column('createdate', 'timestamp', false, '0000-00-00 00:00:00', 'default CURRENT_TIMESTAMP'))
     ->ensure();
     

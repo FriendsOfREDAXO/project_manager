@@ -32,7 +32,7 @@ if ($func != '') {
     $regex = '/^(?:(?!https?:\/\/).*)$/';
     $yform->setValidateField('preg_match', array('domain', $regex, $this->i18n('domain_no_protocol')));
     
-    $yform->setValueField('select', array("is_ssl", $this->i18n('project_manager_server_ssl'),"Ja=1,Nein=0","","0","0"));
+    $yform->setValueField('choice', array("is_ssl", $this->i18n('project_manager_server_ssl'),"Ja=1,Nein=0","","0","0"));
     
     $yform->setValueField('hidden', array("createdate", date ('Y-m-d H:i:s', time())));
 
@@ -54,9 +54,9 @@ if ($func != '') {
       $yform->setValidateField('empty', ['api_key', $this->i18n('no_api_key_defined')]);
       // $yform->setValidateField('unique', ['api_key', $this->i18n('api_key_already_defined')]);
       
-      $yform->setValueField('select', array("cms", $this->i18n('project_manager_server_cms'),"REDAXO 5=5,REDAXO 4=4","","0","0"));
+      $yform->setValueField('choice', array("cms", $this->i18n('project_manager_server_cms'),"REDAXO 5=5,REDAXO 4=4","","0","0"));
       
-      $yform->setValueField('select', array("maintenance", $this->i18n('project_manager_server_maintenance'),"Nein=0,Ja=1","","0","0"));
+      $yform->setValueField('choice', array("maintenance", $this->i18n('project_manager_server_maintenance'),"Nein=0,Ja=1","","0","0"));
       
       $yform->setValueField('text', ['tags', $this->i18n('project_manager_server_tags'), '#attributes: {"data-role":"tagsinput"}']);
             
@@ -92,9 +92,9 @@ if ($func != '') {
       $yform->setValidateField('empty', ['api_key', $this->i18n('no_api_key_defined')]);
       //$yform->setValidateField('unique', ['api_key', $this->i18n('api_key_already_defined')]);
       
-      $yform->setValueField('select', array("cms", $this->i18n('project_manager_server_cms'),"REDAXO 5=5,REDAXO 4=4","","0","0"));
+      $yform->setValueField('choice', array("cms", $this->i18n('project_manager_server_cms'),"REDAXO 5=5,REDAXO 4=4","","0","0"));
       
-      $yform->setValueField('select', array("maintenance", $this->i18n('project_manager_server_maintenance'),"Nein=0,Ja=1","","0","0"));
+      $yform->setValueField('choice', array("maintenance", $this->i18n('project_manager_server_maintenance'),"Nein=0,Ja=1","","0","0"));
       
       $yform->setValueField('text', ['tags', $this->i18n('project_manager_server_tags'), '#attributes: {"data-role":"tagsinput"}']);
         
