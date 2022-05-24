@@ -22,6 +22,10 @@ project_manager_server_syslog_code_2 = Syslog Einträge vorhanden
 project_manager_server_status_code_0 = Falscher API-Schlüssel
 project_manager_server_status_code_1 = Status Ok
 project_manager_server_status_code_minus_1 = Abruf fehlerhaft
+project_manager_server_maintenance_0 = Kein Wartungsvertrag
+project_manager_server_maintenance_1 = Wartungsvertrag vorhanden
+project_manager_server_maintenance_2 = Keine Info über Wartungsvertrag
+
 
 #add
 project_manager_add_domain = Domain hinzufügen
@@ -42,6 +46,8 @@ project_manager_server_name_info = Bitte Namen des Projekts eingeben!
 project_manager_server_domain_info = Bitte Domain des Projekts eingeben!
 project_manager_server_api_key_info = API-Schlüssel
 project_manager_server_api_key_notice = Redaxo 5 API-Schlüssel, z.B. <code>83f15d69755585c3a825c3eccf2d654fc6578dadb7e05475</code>, bei Redaxo 4 Instanzen <code>legacy</code>
+project_manager_server_param = Parameter
+project_manager_server_param_notice = Optionale Paramenter, z.B. <code>param1=value1,param2=value2</code>
 project_manager_server_ssl = SSL Verbindung
 project_manager_server_tags = Tags
 project_manager_server_maintenance = Wartungsvertrag?

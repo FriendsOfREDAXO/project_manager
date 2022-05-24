@@ -37,6 +37,7 @@ $(document).ready(function(){
     var protocol = $(this).data('protocol');
     var domain = $(this).data('domain');
     var api_key = $(this).data('api_key');
+    var param = $(this).data('param');
     var func = $(this).data('func');
     var confirmText = '';
     
@@ -48,7 +49,7 @@ $(document).ready(function(){
         var domain = $(this).data('domain');
         var api_key = $(this).data('api_key');
         var func = $(this).data('func');    
-        var callUrl = "/?rex-api-call=project_manager_server&func="+func+"&protocol="+protocol+"&domain="+domain+"&api_key="+api_key;
+        var callUrl = "/?rex-api-call=project_manager_server&func="+func+"&protocol="+protocol+"&domain="+domain+"&api_key="+api_key+"&param="+param;
         $(this).addClass('loading');
         
         $.ajax({

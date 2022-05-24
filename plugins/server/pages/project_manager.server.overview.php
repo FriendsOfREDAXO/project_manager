@@ -54,6 +54,8 @@ if ($func != '') {
       $yform->setValidateField('empty', ['api_key', $this->i18n('no_api_key_defined')]);
       // $yform->setValidateField('unique', ['api_key', $this->i18n('api_key_already_defined')]);
       
+      $yform->setValueField('text', ['param', $this->i18n('project_manager_server_param'), 'notice' => '<small>'.$this->i18n('param_notice').'</small>']);
+      
       $yform->setValueField('choice', array("cms", $this->i18n('project_manager_server_cms'),"REDAXO 5=5,REDAXO 4=4","","0","0"));
       
       $yform->setValueField('choice', array("maintenance", $this->i18n('project_manager_server_maintenance'),"Nein=0,Ja=1","","0","0"));
@@ -144,7 +146,7 @@ if ($showlist) {
     if ($sorttype == "") $sorttype = "ASC";
     
     $sql = 'SELECT * FROM (
-                          SELECT id, name, domain, is_ssl, status, cms, api_key, maintenance FROM `rex_project_manager_domain` ORDER BY domain ASC
+                          SELECT id, name, domain, is_ssl, status, cms, api_key, param, maintenance FROM `rex_project_manager_domain` ORDER BY domain ASC
                           ) AS D
             LEFT JOIN (SELECT domain_id, `raw`, createdate  FROM rex_project_manager_logs WHERE id IN (SELECT MAX(id) FROM rex_project_manager_logs GROUP BY domain_id)) AS L
             ON D.id = L.domain_id
@@ -195,6 +197,7 @@ if ($showlist) {
     $list->removeColumn('id');
     $list->removeColumn('description');
     $list->removeColumn('api_key');
+    $list->removeColumn('param');
     $list->removeColumn('domain_id');
     $list->removeColumn('raw');
     $list->removeColumn('domain');
@@ -286,14 +289,21 @@ if ($showlist) {
         $api_key = '';
         if ($params['list']->getValue('api_key') != "") $api_key = $params['list']->getValue('api_key');
         
+        $param = '';
+        if ($params['list']->getValue('param') != "") {
+          $param = $params['list']->getValue('param');
+          $param = explode(',', $param);
+          $param = '&'.implode('&', $param);
+        }
+        
       	if ($params['list']->getValue('is_ssl') == 1) {
       	     
-      	  return '<a href="https://www.'.$params['list']->getValue('domain').'/?rex-api-call=project_manager&api_key='.$api_key.'"><span class="rex-icon fa-question"></span></a>';
+      	  return '<a href="https://www.'.$params['list']->getValue('domain').'/?rex-api-call=project_manager&api_key='.$api_key.$param.'"><span class="rex-icon fa-question"></span></a>';
       	}
       	
         if ($params['list']->getValue('is_ssl') == 0) {
           
-          return '<a href="http://www.'.$params['list']->getValue('domain').'/?rex-api-call=project_manager&api_key='.$api_key.'"><span class="rex-icon fa-question"></span></a>';
+          return '<a href="http://www.'.$params['list']->getValue('domain').'/?rex-api-call=project_manager&api_key='.$api_key.$param.'"><span class="rex-icon fa-question"></span></a>';
         }
       }
     });
@@ -304,11 +314,11 @@ if ($showlist) {
     $list->setColumnFormat('maintenance', 'custom', function ($params) {
       
       if ($params['list']->getValue('maintenance') == "1") {
-        return '<span class="hidden">1</span><span class="rex-icon fa-file-text-o text-success"></span>';
+        return '<span class="hidden">1</span><span class="rex-icon fa-file-text-o text-success" title="'.$this->i18n('project_manager_server_maintenance_1').'"></span>';
       } else if ($params['list']->getValue('maintenance') == "0") {
-        return '<span class="hidden">0</span><span class="rex-icon fa-file-text-o  text-danger"></span>';
+        return '<span class="hidden">0</span><span class="rex-icon fa-file-text-o  text-danger" title="'.$this->i18n('project_manager_server_maintenance_0').'"></span>';
       } else if ($params['list']->getValue('maintenance') == null) {
-        return '<span class="hidden">-1</span><span class="rex-icon fa-question text-warning"></span>';
+        return '<span class="hidden">-1</span><span class="rex-icon fa-question text-warning"title="'.$this->i18n('project_manager_server_maintenance_2').'"></span>';
       } 
     });
       

@@ -13,14 +13,17 @@ class rex_api_project_manager_server extends rex_api_function
         $func = rex_request('func','string');
         $protocol = rex_request('protocol','string');
         $domain = rex_request('domain','string');
+        $param = rex_request('param','string');        // &param param1=value1,param2=value2
+        $param = explode(',', $param);
+        $param = '&'.implode('&', $param);
         $api_key = rex_request('api_key','string');
         $timestamp = time();
-
+        
         if($func == "delLog") {
 
           // ?rex-api-call=project_manager&api_key=634de6b36b4b4fde90e09c0a9588a7df&func=delLog&t=1549014945&_=1549014940721
           
-          $url = $protocol.urlencode($domain).'/index.php?rex-api-call=project_manager&api_key='.$api_key.'&func='.$func;          
+          $url = $protocol.urlencode($domain).'/index.php?rex-api-call=project_manager&api_key='.$api_key.'&func='.$func.$param;          
           $curl = curl_init();
           curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
@@ -47,7 +50,7 @@ class rex_api_project_manager_server extends rex_api_function
           }
           
           // reload data          
-          $url = $protocol.urlencode($domain)."/index.php?rex-api-call=project_manager&api_key=".$api_key.'&t='.$timestamp;
+          $url = $protocol.urlencode($domain)."/index.php?rex-api-call=project_manager&api_key=".$api_key.'&t='.$timestamp.$param;
           $curl = curl_init();
           curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
@@ -60,8 +63,8 @@ class rex_api_project_manager_server extends rex_api_function
             CURLOPT_SSL_VERIFYPEER => false,
             CURLOPT_TIMEOUT => 3,
             CURLOPT_URL => $url
-          ));
-          
+          ));          
+
           $response = curl_exec($curl);
           $resp = $response;
           $json = json_decode($resp, true);
@@ -92,7 +95,7 @@ class rex_api_project_manager_server extends rex_api_function
         if($func == "updateData") {
           
           // reload data
-          $url = $protocol.urlencode($domain)."/index.php?rex-api-call=project_manager&api_key=".$api_key.'&t='.$timestamp;
+          $url = $protocol.urlencode($domain)."/index.php?rex-api-call=project_manager&api_key=".$api_key.'&t='.$timestamp.$param;
           $curl = curl_init();
           curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,

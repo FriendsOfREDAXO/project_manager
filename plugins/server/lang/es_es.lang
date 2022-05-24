@@ -35,6 +35,8 @@ project_manager_server_name_info =
 project_manager_server_domain_info = 
 project_manager_server_api_key_info = 
 project_manager_server_api_key_notice = 
+project_manager_server_param = 
+project_manager_server_param_notice = 
 project_manager_server_ssl = 
 project_manager_server_tags = 
 

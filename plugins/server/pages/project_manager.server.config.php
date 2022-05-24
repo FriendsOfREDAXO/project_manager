@@ -102,6 +102,8 @@ $select->addOption('5.12.1', '5.12.1');
 $select->addOption('5.13.0', '5.13.0');
 $select->addOption('5.13.1', '5.13.1');
 $select->addOption('5.13.2', '5.13.2');
+$select->addOption('5.13.3', '5.13.3');
+$select->addOption('5.13.4', '5.13.4');
 $select->addOption('5.14.0', '5.14.0');
 
 $select->setSelected($this->getConfig('cms_min'));

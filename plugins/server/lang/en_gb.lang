@@ -42,6 +42,8 @@ project_manager_server_name_info = Please enter a project name
 project_manager_server_domain_info = Please enter a project domain
 project_manager_server_api_key_info = API key
 project_manager_server_api_key_notice = Redaxo 5 API key, ex.: <code>83f15d69755585c3a825c3eccf2d654fc6578dadb7e05475</code>, for Redaxo 4 instances <code>legacy</code>
+project_manager_server_param = Parameter
+project_manager_server_param_notice = Paramenter, ex.: <code>param1=value1,param2=value2</code>
 project_manager_server_ssl = SSL connection
 project_manager_server_tags = Tags
 project_manager_server_maintenance = Maintenance contract?

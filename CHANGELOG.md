@@ -1,5 +1,21 @@
 # Changelog
 
+## Version 1.4.0 // 24.05.2022
+
+# Plugin: Server 1.4.0
+* Parameter Übergabe bei API Aufruf zum Client
+* Weitere Redaxo Versionen aufgenommen
+* Maintenance / Wartungsvertrag Info in Listenansicht / Detailansicht
+
+# Plugin: Pagespeed 1.2.4
+* Favicon Breite Listenansicht angepasst
+* Felder Listenansicht angepasst
+
+# Plugin: Hosting 1.0.8
+* Favicon Breite Listenansicht angepasst
+* Felder Listenansicht angepasst
+
+
 
 ## Version 1.3.8 // 25.04.2022
 

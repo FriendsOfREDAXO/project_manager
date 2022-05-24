@@ -66,6 +66,7 @@ if ($showlist) {
   $list->removeColumn('updatedate');
   $list->removeColumn('logdate');
   $list->removeColumn('maintenance');
+  $list->removeColumn('param');
   
   $list->setColumnLabel('name', $this->i18n('project_manager_hosting_name'));
   $list->setColumnParams('name', ['page' => 'project_manager/server/projects', 'func' => 'updateinfos', 'domain' => '###domain###']);
@@ -84,7 +85,7 @@ if ($showlist) {
       $filename = '';
       if (file_exists(rex_plugin::get('project_manager', 'server')->getAssetsPath('favicon/'.$params['list']->getValue('domain').'.png'))) {
         $filename = rex_plugin::get('project_manager', 'server')->getAssetsUrl('favicon/'.$params['list']->getValue('domain').'.png');
-        return '<a href="http://'.$params['list']->getValue('domain').'/" target="_blank"><img src="'.$filename.'" /></a>';
+        return '<a href="http://'.$params['list']->getValue('domain').'/" target="_blank"><img src="'.$filename.'" width="16" /></a>';
       } else {
         return '<a href="http://'.$params['list']->getValue('domain').'/" target="_blank"><i class="fa fa-sitemap"></i></a>';
       }

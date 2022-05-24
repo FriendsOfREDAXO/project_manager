@@ -37,6 +37,8 @@ project_manager_server_name_info = Vänligen ange projektets namn!
 project_manager_server_domain_info = Vänligen ange projektets domän!
 project_manager_server_api_key_info = API-nyckel
 project_manager_server_api_key_notice = Redaxo 5 API-nyckel, t.ex. <code> 83f15d69755585c3a825c3eccf2d654fc6578dadb7e05475 </ code>, för Redaxo 4 instanser <code>legacy </ code>
+project_manager_server_param = Parameter
+project_manager_server_param_notice = Paramenter, t.ex. <code>param1=value1,param2=value2</code>
 project_manager_server_ssl = SSL förbindelse
 project_manager_server_tags = Tags
 project_manager_server_maintenance = Underhåll

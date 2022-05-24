@@ -78,7 +78,7 @@ if($domain) {
     $protocol = ($ssl == 1) ? "https://" : "http://";
     
     $refresh = '';
-    $refresh = '<div class="btn-toolbar"><button data-func="updateData"  data-protocol="'.$protocol.'"  data-domain="'.$item['domain'].'" data-api_key="'.$item['api_key'].'" class="btn btn-save btn-project-manager-update pull-right" type="submit" name="del_btn"><i class="fa fa-refresh"></i> Projekt Aktualisieren</button></div>';
+    $refresh = '<div class="btn-toolbar"><button data-func="updateData"  data-protocol="'.$protocol.'"  data-domain="'.$item['domain'].'" data-api_key="'.$item['api_key'].'" data-param="'.$item['param'].'" class="btn btn-save btn-project-manager-update pull-right" type="submit" name="del_btn"><i class="fa fa-refresh"></i> Projekt Aktualisieren</button></div>';
     
     echo $refresh;
     
@@ -86,9 +86,20 @@ if($domain) {
       $content0 = '';
       
       // VERSIONS
-      $output = '<table class="table table-striped"><thead><tr><th>Version</th><th>Version</th></tr></thead><tbody>';
+      $output = '<table class="table table-striped"><thead><tr><th>Information</th><th>Version / Status</th></tr></thead><tbody>';
       $output .= '<tr><td>Projekt Manager Version</td><td>'.$raw['pm_version'].'</td></tr>';
       $output .= '<tr><td>Projekt Manager Client Version</td><td>'.$raw['client_version'].'</td></tr>';
+      
+      if ($item['status'] == "1") {
+        $output .= '<tr><td>Projekt Manager Client Abruf</td><td><span class="hidden">1</span><span class="rex-icon fa-check text-success" title="'.$this->i18n('project_manager_server_status_code_1').'"></span> '.$this->i18n('project_manager_server_status_code_1').'</td></tr>';
+      } else if ($item['status'] == "0") {
+        $output .= '<tr><td>Projekt Manager Client Abruf</td><td><span class="hidden">2</span><span class="rex-icon fa-question text-warning" title="'.$this->i18n('project_manager_server_status_code_0').'"></span> '.$this->i18n('project_manager_server_status_code_0').'</td></tr>';
+      } else if ($item['status'] == "-1") {
+        $output .= '<tr><td>Projekt Manager Client Abruf</td><td><span class="hidden">3</span><span class="rex-icon fa-exclamation-triangle text-danger" title="'.$this->i18n('project_manager_server_status_code_minus_1').'"></span> '.$this->i18n('project_manager_server_status_code_minus_1').'</td></tr>';
+      } else if ($item['status'] == "2") {
+        $output .= '<tr><td>Projekt Manager Client Abruf</td><td><span class="hidden">3</span><span class="rex-icon fa-arrow-right text-danger" title="'.$this->i18n('project_manager_server_status_code_2').'"></span> '.$this->i18n('project_manager_server_status_code_2').'</td></tr>';
+      }
+      
       $output .= '<tr><td>REDAXO Version</td><td>'.$raw['rex_version'].'</td></tr>';
       $output .= '<tr><td>PHP Version</td><td>'.$raw['php_version'].'</td></tr>';
       $output .= '<tr><td>MySQL Version</td><td>'.$raw['mysql_version'].'</td></tr>';
@@ -96,7 +107,7 @@ if($domain) {
   
       $fragment = new rex_fragment();
       $fragment->setVar('class', 'danger', false);
-      $fragment->setVar('title', "Versionen", false);
+      $fragment->setVar('title', "Informationen", false);
       $fragment->setVar('body', $output, false);
       $content0 .= '<div class="col-md-12">'.$fragment->parse('core/page/section.php').'</div>';
   
@@ -128,12 +139,22 @@ if($domain) {
     
     if ($item['cms'] == 5) {
 
-      $content1 = '';
+      $content1 = '';      
       
-      
-      $output = '<table class="table table-striped"><thead><tr><th>Version</th><th>Version</th></tr></thead><tbody>';
+      $output = '<table class="table table-striped"><thead><tr><th>Information</th><th>Version / Status</th></tr></thead><tbody>';
       $output .= '<tr><td>Projekt Manager Version</td><td>'.$raw['pm_version'].'</td></tr>';
       $output .= '<tr><td>Projekt Manager Client Version</td><td>'.$raw['client_version'].'</td></tr>';
+      
+      if ($item['status'] == "1") {
+        $output .= '<tr><td>Projekt Manager Client Abruf</td><td><span class="hidden">1</span><span class="rex-icon fa-check text-success" title="'.$this->i18n('project_manager_server_status_code_1').'"></span> '.$this->i18n('project_manager_server_status_code_1').'</td></tr>';
+      } else if ($item['status'] == "0") {
+        $output .= '<tr><td>Projekt Manager Client Abruf</td><td><span class="hidden">2</span><span class="rex-icon fa-question text-warning" title="'.$this->i18n('project_manager_server_status_code_0').'"></span> '.$this->i18n('project_manager_server_status_code_0').'</td></tr>';
+      } else if ($item['status'] == "-1") {
+        $output .= '<tr><td>Projekt Manager Client Abruf</td><td><span class="hidden">3</span><span class="rex-icon fa-exclamation-triangle text-danger" title="'.$this->i18n('project_manager_server_status_code_minus_1').'"></span> '.$this->i18n('project_manager_server_status_code_minus_1').'</td></tr>';
+      } else if ($item['status'] == "2") {
+        $output .= '<tr><td>Projekt Manager Client Abruf</td><td><span class="hidden">3</span><span class="rex-icon fa-arrow-right text-danger" title="'.$this->i18n('project_manager_server_status_code_2').'"></span> '.$this->i18n('project_manager_server_status_code_2').'</td></tr>';
+      }      
+      
       $output .= '<tr><td>REDAXO Version</td><td>'.$raw['rex_version'].'</td></tr>';
       $output .= '<tr><td>PHP Version</td><td>'.$raw['php_version'].'</td></tr>';
       $output .= '<tr><td>MySQL Version</td><td>'.$raw['mysql_version'].'</td></tr>';
@@ -147,13 +168,22 @@ if($domain) {
       if ($raw['client_version'] >= "1.1.0") {
         if (!empty($raw['rex_url_backend'])) 
           $output .= '<tr><td>REDAXO Backend</td><td><a href="'.$protocol.$item['domain'].$raw['rex_url_backend'].'" target="_blank" title=""> <i class="fa fa-external-link"></i> '.$raw['rex_url_backend'].'</a></td></tr>';
-      }      
+      }    
+      
+      if ($item['maintenance'] == "1") {
+        $output .= '<tr><td>Wartungsvertrag</td><td><span class="hidden">1</span><span class="rex-icon fa-file-text-o text-success" title="'.$this->i18n('project_manager_server_maintenance_1').'"></span> '.$this->i18n('project_manager_server_maintenance_1').'</td></tr>';
+      } else if ($item['maintenance'] == "0") {
+        $output .= '<tr><td>Wartungsvertrag</td><td><span class="hidden">2</span><span class="rex-icon fa-file-text-o text-danger" title="'.$this->i18n('project_manager_server_maintenance_0').'"></span> '.$this->i18n('project_manager_server_maintenance_0').'</td></tr>';
+      } else if ($item['maintenance'] == "") {
+        $output .= '<tr><td>Wartungsvertrag</td><td><span class="hidden">3</span><span class="rex-icon fa-question text-warning" title="'.$this->i18n('project_manager_server_maintenance_2').'"></span> '.$this->i18n('project_manager_server_maintenance_2').'</td></tr>';
+      }   
+      
       
       $output .= '</tbody></table>';
       
       $fragment = new rex_fragment();
       $fragment->setVar('class', 'danger', false);
-      $fragment->setVar('title', "Versionen", false);
+      $fragment->setVar('title', "Informationen", false);
       $fragment->setVar('body', $output, false);
       $content1 .= '<div class="col-md-12">'.$fragment->parse('core/page/section.php').'</div>';
       
@@ -404,7 +434,7 @@ if($domain) {
           
           
           if ($raw['client_version'] >= "1.0.6")
-            $output .= '<div class="rex-form-panel-footer"><button data-func="delLog"  data-protocol="'.$protocol.'"  data-domain="'.$item['domain'].'" data-api_key="'.$item['api_key'].'" class="btn btn-delete btn-project-manager-update" type="submit" name="del_btn"><i class="fa fa-refresh"></i> Systemlog löschen</button></div>';
+            $output .= '<div class="rex-form-panel-footer"><button data-func="delLog"  data-protocol="'.$protocol.'"  data-domain="'.$item['domain'].'" data-api_key="'.$item['api_key'].'" data-param="'.$item['param'].'" class="btn btn-delete btn-project-manager-update" type="submit" name="del_btn"><i class="fa fa-refresh"></i> Systemlog löschen</button></div>';
             
           
           
