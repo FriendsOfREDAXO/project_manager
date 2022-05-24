@@ -298,6 +298,7 @@ if($domain) {
       $fragment->setVar('collapsed', true);
       $content2 .= '<div class="col-md-12">'.$fragment->parse('core/page/section.php').'</div>';
       
+      error_reporting(E_ALL);
       
       echo '<div class="row">'.$content2."</div>";
       
@@ -318,6 +319,8 @@ if($domain) {
         
         $skip_addon_config = '';
         $skip_addon_config = rex_config::get('project_manager/server', 'skip_addon');
+        $skip_addon_versions = '';        
+        
         if ($skip_addon_config != "") {
         	$skip_addons = explode(',', $skip_addon_config);
         	if (in_array($value['name'], $skip_addons)) {
@@ -331,7 +334,7 @@ if($domain) {
         if(rex_string::versionCompare($value['version_current'], $value['version_latest'], '<')) {
           
             $skip_addon_version_config = rex_config::get('project_manager/server', 'skip_addon_version');
-             
+            
             if ($skip_addon_version_config != "") $skip_addon_versions = explode(',', $skip_addon_version_config);
             
             $skip = false;
