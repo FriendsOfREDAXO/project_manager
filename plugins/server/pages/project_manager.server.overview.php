@@ -33,6 +33,7 @@ if ($func != '') {
     $yform->setValidateField('preg_match', array('domain', $regex, $this->i18n('domain_no_protocol')));
     
     $yform->setValueField('choice', array("is_ssl", $this->i18n('project_manager_server_ssl'),"Ja=1,Nein=0","","0","0"));
+
     
     $yform->setValueField('hidden', array("createdate", date ('Y-m-d H:i:s', time())));
 
@@ -93,6 +94,8 @@ if ($func != '') {
       $yform->setValueField('text', ['api_key', $this->i18n('project_manager_server_api_key_info'), 'default' => bin2hex(random_bytes(24)), 'notice' => '<small>'.$this->i18n('api_key_notice').'</small>']);
       $yform->setValidateField('empty', ['api_key', $this->i18n('no_api_key_defined')]);
       //$yform->setValidateField('unique', ['api_key', $this->i18n('api_key_already_defined')]);
+      
+      $yform->setValueField('text', ['param', $this->i18n('project_manager_server_param'), 'notice' => '<small>'.$this->i18n('param_notice').'</small>']);
       
       $yform->setValueField('choice', array("cms", $this->i18n('project_manager_server_cms'),"REDAXO 5=5,REDAXO 4=4","","0","0"));
       
