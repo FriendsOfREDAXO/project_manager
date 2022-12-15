@@ -330,36 +330,38 @@ if($domain) {
         	}
         }
         
-        if(rex_string::versionCompare($value['version_current'], $value['version_latest'], '<')) {
-          
-            $skip_addon_version_config = rex_config::get('project_manager/server', 'skip_addon_version');
-                        
-            if ($skip_addon_version_config != "") $skip_addon_versions = explode(',', $skip_addon_version_config);
+        if ($value['version_current'] != '' &&  $value['version_latest'] != '') {
+          if(rex_string::versionCompare($value['version_current'], $value['version_latest'], '<')) {
             
-            $skip = false;
-            if (is_array($skip_addon_versions)) {
-              foreach ($skip_addon_versions as $skip_addon_version) {
-                if (strpos($value['version_latest'],'-'.$skip_addon_version)) {
-                  $skip = true;
+              $skip_addon_version_config = rex_config::get('project_manager/server', 'skip_addon_version');
+                          
+              if ($skip_addon_version_config != "") $skip_addon_versions = explode(',', $skip_addon_version_config);
+              
+              $skip = false;
+              if (is_array($skip_addon_versions)) {
+                foreach ($skip_addon_versions as $skip_addon_version) {
+                  if (strpos($value['version_latest'],'-'.$skip_addon_version)) {
+                    $skip = true;
+                  }
                 }
               }
-            }
-            
-            if ($value['version_latest'] == 0) $skip = true;
-            
-            if ($skip === false) {
-             $output .= '<td ><i title="" class="rex-icon fa-exclamation-triangle text-danger"></i> '.$value['version_current'].'</td>';
-             $i++;
-            } else {
-              $output .= '<td>'.$value['version_current'].'</td>';
-            }
-            
-        } else {
-          $output .= '<td>'.$value['version_current'].'</td>';
+              
+              if ($value['version_latest'] == 0) $skip = true;
+              
+              if ($skip === false) {
+               $output .= '<td ><i title="" class="rex-icon fa-exclamation-triangle text-danger"></i> '.$value['version_current'].'</td>';
+               $i++;
+              } else {
+                $output .= '<td>'.$value['version_current'].'</td>';
+              }
+              
+          } else {
+            $output .= '<td>'.$value['version_current'].'</td>';
+          }        
+          
+          $output .= '<td>'.$value['version_latest'].'</td>';
+          $output .= '</tr>';
         }
-        
-        $output .= '<td>'.$value['version_latest'].'</td>';
-        $output .= '</tr>';
       }
       $output .= '</tbody></table>';
       
@@ -454,6 +456,57 @@ if($domain) {
       $content3 .= '<div class="col-md-12">'.$fragment->parse('core/page/section.php').'</div>';
   
   
+      echo '<div class="row">'.$content3."</div>";
+      $content3 = "";
+      
+      
+      // LOGFILE      
+      $icon = "";
+      $output = '';
+      project_manager_logger::init($domain);
+  
+      $logfile = new rex_log_file(project_manager_logger::getPath($domain));
+      $show_triangle = false;
+      
+      if (!is_null($logfile)) {
+        
+        $output .= '<table class="table table-striped"><thead><tr><th>Zeitstempel</th><th>Typ</th><th>Nachricht</th></tr></thead><tbody>';
+
+        foreach (new LimitIterator($logfile, 0, 100) as $entry) {
+          
+          $data = $entry->getData();
+          $output .= '<tr>';
+          $output .= '<td>'.rex_formatter::intlDateTime($data[0], [IntlDateFormatter::SHORT, IntlDateFormatter::MEDIUM]) .'</td>';
+          $output .= '<td>'.$data[1].'</td>';
+          $output .= '<td>'.$data[2].'</td>';
+          $output .= '</tr>';
+
+        }
+        $output .= '</tbody></table>';
+        
+        $icon = '';
+        if ($item['status'] == "1") {
+          
+        } else if ($item['status'] == "0") {
+          $icon = ' <i class="rex-icon fa-question" title="'.$this->i18n('project_manager_server_status_code_0').'"></i>';
+        } else if ($item['status'] == "-1") {
+          $icon = ' <i class="rex-icon fa-exclamation-triangle" title="'.$this->i18n('project_manager_server_status_code_minus_1').'"></i>';
+        } else if ($item['status'] == "2") {
+          $icon = ' <i class="rex-icon fa-arrow-right" title="'.$this->i18n('project_manager_server_status_code_2').'"></i>';
+        }        
+          
+      }    
+      
+      $fragment = new rex_fragment();
+      $fragment->setVar('class', 'info', false);
+      $fragment->setVar('title', "Project Manager Log".$icon, false);
+      $fragment->setVar('body', $output, false);
+      $fragment->setVar('collapse', true);
+      $fragment->setVar('collapsed', true);
+      $content3 .= '<div class="col-md-12">'.$fragment->parse('core/page/section.php').'</div>';
+      
+      
+      
       echo '<div class="row">'.$content3."</div>";
       $content3 = "";
     }

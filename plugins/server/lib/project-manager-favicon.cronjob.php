@@ -92,10 +92,12 @@ class rex_cronjob_project_manager_favicon extends rex_cronjob
               }  
               
               $favicon_headers = @get_headers($faviconURL);
-              if(!in_array('HTTP/1.1 404 Not Found', $favicon_headers)) {
-                $found == TRUE;
-                return $faviconURL;
-              }               
+              if (is_array($favicon_headers)) {              
+                if(!in_array('HTTP/1.1 404 Not Found', $favicon_headers)) {
+                  $found == TRUE;
+                  return $faviconURL;
+                }               
+              }
               
               //check for the HTML5 rel="icon"
             } else if ($domxml->xpath('//link[@rel="icon"]')) {
@@ -109,9 +111,11 @@ class rex_cronjob_project_manager_favicon extends rex_cronjob
               }
               
               $favicon_headers = @get_headers($faviconURL);
-              if(!in_array('HTTP/1.1 404 Not Found', $favicon_headers)) {
-                $found == TRUE;
-                return $faviconURL;
+              if (is_array($favicon_headers)) {  
+                if(!in_array('HTTP/1.1 404 Not Found', $favicon_headers)) {
+                  $found == TRUE;
+                  return $faviconURL;
+                }
               }
               
             } else {

@@ -1,5 +1,14 @@
 # Changelog
 
+## Version 1.5.0 // 14.12.2022
+
+# Plugin: Server 1.5.0
+* Weitere Redaxo Versionen aufgenommen
+* Maintenance / Wartungsvertrag Icon angepasst #77 https://github.com/FriendsOfREDAXO/project_manager/issues/77
+* Beim Abruf der Domaindaten nun zusätzliches Logging in einzelnen Textdateien #78 https://github.com/FriendsOfREDAXO/project_manager/issues/78
+* Bugfix: Warnings entfernt unter R5.14.2 #79 https://github.com/FriendsOfREDAXO/project_manager/issues/79
+
+
 ## Version 1.4.0 // 24.05.2022
 
 # Plugin: Server 1.4.0
