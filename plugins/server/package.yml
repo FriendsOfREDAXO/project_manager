@@ -1,5 +1,5 @@
 package: project_manager/server
-version: '1.4.0'
+version: '1.5.0'
 author: 'Friends Of REDAXO'
 supportpage: https://github.com/FriendsOfREDAXO/project_manager
 
@@ -20,7 +20,7 @@ pages:
 requires:
     packages:
         cronjob: '>=2.3.0'
-        project_manager: '^1.4.0'
+        project_manager: '^1.5.0'
         yform: '>=3.4.2'
     php:
         version: '>=7.0'        

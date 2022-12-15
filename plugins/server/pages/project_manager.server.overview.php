@@ -319,7 +319,7 @@ if ($showlist) {
       if ($params['list']->getValue('maintenance') == "1") {
         return '<span class="hidden">1</span><span class="rex-icon fa-file-text-o text-success" title="'.$this->i18n('project_manager_server_maintenance_1').'"></span>';
       } else if ($params['list']->getValue('maintenance') == "0") {
-        return '<span class="hidden">0</span><span class="rex-icon fa-file-text-o  text-danger" title="'.$this->i18n('project_manager_server_maintenance_0').'"></span>';
+        return '<span class="hidden">0</span><span class="rex-icon fa-minus text-danger" title="'.$this->i18n('project_manager_server_maintenance_0').'"></span>';
       } else if ($params['list']->getValue('maintenance') == null) {
         return '<span class="hidden">-1</span><span class="rex-icon fa-question text-warning"title="'.$this->i18n('project_manager_server_maintenance_2').'"></span>';
       } 
