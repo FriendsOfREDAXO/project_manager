@@ -76,7 +76,9 @@ class rex_cronjob_project_manager_favicon extends rex_cronjob
         if (!$dom) {
          // $error[]='Error parsing the DOM of the file';
         } else {
-          $domxml = simplexml_import_dom($dom);
+            
+          if (!is_null($dom->baseURI))
+            $domxml = simplexml_import_dom($dom);
           
           if ($domxml) {
             
