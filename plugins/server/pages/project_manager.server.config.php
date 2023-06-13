@@ -42,6 +42,7 @@ $select->addOption('7.4', '7.4');
 $select->addOption('8.0', '8.0');
 $select->addOption('8.1', '8.1');
 $select->addOption('8.2', '8.2');
+$select->addOption('8.3', '8.3');
 $select->setSelected($this->getConfig('php_min'));
 $n['field'] = $select->get();
 $formElements[] = $n;
