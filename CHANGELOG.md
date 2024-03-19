@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 1.5.1 // 19.03.2024
+
+# Plugin: Server 1.5.1
+* Weitere Redaxo Versionen aufgenommen
+
+
 ## Version 1.5.0 // 14.12.2022
 
 # Plugin: Server 1.5.0
