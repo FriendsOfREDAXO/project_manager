@@ -402,7 +402,10 @@ if ($showlist) {
       $addon = $params['field'];
       if($params['list']->getValue('raw')) {
         $log = json_decode($params['list']->getValue('raw'), true);
-        if (array_key_exists("rex_addons", $log)) {   
+
+        if ($log !== null && is_array($log) && array_key_exists("rex_addons", $log)) {  
+
+
           if(json_last_error() === JSON_ERROR_NONE && $log["rex_addons"] && count($log["rex_addons"])) {
             $i = 0;
             $j = 0;
@@ -464,7 +467,9 @@ if ($showlist) {
     $list->setColumnFormat($this->i18n('syslog'), 'custom', function ($params) {
       if($params['list']->getValue('raw')) {
         $raw= json_decode($params['list']->getValue('raw'), true);        
-        if (array_key_exists("syslog", $raw)) {
+
+          if ($variable !== null && is_array($variable) && array_key_exists("key", $variable)) {  
+
           
           $syslog = $raw['syslog'];
           $show_triangle = false;
