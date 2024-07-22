@@ -468,8 +468,7 @@ if ($showlist) {
       if($params['list']->getValue('raw')) {
         $raw= json_decode($params['list']->getValue('raw'), true);        
         if (is_array($raw) && array_key_exists("syslog", $raw)) {
-            // Rest des Codes...
-          
+         
           $syslog = $raw['syslog'];
           $show_triangle = false;
           
