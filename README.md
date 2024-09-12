@@ -276,7 +276,7 @@ siehe [LICENSE](https://github.com/FriendsOfREDAXO/project_manager/blob/master/L
 **Projekt-Lead**
 * [Ronny Kemmereit](https://github.com/rkemmere)
 
-**Development-Team / Autoren**
+**Development-Team**
 * [Ronny Kemmereit](https://github.com/rkemmere) 
 * [Pascal Schuchmann](https://github.com/pschuchmann)
 * [Alexander Walther](https://github.com/alexplusde)  
