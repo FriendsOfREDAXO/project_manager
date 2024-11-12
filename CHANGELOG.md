@@ -1,6 +1,6 @@
 # Changelog
 
-## Version 1.5.4 // 12.11.2024
+## Version 1.5.5 // 12.11.2024
 
 # Plugin: Server 1.5.4
 * Weitere Redaxo Versionen aufgenommen
