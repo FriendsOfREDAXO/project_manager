@@ -1,5 +1,18 @@
 # Changelog
 
+## Version 1.5.4 // 12.11.2024
+
+# Plugin: Server 1.5.4
+* Weitere Redaxo Versionen aufgenommen
+* Spalten Anpassung Table Sorter
+
+
+## Version 1.5.2 // 11.11.2024
+
+# Plugin: Server 1.5.2
+* Weitere Redaxo Versionen aufgenommen
+
+
 ## Version 1.5.1 // 19.03.2024
 
 # Plugin: Server 1.5.1

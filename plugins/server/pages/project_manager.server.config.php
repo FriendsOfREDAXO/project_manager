@@ -95,6 +95,8 @@ $select->addOption('5.16.0', '5.16.0');
 $select->addOption('5.16.1', '5.16.1');
 $select->addOption('5.17.0', '5.17.0');
 $select->addOption('5.17.1', '5.17.1');
+$select->addOption('5.18.0', '5.18.0');
+$select->addOption('5.18.1', '5.18.1');
 
 $select->setSelected($this->getConfig('cms_min'));
 $n['field'] = $select->get();
