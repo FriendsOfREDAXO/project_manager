@@ -10,6 +10,7 @@ if (rex_post('btn_save', 'string') != '') {
     ['cms_min_color', 'string'],
     ['skip_addon', 'string'],
     ['skip_addon_version', 'string'],
+    ['show_hint', 'string'],
   ]));
   
   $message = $this->i18n('project_manager_server_config_saved_successful');
@@ -134,6 +135,25 @@ $n = [];
 $n['label'] = '<label for="skip-addon-version">' . $this->i18n('project_manager_server_skip_addon_version') . '</label>';
 $n['field'] = '<input class="form-control" type="text" id="skip_addon_version" name="config[skip_addon_version]" value="' . $this->getConfig('skip_addon_version') . '" data-role="tagsinput"/>
 							 <p class="help-block">' . $this->i18n('project_manager_server_skip_addon_version_notice') . '</p>';
+$formElements[] = $n;
+
+$fragment = new rex_fragment();
+$fragment->setVar('elements', $formElements, false);
+$content .= $fragment->parse('core/form/container.php');
+
+
+// Bemerkung in Übersicht anzeigen
+$formElements = [];
+$n = [];
+$n['label'] = '<label for="show_hint">' . $this->i18n('project_manager_server_show_hint') . '</label>';
+$select = new rex_select();
+$select->setId('show_hint');
+$select->setAttribute('class', 'form-control');
+$select->setName('config[show_hint]');
+$select->addOption('Nein', '0');
+$select->addOption('Ja', '1');
+$select->setSelected($this->getConfig('show_hint'));
+$n['field'] = $select->get();
 $formElements[] = $n;
 
 $fragment = new rex_fragment();

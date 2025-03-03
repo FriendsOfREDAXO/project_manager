@@ -61,7 +61,41 @@ a.loading .fa-refresh {
   margin-bottom: 20px;
 }
 
+.btn.btn-project-manager-update-single,
+.btn.btn-project-manager-update-single:active,
+.btn.btn-project-manager-update-single:focus {
+  padding: 0;
+  border: none; 
+  background: transparent;
+  box-shadow: none;
+  outline: none;  
+  color: #4b9ad9;
+} 
+
+.btn.btn-project-manager-update-single:hover {
+  color: #2674b2;
+}
+
+
+body.rex-theme-dark .btn.btn-project-manager-update-single,
+body.rex-theme-dark .btn.btn-project-manager-update-single:active,
+body.rex-theme-dark .btn.btn-project-manager-update-single:focus {
+  color: #409be4
+}
+body.rex-theme-dark  .project_manager-tablesorter .rex-icon-refresh {
+  color: #409be4  
+}
+
+
 .project-manager-server--redaxo-favicon {
   height: 15px;
   margin-top: -3px;
+}
+
+
+
+body.rex-theme-dark .tablesorter-default th,
+body.rex-theme-dark .tablesorter-default td {
+  background-color:  #202b35;
+  border-bottom: 1px solid #151c22;
 }

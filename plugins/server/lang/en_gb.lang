@@ -47,6 +47,8 @@ project_manager_server_param_notice = Paramenter, ex.: <code>param1=value1,param
 project_manager_server_ssl = SSL connection
 project_manager_server_tags = Tags
 project_manager_server_maintenance = Maintenance contract?
+project_manager_server_hint = Hint
+project_manager_server_show_hint = Show hint in overview?
 
 #detail
 project_manager_server_project_detail = Details

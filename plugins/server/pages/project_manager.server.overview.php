@@ -61,6 +61,8 @@ if ($func != '') {
       
       $yform->setValueField('choice', array("maintenance", $this->i18n('project_manager_server_maintenance'),"Nein=0,Ja=1","","0","0"));
       
+      $yform->setValueField('text', ['hint', $this->i18n('project_manager_server_hint')]);
+      
       $yform->setValueField('text', ['tags', $this->i18n('project_manager_server_tags'), '#attributes: {"data-role":"tagsinput"}']);
             
         $yform->setHiddenField('data_id', $data_id);
@@ -100,6 +102,8 @@ if ($func != '') {
       $yform->setValueField('choice', array("cms", $this->i18n('project_manager_server_cms'),"REDAXO 5=5,REDAXO 4=4","","0","0"));
       
       $yform->setValueField('choice', array("maintenance", $this->i18n('project_manager_server_maintenance'),"Nein=0,Ja=1","","0","0"));
+      
+      $yform->setValueField('text', ['hint', $this->i18n('project_manager_server_hint')]);
       
       $yform->setValueField('text', ['tags', $this->i18n('project_manager_server_tags'), '#attributes: {"data-role":"tagsinput"}']);
         
@@ -149,7 +153,7 @@ if ($showlist) {
     if ($sorttype == "") $sorttype = "ASC";
     
     $sql = 'SELECT * FROM (
-                          SELECT id, name, domain, is_ssl, status, cms, api_key, param, maintenance FROM `rex_project_manager_domain` ORDER BY domain ASC
+                          SELECT id, name, domain, is_ssl, status, cms, api_key, param, maintenance, hint FROM `rex_project_manager_domain` ORDER BY domain ASC
                           ) AS D
             LEFT JOIN (SELECT domain_id, `raw`, createdate  FROM rex_project_manager_logs WHERE id IN (SELECT MAX(id) FROM rex_project_manager_logs GROUP BY domain_id)) AS L
             ON D.id = L.domain_id
@@ -327,6 +331,12 @@ if ($showlist) {
       
      $list->setColumnLayout('maintenance', ['<th data-sorter="digit">###VALUE###</th>', '<td>###VALUE###</td>']);   
       
+     $show_hint = rex_config::get('project_manager/server', 'show_hint');
+     if ($show_hint == 1 ) {
+       $list->setColumnLabel('hint', $this->i18n('hint'));
+     } else {
+       $list->removeColumn('hint');
+     }
       
     $list->addColumn($this->i18n('pm_client_version'), false, -1, ['<th>###VALUE###</th>', '<td class="rex-table-cms-version">###VALUE### <i class="tablesorter-icon"></i></td>']);
     $list->setColumnLabel($this->i18n('pm_client_version'), $this->i18n('pm_client_version'));
@@ -486,18 +496,38 @@ if ($showlist) {
           return '-';
         }
       }
-    });
+    });    
    
     $list->setColumnParams($this->i18n('domain'), ['page' => 'project_manager/server/projects', 'domain' => '###domain###']);
     
     $list->addColumn(rex_i18n::msg('view'), '<i class="rex-icon rex-icon-view"></i>');
     $list->setColumnLayout(rex_i18n::msg('view'), ['', '<td class="rex-table-action">###VALUE###</td>']);
     $list->setColumnParams(rex_i18n::msg('view'), ['page' => 'project_manager/server/projects', 'domain' => '###domain###'] + $csrf->getUrlParams());
+        
     
     $list->addColumn(rex_i18n::msg('function'), '<i class="rex-icon rex-icon-edit"></i>');
     $list->setColumnLayout(rex_i18n::msg('function'), ['<th class="rex-table-action" colspan="3" data-sorter="false">###VALUE###</th>', '<td class="rex-table-action">###VALUE###</td>']);
-    $list->setColumnParams(rex_i18n::msg('function'), ['data_id' => '###id###', 'func' => 'edit']);
+    $list->setColumnParams(rex_i18n::msg('function'), ['data_id' => '###id###', 'func' => 'edit']);    
     
+
+    $list->addColumn(rex_i18n::msg('refresh'), '<i class="fa fa-refresh"></i>');
+    $list->setColumnLayout(rex_i18n::msg('refresh'), ['', '<td class="rex-table-action">###VALUE###</td>']);    
+    $list->setColumnFormat(rex_i18n::msg('refresh'), 'custom', function ($params) {
+      
+      $ssl = $params['list']->getValue('is_ssl');
+      $protocol = ($ssl == 1) ? "https://" : "http://";      
+      
+      if($params['list']->getValue('raw')) {
+        $raw= json_decode($params['list']->getValue('raw'), true);
+        
+        $refresh_single = '';
+        $refresh_single = '<button data-func="updateData"  data-protocol="'.$protocol.'"  data-domain="'.$params['list']->getValue('domain').'" data-api_key="'.$params['list']->getValue('api_key').'" data-param="'.$params['list']->getValue('param').'" class="btn btn-project-manager-update btn-project-manager-update-single" type="submit" name="del_btn"><i class="rex-icon rex-icon-refresh"></i></button>';
+        
+      }
+      
+      return $refresh_single ;
+      
+    });        
     
     $list->addColumn(rex_i18n::msg('delete'), '<i class="rex-icon rex-icon-delete"></i>');
     $list->setColumnLayout(rex_i18n::msg('delete'), ['', '<td class="rex-table-action">###VALUE###</td>']);
