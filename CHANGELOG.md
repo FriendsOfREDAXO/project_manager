@@ -1,6 +1,6 @@
 # Changelog
 
-## Version 1.5.7 // 03.03.2025
+## Version 1.5.8 // 03.03.2025
 
 # Plugin: Server 1.5.6
 * Anpassungen Dark Mode #93 https://github.com/FriendsOfREDAXO/project_manager/issues/93
