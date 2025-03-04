@@ -1,9 +1,15 @@
 # Changelog
 
+## Version 1.5.9 // 04.03.2025
+
+# Plugin: Server 1.5.7
+* Anpassungen Dark Mode allgemein #93 https://github.com/FriendsOfREDAXO/project_manager/issues/93
+* Weitere Redaxo Versionen aufgenommen
+
 ## Version 1.5.8 // 03.03.2025
 
 # Plugin: Server 1.5.6
-* Anpassungen Dark Mode #93 https://github.com/FriendsOfREDAXO/project_manager/issues/93
+* Anpassungen Redaxo Dark Mode #93 https://github.com/FriendsOfREDAXO/project_manager/issues/93
 * Neues Feld für Bemerkungen #92 https://github.com/FriendsOfREDAXO/project_manager/issues/92
 * konfigurierbare Anzeige der Bemerkung in Übersicht
 * Einzelne Projektdaten können nun in der Übersicht abgerufen werden
