@@ -69,7 +69,7 @@ class rex_cronjob_project_manager_favicon extends rex_cronjob
       $found = FALSE;
       // 1. CHECK THE DOM FOR THE <link> TAG
       // check if the url exists - if the header returned is not 404
-      if($file_headers[0] != 'HTTP/1.1 404 Not Found') {
+      if(!is_array($file_headers) || $file_headers[0] != 'HTTP/1.1 404 Not Found') {
         $dom = new DOMDocument();
         $dom->strictErrorChecking = FALSE;
         @$dom->loadHTMLfile($url);  //@ to discard all the warnings of malformed htmls
