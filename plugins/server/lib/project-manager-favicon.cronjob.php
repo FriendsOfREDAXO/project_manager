@@ -80,7 +80,7 @@ class rex_cronjob_project_manager_favicon extends rex_cronjob
           if (!is_null($dom->baseURI))
             $domxml = simplexml_import_dom($dom);
           
-          if ($domxml) {
+          if (isset($domxml) && $domxml) {
             
             //check for the historical rel="shortcut icon"
             if ($domxml->xpath('//link[@rel="shortcut icon"]')) {

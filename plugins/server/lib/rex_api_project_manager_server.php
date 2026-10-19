@@ -152,7 +152,7 @@ class rex_api_project_manager_server extends rex_api_function
         }
         
         header('Content-Type: application/json; charset=UTF-8');
-        $response = json_encode($params, true);
+        $response = json_encode($params ?? null, true);
         echo $response;
         exit();
         
