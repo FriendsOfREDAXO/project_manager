@@ -38,7 +38,7 @@ if($domain) {
     $item = rex_sql::factory()->setDebug(0)->getArray($query, [$domain])[0];
     
     // Screenshot
-    $raw= json_decode($item['raw'], true);
+    $raw= json_decode((string) $item['raw'], true);
     $image = '';
     $data = '';
     if (isset($raw['lighthouseResult'])) {
