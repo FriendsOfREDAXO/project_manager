@@ -26,7 +26,7 @@ class rex_cronjob_project_manager_data extends rex_cronjob
             $cms = $website['cms'];
             $ssl = $website['is_ssl'];    
             $param = $website['param'];
-            $param = explode(',', $param);
+            $param = explode(',', (string) $param);
             $param = '&'.implode('&', $param);
             $protocol = ($ssl == 1) ? "https://" : "http://";     
             
