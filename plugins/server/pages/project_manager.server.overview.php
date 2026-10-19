@@ -517,10 +517,11 @@ if ($showlist) {
       $ssl = $params['list']->getValue('is_ssl');
       $protocol = ($ssl == 1) ? "https://" : "http://";      
       
+      $refresh_single = '';
+
       if($params['list']->getValue('raw')) {
         $raw= json_decode($params['list']->getValue('raw'), true);
         
-        $refresh_single = '';
         $refresh_single = '<button data-func="updateData"  data-protocol="'.$protocol.'"  data-domain="'.$params['list']->getValue('domain').'" data-api_key="'.$params['list']->getValue('api_key').'" data-param="'.$params['list']->getValue('param').'" class="btn btn-project-manager-update btn-project-manager-update-single" type="submit" name="del_btn"><i class="rex-icon rex-icon-refresh"></i></button>';
         
       }
